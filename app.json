@@ -9,7 +9,7 @@
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Weixin",
+    "navigationBarTitleText": "博信特殊教育产业研究院",
     "navigationBarTextStyle":"black"
   },
   "sitemapLocation": "sitemap.json",
@@ -21,6 +21,7 @@
     "t-date-time-picker": "tdesign-miniprogram/date-time-picker/date-time-picker",
     "t-button": "tdesign-miniprogram/button/button",
     "t-picker": "tdesign-miniprogram/picker/picker",
-    "t-picker-item": "tdesign-miniprogram/picker-item/picker-item"
+    "t-picker-item": "tdesign-miniprogram/picker-item/picker-item",
+    "t-icon": "tdesign-miniprogram/icon/icon"
   }
 }
