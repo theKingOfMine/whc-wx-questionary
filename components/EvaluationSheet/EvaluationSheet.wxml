@@ -1,0 +1,54 @@
+<view class="container">
+  <view style="font-size: 17pt; font-weight: 700; padding: 32rpx 32rpx 0;">
+    {{title}}
+  </view>
+  <form class="form-box" bindsubmit="submit">
+
+    <!-- 基础信息 -->
+    <view wx:for="{{stu_info}}" wx:for-item='info' wx:for-index='i' wx:key="i" class="stu-info-box" style="margin: 32rpx;border-radius: 24rpx;  overflow: hidden; ">
+      <view style="font-size: 17pt; font-weight: 700;">{{info.title}}</view>
+      <view class="stu-info">
+        <view wx:for="{{info.form}}" wx:key="index">
+          <!-- input -->
+          <t-input wx:if="{{item.component == 'input'}}" name='{{item.name}}' label="{{item.label}}:" placeholder="" />
+          <!-- 年月日 -->
+          <view wx:if="{{item.component == 'date-picker'}}">
+            <t-cell title="{{item.label}}" name='{{item.name}}' hover note="{{item.value || ''}}" arrow data-mode="date" bindtap="showPicker" class="test" t-class="pannel-item" />
+
+            <t-date-time-picker title="选择日期" visible="{{dateVisible}}" mode="date" defaultValue="{{date}}" format="YYYY-MM-DD" bindchange="onConfirm" bindpick="onColumnChange" bindcancel="hidePicker" start="2000-01-01" end="2030-01-01" />
+          </view>
+          <!-- 选择器 -->
+          <view wx:if="{{item.component == 'picker'}}">
+            <t-cell class="mb-16" title="{{item.label}}" arrow hover note="{{cityText}}" bind:click="onCityPicker" />
+
+            <t-picker visible="{{cityVisible}}" value="{{cityValue}}" data-key="city" title="选择城市" cancelBtn="取消" confirmBtn="确认" bindchange="onPickerChange" bindpick="onColumnChange" bindcancel="onPickerCancel">
+              <t-picker-item options="{{citys}}" />
+            </t-picker>
+          </view>
+
+        </view>
+      </view>
+    </view>
+
+    <!-- 调查信息 -->
+    <view class="form-box-report" wx:for="{{SLD_PRS_T}}" wx:for-item='info' wx:for-index='i' wx:key="i">
+      <view style="font-size: 17pt; font-weight: 700;">{{info.title}}</view>
+
+      <view class="form-box-report-item" wx:for="{{info.form}}" wx:for-item='item' wx:for-index='j' wx:key="j">
+        <text style="font-weight: 400;">{{item.label}}</text>
+
+        <t-radio-group wx:if="{{item.component == 'checkBox'}}" t-class="theme-card">
+          <t-radio wx:for="{{item.selectList}}" wx:for-item='l' wx:for-index='z' wx:key="z" label="{{l}}" value="{{l}}" />
+        </t-radio-group>
+
+      </view>
+
+
+    </view>
+
+    <view class="form-button-box">
+      <t-button theme="primary" size="large">填充按钮</t-button>
+    </view>
+
+  </form>
+</view>

@@ -1,0 +1,1 @@
+export const logo = '/images/logo/whc.png'

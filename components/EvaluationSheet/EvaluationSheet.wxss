@@ -1,0 +1,23 @@
+
+.form-box-report{
+  padding: 32rpx 32rpx 0;
+}
+.form-box-report-item{
+  margin: 64rpx 0;
+}
+.stu-info {
+  border-radius: 24rpx;
+  margin: 32rpx 0;
+  overflow: hidden;
+}
+.theme-card {
+  border-radius: 24rpx;
+  margin: 32rpx 0;
+  overflow: hidden;
+}
+.form-button-box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 96rpx;
+}
