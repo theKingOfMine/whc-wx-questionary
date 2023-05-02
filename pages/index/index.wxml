@@ -9,19 +9,17 @@
       <t-input label='教师姓名：' />
       <t-input label="岗位：" />
       <t-input label='所在学校：' />
-      <t-input label="密码：" />
-      <t-input label="重复密码：" />
+      <t-input label="手机号：" />
+      <t-input label="验证码：">
+        <t-button style="background-color: {{color.theme_color}}; border: none;" slot="suffix" theme="primary" size="extra-small"> 发送验证码 </t-button>
+      </t-input>
       <view class="register-submit-box">
-        <button style="width:100%; margin: 64px 0 16px; background-color: rgb(12, 87, 169); color: #ffffff;">注册</button>
+        <button style="width:100%; margin: 48px 0 32px; background-color: {{color.theme_color}}; color: #ffffff;">注册</button>
         <view style="display: flex; align-items: center; justify-content: space-between; width: 60%;">
-          <t-link size="small" theme="primary" content="手机一键登陆" hover />
-          <t-link size="small" theme="primary" content="登陆" hover />
+          <t-link style="color: {{color.theme_color}};" size="small" theme="primary" content="手机登陆" hover prefixIcon="call" />
+          <t-link style="color: {{color.theme_color}};" size="small" theme="primary" content="微信登陆" hover prefixIcon="logo-wechat" />
         </view>
       </view>
     </form>
   </view>
-
-  <!-- <view class="subinfo-box">
-    <t-icon name="logo-wechat" size="32px" color='rgb(25, 185, 77)' />
-  </view> -->
 </view>

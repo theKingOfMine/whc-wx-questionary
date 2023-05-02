@@ -8,6 +8,9 @@
 .logo-box{
   height: 29vh;
 }
+.register-box{
+  padding: 0 48rpx;
+}
 
 .login-container > view{
   display: flex;
