@@ -1,6 +1,6 @@
 {
   "usingComponents": {
- 
+    "BarChart": "../../components/BarChart/bar"
   },
   "navigationBarTitleText": "个人中心"
 }

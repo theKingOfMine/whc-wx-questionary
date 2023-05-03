@@ -1,11 +1,12 @@
-// pages/stu/stu.js
+import {color} from "../../tools/coredata"
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    stuList: []
+    stuList: [],
+    color: color
   },
 
   /**

@@ -1,16 +1,16 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
     "pages/stu/stu",
     "pages/form/form",
     "pages/user/user"
   ],
   "entryPagePath": "pages/form/form",
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "博信特殊教育产业研究院",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",
   "usingComponents": {
@@ -27,6 +27,25 @@
     "t-switch": "tdesign-miniprogram/switch/switch",
     "t-badge": "tdesign-miniprogram/badge/badge",
     "t-tabs": "tdesign-miniprogram/tabs/tabs",
-    "t-tab-panel": "tdesign-miniprogram/tab-panel/tab-panel"
+    "t-tab-panel": "tdesign-miniprogram/tab-panel/tab-panel",
+    "t-tag": "tdesign-miniprogram/tag/tag",
+    "t-check-tag": "tdesign-miniprogram/check-tag/check-tag",
+    "t-progress": "tdesign-miniprogram/progress/progress"
+  },
+  "tabBar": {
+    "selectedColor": "#0052d9",
+    "list": [{
+        "pagePath": "pages/stu/stu",
+        "text": "学生列表",
+        "iconPath": "./images/index.png",
+        "selectedIconPath": "./images/index-choosed.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "个人中心",
+        "iconPath": "./images/user.png",
+        "selectedIconPath": "./images/user-choosed.png"
+      }
+    ]
   }
 }

@@ -1,8 +1,5 @@
-user-container {
-  width: 100%;
-  min-height: 100vh;
-  height: 100%;
-
+.user-container {
+  background-color: var(--background-color);
 }
 
 .user-info-box {
@@ -13,7 +10,6 @@ user-container {
   align-items: center;
   justify-content: center;
 }
-
 .user-image-box {
   display: flex;
   flex-direction: column;
@@ -36,16 +32,16 @@ user-container {
 
 .user-workinfo-box {
   width: 100%;
-  height: 56vh;
+  height: 560px;
   display: flex;
   justify-content: center;
-  background-color: var(--background-color)
 }
 
 .wrapper {
   position: relative;
   width: 100vw;
   height: 100%;
+  background-color: var(--background-color);
 
 }
 

@@ -1,4 +1,19 @@
 <t-fab icon="add" bind:click="handleClick" aria-label="增加"></t-fab>
-<view style="display: flex; align-items: center; justify-content: center; height: 200rpx;" wx:if="{{stuList.length == 0}}" class="notes">
+<!-- <view style="display: flex; align-items: center; justify-content: center; height: 200rpx;" wx:if="{{stuList.length == 0}}" class="notes">
   您还未添加任何学生...
+</view> -->
+
+<view class="stu-list-box">
+    <t-cell title='马吉春' description="北京市第二十五小学 三年二班" image="/images/mjc.jpg">
+      <t-tag class="margin-16" variant="light" theme="success" slot="right-icon">等待评估</t-tag>
+    </t-cell>
+    <t-cell title='马吉春' description="北京市第二十五小学 三年二班" image="/images/mjc.jpg">
+      <t-tag class="margin-16" variant="light" theme="warning" slot="right-icon">评估中...</t-tag>
+    </t-cell>
+    <t-cell wx:for="12" title='马吉春' description="北京市第二十五小学 三年二班" image="/images/mjc.jpg">
+      <t-tag class="margin-16" variant="light" theme="primary" slot="right-icon">评估完成</t-tag>
+    </t-cell>
+    <t-cell title='马吉春' description="北京市第二十五小学 三年二班" image="/images/mjc.jpg">
+      <t-tag class="margin-16" variant="light" theme="danger" slot="right-icon">评估失败</t-tag>
+    </t-cell>
 </view>
