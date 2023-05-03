@@ -8,7 +8,6 @@
     <text style="font-size: 12pt; font-weight: 200;">填写此表时请根据儿童过去 6 个月的行为举止认真/客观地填写此表！ 本报告为教育实践评估，最终评价需结合医疗诊断评估报告综合评定。</text>
   </view>
 
-
   <form class="form-box" bindsubmit="submit">
     <!-- 调查信息 -->
     <view class="form-box-report" wx:for="{{SLD_PRS_T}}" wx:for-item='info' wx:for-index='i' wx:key="i">

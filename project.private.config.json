@@ -3,5 +3,39 @@
   "projectname": "wx-whc",
   "setting": {
     "compileHotReLoad": true
+  },
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "登陆页",
+          "pathName": "pages/index/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "表单页",
+          "pathName": "pages/form/form",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "学员列表页",
+          "pathName": "pages/stu/stu",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "个人中心页",
+          "pathName": "pages/user/user",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        }
+      ]
+    }
   }
 }

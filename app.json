@@ -22,6 +22,11 @@
     "t-button": "tdesign-miniprogram/button/button",
     "t-picker": "tdesign-miniprogram/picker/picker",
     "t-picker-item": "tdesign-miniprogram/picker-item/picker-item",
-    "t-icon": "tdesign-miniprogram/icon/icon"
+    "t-icon": "tdesign-miniprogram/icon/icon",
+    "t-fab": "tdesign-miniprogram/fab/fab",
+    "t-switch": "tdesign-miniprogram/switch/switch",
+    "t-badge": "tdesign-miniprogram/badge/badge",
+    "t-tabs": "tdesign-miniprogram/tabs/tabs",
+    "t-tab-panel": "tdesign-miniprogram/tab-panel/tab-panel"
   }
 }

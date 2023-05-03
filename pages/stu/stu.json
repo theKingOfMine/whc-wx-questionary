@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+  "usingComponents": {},
+  "navigationBarTitleText": "学生列表",
+  "navigationBarBackgroundColor": "#F0F0F0"
 }
