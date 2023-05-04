@@ -1,0 +1,24 @@
+<form bindsubmit="">
+      <t-input>
+        <text class="input-label" slot='label'>教师姓名：</text>
+      </t-input>
+      <t-input>
+        <text class="input-label" slot='label'>当前岗位：</text>
+      </t-input>
+      <t-input>
+        <text class="input-label" slot='label'>所在学校：</text>
+      </t-input>
+      <t-input>
+        <text class="input-label" slot='label'>手机号：</text>
+      </t-input>
+      <t-input>
+        <text class="input-label" slot='label'>验证码：</text>
+
+        <t-button style="background-color: {{color.theme_color}}; border: none;" slot="suffix" theme="primary" size="extra-small"> 发送验证码 </t-button>
+
+      </t-input>
+      <view class="register-submit-box">
+        <t-button style="width:342px; margin: 32px 0 16px;" theme="primary" size="large">注册</t-button>
+        <Login></Login>
+      </view>
+    </form>

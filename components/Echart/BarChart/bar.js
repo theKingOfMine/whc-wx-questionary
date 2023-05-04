@@ -1,4 +1,4 @@
-import * as echarts from '../../ec-canvas/echarts'; // 导入 echarts
+import * as echarts from '../../../ec-canvas/echarts'; // 导入 echarts
 
 function initChart(canvas, width, height, dpr) {
   const chart = echarts.init(canvas, null, {

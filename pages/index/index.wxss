@@ -6,19 +6,8 @@
   align-items: center;
 }
 .logo-box{
-  height: 29vh;
-}
-.register-box{
-  padding: 0 48rpx;
-}
-
-.login-container > view{
   display: flex;
   justify-content: center;
   align-items: center;
-}
-.register-submit-box{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  height: 29vh;
 }

@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    "t-link": "tdesign-miniprogram/link/link"
+    "Register": "../../components/Register/Register/Register"
   },
   "navigationBarTitleText": "登陆/注册"
 }
