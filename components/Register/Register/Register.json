@@ -1,7 +1,7 @@
 {
   "component": true,
   "usingComponents": {
-    "t-button": "tdesign-miniprogram/button/button",
-    "Login": "../Login/Login"
+    "Login": "../Login/Login",
+    "AutoForm": "../../Form/AutoForm/AutoForm"
   }
 }

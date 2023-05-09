@@ -1,0 +1,16 @@
+<view class="picker-container">
+  <t-cell class="mb-16" title="{{item.label}}" arrow hover note="{{value}}" bind:click="onPicker" />
+  <t-picker
+    visible="{{visible}}"
+    value="{{value}}"
+    data-key="{{item.name}}"
+    title="{{item.label}}"
+    cancelBtn="取消"
+    confirmBtn="确认"
+    bindchange="onPickerChange"
+    bindcancel="onPickerCancel"
+  >
+    <t-picker-item options="{{item.selectList}}" />
+  </t-picker>
+
+</view>

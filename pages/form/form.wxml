@@ -1,1 +1,2 @@
-<EvaluationSheet></EvaluationSheet>
+<EvaluationSheet wx:if="{{formData.table == 'sld_prs_t'}}"></EvaluationSheet>
+<AutoForm data="{{formData}}"></AutoForm>

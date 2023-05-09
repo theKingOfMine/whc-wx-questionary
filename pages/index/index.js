@@ -10,6 +10,6 @@ Page({
     color: color
   },
   onLoad(){
-    console.log(this.data.image)
+  
   }
 })

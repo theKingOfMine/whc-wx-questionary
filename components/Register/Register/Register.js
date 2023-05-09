@@ -1,23 +1,13 @@
-// components/Register/Register/Register.js
+import {teacher_info} from "../../../tools/form/teacher_info"
 Component({
-  /**
-   * 组件的属性列表
-   */
-  properties: {
-
-  },
-
-  /**
-   * 组件的初始数据
-   */
   data: {
-
+    formInfo: null,
   },
-
-  /**
-   * 组件的方法列表
-   */
-  methods: {
-
+  lifetimes: {
+    attached(){
+      this.setData({
+        formInfo: teacher_info
+      })
+    }
   }
 })

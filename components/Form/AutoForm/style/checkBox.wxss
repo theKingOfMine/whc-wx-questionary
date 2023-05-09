@@ -1,0 +1,4 @@
+/* checkBox组件 */
+.checkBox{
+  margin: 64rpx 0;
+}

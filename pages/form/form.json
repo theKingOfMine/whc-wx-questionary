@@ -1,7 +1,8 @@
 {
   "usingComponents": {
     "t-link": "tdesign-miniprogram/link/link",
-    "EvaluationSheet": "../../components/Form/EvaluationSheet/EvaluationSheet"
+    "EvaluationSheet": "../../components/Form/EvaluationSheet/EvaluationSheet",
+    "AutoForm": "../../components/Form/AutoForm/AutoForm"
   },
   "navigationBarTitleText": "评估表填写"
 }

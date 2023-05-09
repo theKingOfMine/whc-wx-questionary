@@ -1,10 +1,10 @@
 <view class="login-container">
 
   <view class="logo-box">
-    <image src="{{image.logo}}" style="width: 150px; height: 150px;" alt="" />
+    <image src="{{image.logo}}" style="width: 136px; height: 136px;" alt="" />
   </view>
 
-  <view class="register-box">
+  <view>
       <Register></Register>
   </view>
 </view>

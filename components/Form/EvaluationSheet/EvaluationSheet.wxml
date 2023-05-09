@@ -1,4 +1,4 @@
-<view class="container">
+<view class="form-container">
   <view style="font-size: 17pt; font-weight: 700; padding: 32rpx 32rpx 0;">
     {{title}}
   </view>

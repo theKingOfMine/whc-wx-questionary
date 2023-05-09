@@ -1,67 +1,49 @@
-import {color} from "../../tools/coredata"
+import ActionSheet, {
+  ActionSheetTheme
+} from 'tdesign-miniprogram/action-sheet/index';
+import {
+  color
+} from "../../tools/coredata"
+
+import { conners_t } from "../../tools/tools"
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-    stuList: [],
-    color: color
-  },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {
+    color: color,
+    conners_t_form: null
 
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
+  async onLoad(options) {  
+    this.conners_t_form = await conners_t()
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
-  }
+    // 打开actionSheet
+    handleAction() {
+      ActionSheet.show({
+        theme: ActionSheetTheme.List,
+        selector: '#EvaluationSelectList',
+        context: this,
+        align: 'left',
+        description: '请选择要填写评估表',
+        items: [{
+            label: 'SLD-PRS-T评估量表',
+            icon: 'circle'
+          },
+          {
+            label: 'CONNERS-T评估量表',
+            icon: 'check-circle-filled'
+          },
+          {
+            label: 'SNAP-IV评估量表',
+            icon: 'circle'
+          }
+        ],
+      });
+    },
+    // actionSheet选择时..
+    handleSelected(e) {
+      console.log(e.detail.index)
+      wx.navigateTo({
+        url: '/pages/form/form?form=' + JSON.stringify(this.conners_t_form)
+      })
+    },
 })

@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "t-progress": "tdesign-miniprogram/progress/progress"
+    "t-action-sheet": "tdesign-miniprogram/action-sheet/action-sheet",
+    "StuList": "./components/stuList/stuList"
   },
   "navigationBarTitleText": "学生列表",
   "navigationBarBackgroundColor": "#F0F0F0"

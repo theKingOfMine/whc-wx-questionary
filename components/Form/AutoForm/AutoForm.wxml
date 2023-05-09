@@ -1,0 +1,37 @@
+<view class="form-box-container">
+  <!-- 表单标题 -->
+  <view wx:if="{{!formInfo.title.disable}}" class="form-title">
+    <text style="font-size: 17pt; font-weight: 500;"> {{formInfo.title.value}}</text>
+  </view>
+  <!-- 表单提示 -->
+  <view wx:if="{{!formInfo.notes.disable}}" class="form-notes">
+    <text style="font-size: 12pt; font-weight: 200;">{{formInfo.notes.value}}</text>
+  </view>
+
+  <view>
+    <form bind:submit="submit">
+      <view wx:for="{{formInfo.form}}" wx:key="index" wx:if="{{!item.disable}}">
+
+        <!-- input组件 -->
+        <t-input bind:change="handleInput" class="input" data-key="{{item.name}}" wx:if="{{item.component == 'input' && !item.disable}}" value="{{item.value}}">
+          <text class="input-label" slot='label'>{{item.label}}</text>
+        </t-input>
+
+        <!-- 验证码 -->
+        <t-input bind:change="handleInput" data-key="{{item.name}}" class="input" wx:if="{{item.component == 'security_code' && !item.disable}}" value="{{item.value}}">
+          <text class="input-label" slot='label'>验证码</text>
+          <t-button style="background-color: {{color.theme_color}}; border: none;" slot="suffix" theme="primary" size="extra-small">发送验证码 </t-button>
+        </t-input>
+
+        <!-- picker -->
+        <Picker bind:return="handPickerReturn" wx:if="{{item.component == 'picker' && !item.disable}}" item="{{item}}"></Picker>
+
+        <!-- Radio，单选框组件 -->
+        <Radio wx:if="{{item.component == 'radio' && !item.disable}}" radio="{{item}}"></Radio>
+      </view>
+      <view class="register-submit-box">
+        <t-button bindtap="submit" style="width:100%; margin: 32px 0 16px;" theme="primary" size="large">{{formInfo.submitTitle}}</t-button>
+      </view>
+    </form>
+  </view>
+</view>

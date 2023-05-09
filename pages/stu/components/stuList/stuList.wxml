@@ -1,0 +1,12 @@
+<view class="stu-list-box">
+    <t-cell  wx:for="12345" wx:key="index" bindtap="handleAction" image="/images/mjc.jpg">
+      <view slot="title" bindtap="cellClick">马吉春     <t-tag size="small" theme="success">等待评估</t-tag></view>
+      <view slot="description">
+        北京市第二十五小学 三年二班
+      </view>
+      <view class="stu-options" slot="right-icon" >
+        <t-icon name="edit"></t-icon>
+        <t-icon name="close" style="margin-left: 16px;"></t-icon>
+      </view>
+    </t-cell>
+</view>

@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    "BarChart": "../../components/BarChart/bar"
+    "BarChart": "../../components/Echart/BarChart/bar"
   },
   "navigationBarTitleText": "个人中心"
 }
