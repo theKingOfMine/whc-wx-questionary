@@ -60,14 +60,18 @@ export const teacher_info = {
       isHide: true
     },
     name: {
-      value: null,
-      component: 'input',
-      name: 'name',
-      label: '教师姓名',
-      placeholder: '请输入',
-      type: 'string',
-      icon: 'user-circle',
-      isRequired: true
+      value: null, // 值
+      component: 'input', //所需组件
+      name: 'name', // 属性名
+      label: '教师姓名',  // label
+      placeholder: '请输入',  // 占位文字
+      type: 'string', // 需要的值类型
+      icon: 'user-circle',  // 图标
+      isHide: false, //是否隐藏
+      isRequired: true, // 必填项
+      disable: false, //是否进入sql语句
+      keyboard: 'text', // 键盘类型
+      length: 12
     },
     position: {
       value: null,
@@ -119,7 +123,9 @@ export const teacher_info = {
       placeholder: '请输入',
       type: 'string',
       icon: 'mobile',
-      isRequired: true
+      isRequired: true,
+      keyboard: "number",
+      length: 12
     },
     security_code: {
       value: null,
