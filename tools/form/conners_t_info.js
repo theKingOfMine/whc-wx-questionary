@@ -60,27 +60,27 @@ const conners_t_FormInfo = {
   }
 }
 
-export const conners_t = async () => {
-  const sql = "SELECT column_name, column_comment FROM information_schema.columns WHERE table_schema = 'mck_school' AND table_name = 'conners_t';"
-  const res = await req({
-    askfor: 'getDataWithSql',
-    sql: sql,
-    database: 'mck_school'
-  })
-  const column_name = res.data.data.splice(4, 31)
+// export const conners_t = async () => {
+//   const sql = "SELECT column_name, column_comment FROM information_schema.columns WHERE table_schema = 'mck_school' AND table_name = 'conners_t';"
+//   const res = await req({
+//     askfor: 'getDataWithSql',
+//     sql: sql,
+//     database: 'mck_school'
+//   })
+//   const column_name = res.data.data.splice(4, 31)
 
-  for (let i of column_name) {
-    conners_t_FormInfo.form[i.column_name] = {
-      value: null,
-      component: 'radio',
-      name: i.column_name,
-      label: i.column_comment,
-      placeholder: '',
-      type: 'int',
-      selectList: [1, 2, 3, 4, 5]
-    }
-  }
+//   for (let i of column_name) {
+//     conners_t_FormInfo.form[i.column_name] = {
+//       value: null,
+//       component: 'radio',
+//       name: i.column_name,
+//       label: i.column_comment,
+//       placeholder: '',
+//       type: 'int',
+//       selectList: [1, 2, 3, 4, 5]
+//     }
+//   }
 
-  return conners_t_FormInfo
+//   return conners_t_FormInfo
 
-} 
+// } 

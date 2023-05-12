@@ -1,4 +1,4 @@
-export const baseUrl = 'http://www.polyphony.com:39000/whc_EvaluationSheet/';
+const baseUrl = 'http://www.polyphony.com:39000/whc_EvaluationSheet/';
 export const req = async (params) => {
   return new Promise((resolve, reject) => {
     wx.request({
@@ -22,6 +22,21 @@ export const req = async (params) => {
     })
   })
 }
+// 表单数据上传服务器进行处理
+export const formUpload = async (askfor, forminfo) => {
+  console.log('正在使用formUpload函数上传表单...')
+    const res = await req({
+      askfor: askfor,
+      forminfo: forminfo
+    })
+    if(res.statusCode == 200){
+      console.log('访问成功...')
+      return res.data;
+    }
+}
+
+
+
 // export const reqByToken = async (url, params) => {
 //   const tokenLocal = await getStorage('token'); // 检验token是否合法
 //   if (tokenLocal.code == 200) {

@@ -1,4 +1,4 @@
-<view style="display: flex; align-items: center; justify-content: space-between; width: 200px;">
+<view style="display: flex; align-items: center; justify-content: space-between; width: 172px;">
   <t-link style="color: {{color.theme_color}};" size="small" theme="primary" content="手机登陆" hover prefixIcon="call" />
   <t-link style="color: {{color.theme_color}};" size="small" theme="primary" content="微信登陆" hover prefixIcon="logo-wechat" />
 </view>

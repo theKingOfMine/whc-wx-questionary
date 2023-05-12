@@ -5,7 +5,7 @@ const positionBox = ['班主任', '教师', '校长', '其它']
 const gradeBox = ['幼儿园', '学前班', '一年级', '二年级', '三年级', '四年级', '五年级',  '六年级' ]
 const classBox = ["一班", "二班", "三班", "四班", "五班", "六班", "七班", "八班", "九班", "十班", "十一班", "十二班", "十三班", "十四班", "十五班", "十六班"]
 
-const schoolOptions = schoolBox.map((item) => ({
+export const schoolOptions = schoolBox.map((item) => ({
   label: item,
   value: item
 }));
@@ -15,12 +15,12 @@ const positionOptions = positionBox.map((item) => ({
   value: item
 }));
 
-const gradeOptions = gradeBox.map((item) => ({
+export const gradeOptions = gradeBox.map((item) => ({
   label: item,
   value: item
 }));
 
-const classOptions = classBox.map((item) => ({
+export const classOptions = classBox.map((item) => ({
   label: item,
   value: item
 }));
@@ -47,7 +47,8 @@ export const teacher_info = {
       label: '教师ID',
       placeholder: '',
       type: 'int',
-      disable: true
+      isHide: true,
+      disable: true,
     },
     register_time: {
       value: new Date().toLocaleDateString('zh-CN'),
@@ -56,7 +57,7 @@ export const teacher_info = {
       label: '注册时间',
       placeholder: '',
       type: 'string',
-      disable: true
+      isHide: true
     },
     name: {
       value: null,
@@ -116,7 +117,8 @@ export const teacher_info = {
       name: 'security_code',
       label: '验证码',
       placeholder: '',
-      type: 'string'
+      type: 'string',
+      disable: true
     },
   }
 }

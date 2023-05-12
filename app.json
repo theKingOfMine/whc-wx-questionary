@@ -15,19 +15,9 @@
   "sitemapLocation": "sitemap.json",
   "usingComponents": {
     "t-cell": "tdesign-miniprogram/cell/cell",
-    "t-date-time-picker": "tdesign-miniprogram/date-time-picker/date-time-picker",
     "t-button": "tdesign-miniprogram/button/button",
-    "t-picker": "tdesign-miniprogram/picker/picker",
-    "t-picker-item": "tdesign-miniprogram/picker-item/picker-item",
     "t-icon": "tdesign-miniprogram/icon/icon",
-    "t-fab": "tdesign-miniprogram/fab/fab",
-    "t-switch": "tdesign-miniprogram/switch/switch",
-    "t-badge": "tdesign-miniprogram/badge/badge",
-    "t-tabs": "tdesign-miniprogram/tabs/tabs",
-    "t-tab-panel": "tdesign-miniprogram/tab-panel/tab-panel",
-    "t-tag": "tdesign-miniprogram/tag/tag",
-    "t-check-tag": "tdesign-miniprogram/check-tag/check-tag",
-    "t-progress": "tdesign-miniprogram/progress/progress"
+    "t-badge": "tdesign-miniprogram/badge/badge"
   },
   "tabBar": {
     "selectedColor": "#0052d9",

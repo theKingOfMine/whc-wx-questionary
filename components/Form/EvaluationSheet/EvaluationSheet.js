@@ -2,9 +2,9 @@
 import {
   SLD_PRS_T,
   stu_info
-} from "../../../tools/coredata"
+} from "../../../tools/tools"
 
-import {color} from "../../../tools/coredata"
+import {color} from "../../../tools/tools"
 
 Component({
   // properties: {

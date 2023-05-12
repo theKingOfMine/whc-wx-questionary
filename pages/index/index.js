@@ -1,5 +1,5 @@
 // index.js
-import {color} from "../../tools/coredata"
+import {color} from "../../tools/tools"
 const app = getApp()
 
 Page({

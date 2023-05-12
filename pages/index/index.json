@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "Register": "../../components/Register/Register/Register"
+    "Register": "../../components/Register/Register/Register",
+    "Login": "../../components/Register/Login/Login"
   },
   "navigationBarTitleText": "登陆/注册"
 }

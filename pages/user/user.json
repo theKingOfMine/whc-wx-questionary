@@ -1,6 +1,9 @@
 {
   "usingComponents": {
-    "BarChart": "../../components/Echart/BarChart/bar"
+    "BarChart": "../../components/Echart/BarChart/bar",
+    "t-switch": "tdesign-miniprogram/switch/switch",
+    "t-tabs": "tdesign-miniprogram/tabs/tabs",
+    "t-tab-panel": "tdesign-miniprogram/tab-panel/tab-panel"
   },
   "navigationBarTitleText": "个人中心"
 }

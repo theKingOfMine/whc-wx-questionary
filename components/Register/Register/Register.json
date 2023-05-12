@@ -1,7 +1,6 @@
 {
   "component": true,
   "usingComponents": {
-    "Login": "../Login/Login",
     "AutoForm": "../../Form/AutoForm/AutoForm"
   }
 }

@@ -2,6 +2,4 @@
   您还未添加任何学生...
 </view> -->
 <StuList bind:cellTap="handleAction"></StuList>
-
-<t-action-sheet id="EvaluationSelectList" bind:selected="handleSelected" show-cancel="{{false}}"/>
-<t-fab icon="add" bind:click="handleClick" aria-label="增加"></t-fab>
+<t-fab icon="add" bind:click="addNewStu" aria-label="增加"></t-fab>

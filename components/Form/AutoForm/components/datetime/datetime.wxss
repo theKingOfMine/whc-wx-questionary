@@ -1,0 +1,4 @@
+
+.pannel-item::after {
+  border: 0;
+}

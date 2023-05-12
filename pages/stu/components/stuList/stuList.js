@@ -19,7 +19,6 @@ Component({
    */
   methods: {
     cellClick(){
-      console.log('点我了')
       this.triggerEvent('cellTap')
     }
   }

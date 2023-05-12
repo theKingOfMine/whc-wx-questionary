@@ -1,5 +1,8 @@
-export * from "./form/conners_t" // conners_t_form表单对象
-export * from "./form/sld_prs_t"
-export * from "./form/stu_info"
-export * from "./form/teacher_info"
+export * from "./form/conners_t_info.js"
+export * from "./form/sld_prs_t_info.js"
+export * from "./form/stu_info.js"
+export * from "./form/teacher_info.js"
 export * from "./style/color"
+
+const webUrl = 'http://www.polyphony.com:39000/whc_EvaluationSheet/';
+export const baseUrl = webUrl;

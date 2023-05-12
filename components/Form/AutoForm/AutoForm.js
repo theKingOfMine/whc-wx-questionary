@@ -11,31 +11,24 @@ Component({
         this.setData({
           formInfo: newVal
         })
-        console.log(newVal)
       }
     }
   },
   data: {
-    formInfo: null,
-    formData: {}
+    formInfo: null
   },
   methods: {
-    submit(e){
-      console.log(e)
-      console.log(this.data.formData)
-  
-      // wx.switchTab({
-      //   url: '/pages/stu/stu'
-      // })
+    submit(){
+      this.triggerEvent('return', this.data.formInfo)
     },
+    // 实时更新input组件数据
     handleInput(e){
-      const key = e.currentTarget.dataset.key
-      this.data.formData[key] = e.detail.value
+      this.data.formInfo.form[e.currentTarget.dataset.key].value = e.detail.value
     },
-    handPickerReturn(e){
-      const key = e.detail.key
-      const value = e.detail.value
-      this.data.formData[key] = value
+    // 实时更新表单数据
+    updateInfo(e){
+      this.data.formInfo.form[e.detail.key].value = e.detail.value
+      console.log(this.data.formInfo.form)
     }
   }
 })

@@ -4,7 +4,8 @@
     <image src="{{image.logo}}" style="width: 136px; height: 136px;" alt="" />
   </view>
 
-  <view>
+  <view class="register-box">
       <Register></Register>
+      <Login></Login>
   </view>
 </view>

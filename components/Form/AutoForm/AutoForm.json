@@ -1,10 +1,10 @@
 {
   "component": true,
   "usingComponents": {
-    "t-radio": "tdesign-miniprogram/radio/radio",
-    "t-radio-group": "tdesign-miniprogram/radio-group/radio-group",
     "t-input": "tdesign-miniprogram/input/input",
     "Radio": "./components/radio/radio",
-    "Picker": "./components/picker/picker"
+    "Picker": "./components/picker/picker",
+    "Upload": "./components/upload/upload",
+    "DateTime": "./components/datetime/datetime"
   }
 }
