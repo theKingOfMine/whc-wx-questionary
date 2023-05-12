@@ -5,8 +5,17 @@ Component({
       value: {}
     }
   },
+  observers: {
+    'item': function(newVal, oldVal) {
+      if(newVal){
+        this.setData({
+          info: newVal
+        })
+      }
+    }
+  },
   data: {
-    checked: false,
+    info: null
   },
   methods: {
     handleChange(e) {

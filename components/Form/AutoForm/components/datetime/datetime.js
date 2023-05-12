@@ -1,4 +1,3 @@
-// components/Form/AutoForm/components/datetime/datetime.js
 Component({
   properties: {
     item: {
@@ -10,7 +9,6 @@ Component({
     'item': function(newVal, oldVal) {
       console.log(newVal, oldVal)
       if(newVal){
-        
         this.setData({
           info: newVal
         })
@@ -28,10 +26,6 @@ Component({
     start: '2000-01-01',
     end: '2030-09-09',
   },
-
-  /**
-   * 组件的方法列表
-   */
   methods: {
     showPicker(e) {
       const {
@@ -59,7 +53,6 @@ Component({
       } = this.data;
 
       this.triggerEvent('return', {key: this.data.info.name, value: value});
-      console.log({key: this.data.info.name, value: value})
       this.setData({
         [mode]: value,
         [`${mode}Text`]: value,
@@ -67,10 +60,8 @@ Component({
 
       this.hidePicker();
     },
-
     onColumnChange(e) {
       console.log('pick', e.detail.value);
     },
-
   }
 })

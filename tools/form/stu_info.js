@@ -37,6 +37,15 @@ export const stu_info = {
       isHide: true,
       disable: true
     },
+    teacher_id: {
+      label: '教师ID',
+      name: 'teacher',
+      value: 1,
+      component: 'input',
+      placeholder: '',
+      type: 'int',
+      isHide: true
+    },
     head_img: {
       label: '个人照片',
       name: 'head_img',
@@ -66,7 +75,7 @@ export const stu_info = {
       label: '性别',
       name: 'sex',
       value: null,
-      component: 'picker',
+      component: 'radio',
       placeholder: '',
       type: 'string',
       selectList: sexOptions
@@ -114,15 +123,6 @@ export const stu_info = {
       placeholder: '',
       type: 'string',
       selectList: schoolOptions
-    },
-    teacher_id: {
-      label: '教师ID',
-      name: 'teacher',
-      value: null,
-      component: 'input',
-      placeholder: '',
-      type: 'int',
-      isHide: true
     }
 
   }

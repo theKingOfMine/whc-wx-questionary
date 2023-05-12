@@ -17,7 +17,6 @@ Component({
         visible: false,
         value: value[0]
       });
-      console.log( {key: key, value: value[0]})
       this.triggerEvent("return", {key: key, value: value[0]})
     },
 

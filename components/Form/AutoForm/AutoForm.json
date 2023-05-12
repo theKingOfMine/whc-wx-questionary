@@ -1,10 +1,10 @@
 {
   "component": true,
   "usingComponents": {
-    "t-input": "tdesign-miniprogram/input/input",
     "Radio": "./components/radio/radio",
     "Picker": "./components/picker/picker",
     "Upload": "./components/upload/upload",
-    "DateTime": "./components/datetime/datetime"
+    "DateTime": "./components/datetime/datetime",
+    "Security_Phone": "./components/security_phone/security_phone"
   }
 }

@@ -15,6 +15,8 @@ Component({
   },
   methods: {
     async registerSubmit(e) {
+      let info = e.detail;
+      info.askfor = 'insert';
       const res = await formUpload('formUpload', e.detail);
       if(res.code == 200){
         console.log(res.msg)

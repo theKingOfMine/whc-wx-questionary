@@ -10,24 +10,24 @@
 
   <view>
     <form bind:submit="submit">
-      <view wx:for="{{formInfo.form}}" wx:key="index" wx:if="{{!item.isHide}}">
-
+      <view class="form-component" wx:for="{{formInfo.form}}" wx:key="index" wx:if="{{!item.isHide}}">
+        
         <!-- input组件 -->
-        <t-input bind:change="handleInput" class="input" data-key="{{item.name}}" wx:if="{{item.component == 'input' && !item.isHide}}">
-          <text class="input-label" slot='label'>{{item.label}}</text>
+        <t-input label="{{item.label}}" wx:if="{{item.component == 'input'}}" bind:change="handleInput" data-key="{{item.name}}">
+         <view slot="prefix-icon"  wx:if="{{item.icon}}" style="height: 100%; display: flex; align-items: center; justify-content: center; padding: 0 3px 0 0;">
+          <t-icon size="16px" name="{{item.icon}}"/>
+         </view>
         </t-input>
 
+        
         <!-- 验证码 -->
-        <t-input bind:change="handleInput" data-key="{{item.name}}" class="input" wx:if="{{item.component == 'security_code' && !item.isHide}}">
-          <text class="input-label" slot='label'>验证码</text>
-          <t-button style="background-color: {{color.theme_color}}; border: none;" slot="suffix" theme="primary" size="extra-small">发送验证码 </t-button>
-        </t-input>
+        <Security_Phone bind:return="updateInfo" wx:if="{{item.component == 'security_code'}}" item="{{item}}"></Security_Phone>
 
         <!-- picker -->
-        <Picker bind:return="updateInfo" wx:if="{{item.component == 'picker' && !item.isHide}}" item="{{item}}"></Picker>
+        <Picker bind:return="updateInfo" wx:if="{{item.component == 'picker'}}" item="{{item}}"></Picker>
 
         <!-- Radio，单选框组件 -->
-        <Radio wx:if="{{item.component == 'radio' && !item.isHide}}" item="{{item}}"></Radio>
+        <Radio wx:if="{{item.component == 'radio'}}" item="{{item}}"></Radio>
 
         <!-- upload上传照片 -->
         <Upload wx:if="{{item.component == 'upload' && !item.isHide}}" item="{{item}}" bind:return="updateInfo"></Upload>

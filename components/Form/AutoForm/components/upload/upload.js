@@ -29,7 +29,6 @@ Component({
       })
       const url = e.detail.files[0].url
       const img_src = await uploadImg(url)
-      console.log(img_src)
       this.triggerEvent('return', {
         value: img_src,
         key: this.data.info.name

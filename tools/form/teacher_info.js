@@ -64,8 +64,10 @@ export const teacher_info = {
       component: 'input',
       name: 'name',
       label: '教师姓名',
-      placeholder: '',
-      type: 'string'
+      placeholder: '请输入',
+      type: 'string',
+      icon: 'user-circle',
+      isRequired: true
     },
     position: {
       value: null,
@@ -74,25 +76,9 @@ export const teacher_info = {
       label: '当前岗位',
       placeholder: '',
       type: 'string',
-      selectList: positionOptions
-    },
-    grade: {
-      value: null,
-      component: 'picker',
-      name: 'grade',
-      label: '年级',
-      placeholder: '',
-      type: 'string',
-      selectList: gradeOptions
-    },
-    class: {
-      value: null,
-      component: 'picker',
-      name: 'class',
-      label: '所在班级',
-      placeholder: '',
-      type: 'string',
-      selectList: classOptions
+      selectList: positionOptions,
+      icon: 'flag',
+      isRequired: true
     },
     school: {
       value: null,
@@ -101,15 +87,39 @@ export const teacher_info = {
       label: '所在学校',
       placeholder: '',
       type: 'string',
-      selectList: schoolOptions
+      selectList: schoolOptions,
+      icon: 'internet',
+      isRequired: true
+    },
+    grade: {
+      value: null,
+      component: 'picker',
+      name: 'grade',
+      label: '年级',
+      placeholder: '',
+      type: 'string',
+      selectList: gradeOptions,
+      icon: 'layers'
+    },
+    class: {
+      value: null,
+      component: 'picker',
+      name: 'class',
+      label: '所在班级',
+      placeholder: '',
+      type: 'string',
+      selectList: classOptions,
+      icon: 'fork'
     },
     phone: {
       value: null,
       component: 'input',
       name: 'phone',
       label: '手机号码',
-      placeholder: '',
-      type: 'string'
+      placeholder: '请输入',
+      type: 'string',
+      icon: 'mobile',
+      isRequired: true
     },
     security_code: {
       value: null,
@@ -118,7 +128,9 @@ export const teacher_info = {
       label: '验证码',
       placeholder: '',
       type: 'string',
-      disable: true
+      disable: true,
+      icon: 'error-circle',
+      isRequired: true
     },
   }
 }

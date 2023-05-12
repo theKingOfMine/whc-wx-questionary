@@ -1,19 +1,8 @@
-<!-- <view class="item" wx:if="{{item.component == 'radio'}}">
-  <text style="font-weight: 400;">{{item.label}}</text>
-
-  <t-item-group t-class="horizontal-box" bind:change="onChange1">
-    <view wx:for="{{item.selectList}}" wx:for-item="i" wx:key="index" class="card {{value1 == index ? 'card--active' : ''}}">
-      <t-icon wx:if="{{value1 == index}}" name="check" t-class="card__icon" />
-      <t-item label="{{i.label}}" value="{{i.value}}" default-checked icon="none" borderless />
-    </view>
-  </t-item-group>
-
-</view> -->
-
-
-<t-cell>
-  <t-radio-group default-value="0" borderless t-class="box">
-  <t-radio block="{{false}}" label="单选标题" value="0" />
-  <t-radio block="{{false}}" label="单选标题" value="1" />
-</t-radio-group>
-</t-cell>
+<view class="radio-card">
+  <view class="title-box">
+    {{info.label}}
+  </view>
+  <t-radio-group t-class="theme-card">
+    <t-radio wx:for="{{info.selectList}}" wx:key="index" label="{{item.label}}" value="{{item.value}}" />
+  </t-radio-group>
+</view>

@@ -30,7 +30,7 @@ export const formUpload = async (askfor, forminfo) => {
       forminfo: forminfo
     })
     if(res.statusCode == 200){
-      console.log('访问成功...')
+      console.log('访问成功...', res.data)
       return res.data;
     }
 }
