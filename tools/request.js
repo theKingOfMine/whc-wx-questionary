@@ -34,7 +34,25 @@ export const formUpload = async (askfor, forminfo) => {
       return res.data;
     }
 }
-
+// 向服务器请求数据
+export const dataRequire = async (table='', conditions={}, orderBy='', limit='') =>{
+  const res = await req({
+    askfor: 'dataRequire',
+    requireInfo: {
+      table: table,
+      conditions: conditions,
+      orderBy: orderBy,
+      limit: limit
+    }
+  })
+  if(res.statusCode == 200){
+    console.log('访问成功...', res.data)
+    if(res.data.code == 200){
+      return res.data.data;
+    }
+  
+  }
+}
 
 
 // export const reqByToken = async (url, params) => {

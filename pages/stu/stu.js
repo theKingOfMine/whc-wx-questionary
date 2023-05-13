@@ -3,7 +3,6 @@ import ActionSheet, {
 } from 'tdesign-miniprogram/action-sheet/index';
 
 import {
-  conners_t,
   color,
   stu_info
 } from "../../tools/tools"
@@ -68,6 +67,7 @@ Page({
     })
   },
   addNewStu() {
+    stu_info.askfor = 'insert'
     wx.navigateTo({
       url: '/pages/form/form?form=' + JSON.stringify(stu_info),
     })

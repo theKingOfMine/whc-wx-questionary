@@ -1,4 +1,4 @@
-// pages/stu/components/stuList/stuList.js
+ import { dataRequire, stu_info } from "../../../../tools/tools"
 Component({
   /**
    * 组件的属性列表
@@ -6,20 +6,30 @@ Component({
   properties: {
 
   },
-
-  /**
-   * 组件的初始数据
-   */
   data: {
-
+    stuList: []
   },
-
-  /**
-   * 组件的方法列表
-   */
+  lifetimes: {
+    async attached(){
+      this.setData({
+        stuList: await dataRequire('stu')
+      })
+    }
+  },
   methods: {
     cellClick(){
       this.triggerEvent('cellTap')
+    },
+    handleEdit(e){
+      let info = e.currentTarget.dataset.stu
+      let stu = stu_info
+      for(let i in stu.form){
+        stu.form[i].value = info[i]
+      }
+      stu.askfor = 'update'
+      wx.navigateTo({
+        url: '/pages/form/form?form=' + JSON.stringify(stu)
+      })
     }
   }
 })

@@ -1,5 +1,12 @@
-.stu-options{
+.stu-options {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.description {
+  max-width: 440rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
