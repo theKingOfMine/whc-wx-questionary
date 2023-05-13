@@ -19,9 +19,7 @@ Component({
   },
   methods: {
     handleChange(e) {
-      this.setData({
-        checked: e.detail.checked,
-      });
+      this.triggerEvent("return", {key: this.data.info.name, value: e.detail.value})
     },
   },
 });

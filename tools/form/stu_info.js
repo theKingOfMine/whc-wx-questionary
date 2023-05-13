@@ -1,6 +1,7 @@
 const sexBox = ['男生', '女生']
 const ageBox = Array.from({length: 20}, (_, i) => i + 2)
 import {gradeOptions, classOptions, schoolOptions} from "./teacher_info"
+import {formattedDateTime} from "../normal"
 
 const sexOptions = sexBox.map((item) => ({
   label: item,
@@ -22,7 +23,7 @@ export const stu_info = {
   database: 'mck_school',
   key: 'id',
   notes: {
-    value: '请填写学生信息',
+    value: '注：全部为必填信息',
     isHide: false
   },
   submitTitle: '登记',
@@ -51,13 +52,13 @@ export const stu_info = {
       name: 'head_img',
       value: null,
       component: 'upload',
-      placeholder: '',
+      placeholder: '请上传清晰的面部形象照片',
       type: 'string',
     },
     register_time: {
       label: '登记时间',
       name: 'register_time',
-      value: new Date().toLocaleDateString('zh-CN'),
+      value: (formattedDateTime)(),
       component: 'datetime',
       placeholder: '',
       type: 'string',

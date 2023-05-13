@@ -37,7 +37,7 @@ export const uploadImg = (url) => {
 // 随机生成图片名称
 export const generateRandomImgName = ()=>{
   var chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  var length = 8;
+  var length = 20;
   var result = '';
   for (var i = length; i > 0; --i) {
     result += chars[Math.floor(Math.random() * chars.length)];

@@ -1,7 +1,7 @@
 {
   "component": true,
   "usingComponents": {
-    "Radio": "./components/radio/radio",
+    "SmartRadio": "./components/radio/radio",
     "Picker": "./components/picker/picker",
     "Upload": "./components/upload/upload",
     "DateTime": "./components/datetime/datetime",

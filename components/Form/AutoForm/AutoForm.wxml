@@ -1,20 +1,20 @@
 <view class="form-box-container">
   <!-- 表单标题 -->
-  <view wx:if="{{!formInfo.title.disable}}" class="form-title">
+  <view wx:if="{{!formInfo.title.isHide}}" class="form-title">
     <text style="font-size: 17pt; font-weight: 500;"> {{formInfo.title.value}}</text>
   </view>
   <!-- 表单提示 -->
-  <view wx:if="{{!formInfo.notes.disable}}" class="form-notes">
+  <view wx:if="{{!formInfo.notes.isHide}}" class="form-notes">
     <text style="font-size: 12pt; font-weight: 200;">{{formInfo.notes.value}}</text>
   </view>
 
-  <view>
+  <view class="form-box">
     <form bind:submit="submit">
       <view class="form-component" wx:for="{{formInfo.form}}" wx:key="index" wx:if="{{!item.isHide}}">
 
         <!-- input组件 -->
         <SmartInput wx:if="{{item.component == 'input'}}" item="{{item}}" bind:return="updateInfo"></SmartInput>
-        
+
         <!-- 验证码 -->
         <Security_Phone bind:return="updateInfo" wx:if="{{item.component == 'security_code'}}" item="{{item}}"></Security_Phone>
 
@@ -22,14 +22,14 @@
         <Picker bind:return="updateInfo" wx:if="{{item.component == 'picker'}}" item="{{item}}"></Picker>
 
         <!-- Radio，单选框组件 -->
-        <Radio wx:if="{{item.component == 'radio'}}" item="{{item}}"></Radio>
+        <SmartRadio wx:if="{{item.component == 'radio'}}" item="{{item}}" bind:return="updateInfo"></SmartRadio>
 
         <!-- upload上传照片 -->
         <Upload wx:if="{{item.component == 'upload' && !item.isHide}}" item="{{item}}" bind:return="updateInfo"></Upload>
 
         <!-- datetime年月日选择器 -->
         <DateTime wx:if="{{item.component == 'datetime' && !item.isHide}}" item="{{item}}" bind:return="updateInfo"></DateTime>
-        
+
       </view>
       <view class="register-submit-box">
         <t-button bindtap="submit" style="width:50%;" theme="primary" size="large">{{formInfo.submitTitle}}</t-button>

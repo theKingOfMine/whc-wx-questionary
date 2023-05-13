@@ -1,8 +1,5 @@
-<view class="radio-card">
-  <view class="title-box">
-    {{info.label}}
-  </view>
-  <t-radio-group t-class="theme-card">
-    <t-radio wx:for="{{info.selectList}}" wx:key="index" label="{{item.label}}" value="{{item.value}}" />
-  </t-radio-group>
-</view>
+<t-cell style="padding: 0rpx 32rpx;" title="{{info.label}}">
+    <t-radio-group slot="note" t-class="radio-box" bind:change="handleChange">
+      <t-radio wx:for="{{info.selectList}}" wx:key="index" label="{{item.label}}" value="{{item.value}}" />
+    </t-radio-group>
+</t-cell>

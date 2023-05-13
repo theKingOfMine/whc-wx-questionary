@@ -1,5 +1,5 @@
 <view class="stu-list-box">
-    <t-cell  wx:for="12345" wx:key="index" image="/images/mjc.jpg">
+    <t-cell  wx:for="12345" wx:key="index" image="http://www.polyphony.com:39000/whc_EvaluationSheet/uploads/mjc.jpg">
       <view slot="title" bindtap="cellClick">马吉春     <t-tag size="small" theme="success">等待评估</t-tag></view>
       <view slot="description">
         北京市第二十五小学 三年二班

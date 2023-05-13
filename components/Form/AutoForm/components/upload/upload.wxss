@@ -1,0 +1,11 @@
+.image-upload-box{
+  /* border: 1px solid #000000; */
+  width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.image-upload-box view{
+  width: 100% !important;
+}
+

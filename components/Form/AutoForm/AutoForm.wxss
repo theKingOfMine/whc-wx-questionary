@@ -12,14 +12,13 @@
   align-items: center;
   justify-content: center;
 } 
-
+.form-box{
+  margin-top: 32px;
+}
 .register-submit-box{
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 64px 0 16px;
 }
-/* .form-component{
-  width: 100%;
-  height: 80px;
-} */
+

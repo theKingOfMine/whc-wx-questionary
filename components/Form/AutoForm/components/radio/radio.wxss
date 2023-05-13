@@ -1,11 +1,4 @@
-.radio-card{
-  margin: 24rpx 0;
-}
-.title-box{
-  padding: 32rpx;
-}
-.theme-card {
-  padding: 0 24px;
-  width: 100%;
-  background: none;
+.radio-box {
+  display: flex;
+  justify-content: space-between;
 }
