@@ -24,7 +24,7 @@ Component({
     // 实时更新表单数据
     updateInfo(e){
       this.data.formInfo.form[e.detail.key].value = e.detail.value
-      console.log(this.data.formInfo.form[e.detail.key].value )
+      console.log(this.data.formInfo.form )
     }
   }
 })

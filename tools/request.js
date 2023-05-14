@@ -1,4 +1,4 @@
-const baseUrl = 'http://www.polyphony.com:39000/whc_EvaluationSheet/';
+export const baseUrl = 'http://www.polyphony.com:39000/whc_EvaluationSheet/';
 export const req = async (params) => {
   return new Promise((resolve, reject) => {
     wx.request({

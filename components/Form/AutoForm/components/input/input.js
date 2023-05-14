@@ -11,7 +11,6 @@ Component({
   },
   observers: {
     'item': function (newVal, oldVal) {
-      console.log(newVal)
       if (newVal) {
         this.setData({
           info: newVal

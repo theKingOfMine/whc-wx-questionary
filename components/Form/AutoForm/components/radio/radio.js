@@ -19,7 +19,12 @@ Component({
   },
   methods: {
     handleChange(e) {
-      this.triggerEvent("return", {key: this.data.info.name, value: e.detail.value})
+      let info = this.data.info
+      info.value = e.detail.value
+      this.setData({
+        info: info
+      })
+      this.triggerEvent("return", {key: this.data.info.name, value: info.value})
     },
   },
 });

@@ -20,8 +20,6 @@ Component({
     mode: '',
     dateVisible: false,
     date: new Date().getTime(), // 支持时间戳传入
-    dateText: '',
-
     // 指定选择区间起始值
     start: '2000-01-01',
     end: '2030-09-09',
@@ -51,11 +49,13 @@ Component({
       const {
         mode
       } = this.data;
-
-      this.triggerEvent('return', {key: this.data.info.name, value: value});
+      let info = this.data.info
+      info.value = value
+      this.triggerEvent('return', {key: info.name, value: info.value});
       this.setData({
         [mode]: value,
         [`${mode}Text`]: value,
+        info: info
       });
 
       this.hidePicker();

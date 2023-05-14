@@ -1,5 +1,5 @@
 import {
-  uploadImg
+  uploadImg, baseUrl
 } from "../../../../../tools/tools"
 
 Component({
@@ -10,8 +10,20 @@ Component({
   observers: {
     'item': function(newVal, oldVal) {
       if(newVal){
+        const info = newVal
+        const nameBox = info.value.split('/')
+        const name = nameBox[nameBox.length -1]
+        console.log(name)
+        let headImg = [
+          {
+            url: baseUrl + info.value,
+            name: name,
+            type: 'image'
+          }
+        ]
         this.setData({
-          info: newVal
+          info: newVal,
+          headImg: headImg
         })
       }
     }
@@ -22,6 +34,7 @@ Component({
   },
   methods: {
     async handleAdd(e) {
+      console.log(e)
       this.setData({
         headImg: e.detail.files
       })

@@ -10,7 +10,7 @@ Component({
     stuList: []
   },
   lifetimes: {
-    async attached(){
+    async ready(){
       this.setData({
         stuList: await dataRequire('stu')
       })
@@ -27,6 +27,7 @@ Component({
         stu.form[i].value = info[i]
       }
       stu.askfor = 'update'
+      stu.submitTitle = '修改'
       wx.navigateTo({
         url: '/pages/form/form?form=' + JSON.stringify(stu)
       })

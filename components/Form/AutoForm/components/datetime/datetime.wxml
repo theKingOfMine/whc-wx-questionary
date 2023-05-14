@@ -1,7 +1,7 @@
 <t-cell
   title="{{item.label}}"
   hover
-  note="{{dateText || ''}}"
+  note="{{info.value || ''}}"
   arrow
   data-mode="date"
   bindtap="showPicker"

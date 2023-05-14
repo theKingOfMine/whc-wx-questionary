@@ -10,11 +10,18 @@ import {
 Page({
   data: {
     color: color,
-    conners_t_form: null
-
+    conners_t_form: null,
+    isOpenStuList: true
   },
-  async onLoad(options) {
-    // this.conners_t_form = await conners_t()
+  onShow(options) {
+   this.setData({
+     isOpenStuList: true
+   })
+  },
+  onHide(){
+    this.setData({
+      isOpenStuList: false
+    })
   },
   // 打开actionSheet
   handleAction() {

@@ -29,9 +29,9 @@ export const stu_info = {
   submitTitle: '登记',
   form: {
     id: {
+      value: null,
       label: '学员ID',
       name: 'id',
-      value: null,
       component: 'input',
       placeholder: '',
       type: 'int',
@@ -39,88 +39,88 @@ export const stu_info = {
       disable: true
     },
     teacher_id: {
+      value: 1,
       label: '教师ID',
       name: 'teacher',
-      value: 1,
       component: 'input',
       placeholder: '',
       type: 'int',
       isHide: true
     },
     head_img: {
+      value: null,
       label: '个人照片',
       name: 'head_img',
-      value: null,
       component: 'upload',
       placeholder: '请上传清晰的面部形象照片',
       type: 'string',
     },
     register_time: {
+      value: (formattedDateTime)(),
       label: '登记时间',
       name: 'register_time',
-      value: (formattedDateTime)(),
       component: 'datetime',
       placeholder: '',
       type: 'string',
       isHide: true
     },
     name: {
+      value: null,
       label: '姓名',
       name: 'name',
-      value: null,
       component: 'input',
       placeholder: '',
       type: 'string',
     },
     sex: {
+      value: null,
       label: '性别',
       name: 'sex',
-      value: null,
       component: 'radio',
       placeholder: '',
       type: 'string',
       selectList: sexOptions
     },
     age: {
+      value: null,
       label: '年龄',
       name: 'age',
-      value: null,
       component: 'picker',
       placeholder: '',
       type: 'int',
       selectList: ageOptions
     },
     born: {
+      value: null,
       label: '出生日期',
       name: 'born',
-      value: null,
       component: 'datetime',
       placeholder: '',
       type: 'string'
     },
     grade: {
       value: null,
-      component: 'picker',
-      name: 'grade',
       label: '年级',
+      name: 'grade',
+      component: 'picker',
       placeholder: '',
       type: 'string',
       selectList: gradeOptions
     },
     class: {
       value: null,
-      component: 'picker',
-      name: 'class',
       label: '所在班级',
+      name: 'class',
+      component: 'picker',
       placeholder: '',
       type: 'string',
       selectList: classOptions
     },
     school: {
       value: null,
-      component: 'picker',
-      name: 'school',
       label: '所在学校',
+      name: 'school',
+      component: 'picker',
       placeholder: '',
       type: 'string',
       selectList: schoolOptions

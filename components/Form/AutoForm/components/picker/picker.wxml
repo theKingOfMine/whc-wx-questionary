@@ -1,6 +1,9 @@
-<t-cell class="mb-16" title="{{item.label}}" arrow hover note="{{value ? value : '请选择' }}" bind:click="onPicker">
-  <t-icon wx:if="{{item.icon}}" slot="left-icon" name="{{item.icon}}"></t-icon>
+<t-cell class="mb-16" title="{{info.label}}" arrow hover bind:click="onPicker">
+<view class="note" slot="note">
+  {{info.value ? info.value : '请选择' }}
+</view>
+  <t-icon wx:if="{{info.icon}}" slot="left-icon" name="{{info.icon}}"></t-icon>
 </t-cell>
-<t-picker visible="{{visible}}" value="{{value}}" data-key="{{item.name}}" title="{{item.label}}" cancelBtn="取消" confirmBtn="确认" bindchange="onPickerChange" bindcancel="onPickerCancel">
-  <t-picker-item options="{{item.selectList}}" />
+<t-picker visible="{{visible}}" value="{{info.value}}" data-key="{{info.name}}" title="{{info.label}}" cancelBtn="取消" confirmBtn="确认" bindchange="onPickerChange" bindcancel="onPickerCancel">
+  <t-picker-item options="{{info.selectList}}" />
 </t-picker>

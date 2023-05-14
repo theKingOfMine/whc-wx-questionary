@@ -1,5 +1,5 @@
 <t-cell style="padding: 0rpx 32rpx;" title="{{info.label}}">
-    <t-radio-group slot="note" t-class="radio-box" bind:change="handleChange">
+    <t-radio-group defaultValue="{{info.value}}" slot="note" t-class="radio-box" bind:change="handleChange">
       <t-radio wx:for="{{info.selectList}}" wx:key="index" label="{{item.label}}" value="{{item.value}}" />
     </t-radio-group>
 </t-cell>
