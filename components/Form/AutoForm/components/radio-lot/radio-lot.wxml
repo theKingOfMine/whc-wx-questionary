@@ -1,6 +1,6 @@
 <t-cell class="radio-lot-box">
   <view slot="title">
-      {{info.label + info.value}}
+      {{info.label}}
   </view>
   <view slot="description">
       <t-radio-group defaultValue="{{info.value}}" slot="description" t-class="radio-box" bind:change="handleChange">

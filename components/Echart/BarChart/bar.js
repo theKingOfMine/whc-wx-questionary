@@ -24,7 +24,6 @@ function initChart(canvas, width, height, dpr) {
   return chart;
 }
 
-
 Component({
   data: {
     ec: {

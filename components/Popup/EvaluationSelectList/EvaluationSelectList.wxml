@@ -1,1 +1,0 @@
-<t-action-sheet id="EvaluationSelectList" bind:selected="handleSelected" />

@@ -2,7 +2,9 @@
    dataRequire,
    stu_info,
    formUpload,
-   conners_t_info
+   conners_t_info,
+   snap_iv_info,
+   sld_prs_t_info
  } from "../../../../tools/tools"
  Component({
    data: {
@@ -10,6 +12,7 @@
    },
    lifetimes: {
      async attached() {
+       console.log(sld_prs_t_info)
        const res = await dataRequire('stuList')
        this.setData({
          stuList: res
@@ -46,34 +49,45 @@
          this.ready();
        }
      },
-     // 点击该学员conners_t表
-     async handleConners_t(e) {
+     // 点击学生调查表
+     async handleEvaluationSheets(e) {
+      let table = e.currentTarget.dataset.table
+      let forminfo = {}
+      if(table == 'conners_t'){
+        forminfo = conners_t_info
+      }else if(table == 'snap_iv'){
+        forminfo = snap_iv_info
+      }else if(table == 'sld_prs_t'){
+        forminfo = sld_prs_t_info
+      }
+
       let stu = e.currentTarget.dataset.stu
-       if(stu.conners_t != 0){
-        const res = await dataRequire('conners_t', {stu_id: stu.id})
+    
+       if(stu[table] != 0){
+        const res = await dataRequire(table, {stu_id: stu.id})
         
         let conners_t = res[0]
-        conners_t_info.askfor = 'update'
-        conners_t_info.submitTitle = '修改报告'
+        forminfo.askfor = 'update'
+        forminfo.submitTitle = '修改报告'
         for(let i in conners_t){
-          if(conners_t_info.form[i]){
-            conners_t_info.form[i].value = conners_t[i]
+          if(forminfo.form[i]){
+            forminfo.form[i].value = conners_t[i]
           }
         }
         wx.navigateTo({
-          url: '/pages/form/form?form=' + JSON.stringify(conners_t_info) + '&stu=' +  JSON.stringify(stu),
+          url: '/pages/form/form?form=' + JSON.stringify(forminfo) + '&stu=' +  JSON.stringify(stu),
         })
 
        }else{
-         conners_t_info.askfor = 'insert'
-         conners_t_info.submitTitle = '提交报告'
-         for (let i in conners_t_info.form) {
-          if (conners_t_info.form[i].name.indexOf('question') !== -1) {
-            conners_t_info.form[i].value = null;
+         forminfo.askfor = 'insert'
+         forminfo.submitTitle = '提交报告'
+         for (let i in forminfo.form) {
+          if (forminfo.form[i].name.indexOf('question') !== -1) {
+            forminfo.form[i].value = null;
           }
         }
          wx.navigateTo({
-           url: '/pages/form/form?form=' + JSON.stringify(conners_t_info) + '&stu=' +  JSON.stringify(stu),
+           url: '/pages/form/form?form=' + JSON.stringify(forminfo) + '&stu=' +  JSON.stringify(stu),
          })
        }
 

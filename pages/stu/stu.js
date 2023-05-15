@@ -1,7 +1,3 @@
-import ActionSheet, {
-  ActionSheetTheme
-} from 'tdesign-miniprogram/action-sheet/index';
-
 import {
   color,
   stu_info

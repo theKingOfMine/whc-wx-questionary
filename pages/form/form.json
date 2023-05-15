@@ -1,7 +1,6 @@
 {
   "usingComponents": {
     "t-link": "tdesign-miniprogram/link/link",
-    "EvaluationSheet": "../../components/Form/EvaluationSheet/EvaluationSheet",
     "AutoForm": "../../components/Form/AutoForm/AutoForm",
     "Info_show": "../../components/Form/Info_show/Info_show"
   },

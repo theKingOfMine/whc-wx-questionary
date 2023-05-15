@@ -11,13 +11,8 @@
 
   <view class="description" slot="description" bindtap="cellClick">
     <t-tag class="report-item" size="small" theme="{{info.conners_t != '0' ? 'danger' : 'default'}}" data-stu="{{item}}">CONNERS/T</t-tag>
-      <t-tag class="report-item" size="small" theme="default">SLD-PRS-T</t-tag>
-      <t-tag class="report-item" size="small" theme="{{info.snap_iv != '0' ? 'danger' : 'default'}}">SNAP-IV</t-tag>
+    <t-tag class="report-item" size="small" theme="{{info.snap_iv != '0' ? 'danger' : 'default'}}">SNAP-IV</t-tag>
+    <t-tag class="report-item" size="small" theme="default">SLD-PRS-T</t-tag>
+
   </view>
-
-
-  <!-- <view class="stu-options" slot="right-icon">
-  <t-icon name="edit" bindtap="handleEdit" data-stu="{{info}}" />
-  <t-icon name="close" style="margin-left: 16px;" bindtap="handleDelete" data-stu="{{info}}" />
-</view> -->
 </t-cell>

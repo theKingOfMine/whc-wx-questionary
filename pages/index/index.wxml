@@ -1,7 +1,7 @@
 <view class="login-container">
 
   <view class="logo-box">
-    <image src="{{image.logo}}" style="width: 136px; height: 136px;" alt="" />
+    <image src="{{image.logo}}" style="width: 160px; height: 160px;" alt="" />
   </view>
 
   <view class="register-box">

@@ -1,11 +1,11 @@
 // index.js
-import {color} from "../../tools/tools"
+import {color, baseUrl} from "../../tools/tools"
 const app = getApp()
 
 Page({
   data: {
     image: {
-      logo: '/images/logo/whc.png',
+      logo: baseUrl + '/images/logo/whc.png',
     },
     color: color
   },

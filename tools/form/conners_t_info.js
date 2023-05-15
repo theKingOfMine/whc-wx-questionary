@@ -47,7 +47,7 @@ for(let i in questionsBox){
     value: null,
     component: 'radio-lot',
     name: 'question' + count,
-    label: count + '.' + questionsBox[i],
+    label: questionsBox[i],
     placeholder: '请选择',
     type: 'int',
     isHide: false,

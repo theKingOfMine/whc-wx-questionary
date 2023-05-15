@@ -8,11 +8,31 @@
     <view slot="title" class="title-box"> {{item.name}} 
     <text style="color: rgba(0, 0, 0, 0.6); font-weight: 300;" >{{item.grade}} {{item.class}} {{item.school}} </text></view>
 
-
     <view class="description" slot="description">
-      <t-tag class="report-item" size="small" theme="{{item.conners_t != '0' ? 'danger' : 'default'}}" data-stu="{{item}}" bindtap="handleConners_t" >CONNERS/T</t-tag>
-      <t-tag class="report-item" size="small" theme="default">SLD-PRS-T</t-tag>
-      <t-tag class="report-item" size="small" theme="{{item.snap_iv != '0' ? 'danger' : 'default'}}">SNAP-IV</t-tag>
+      <t-tag 
+      class="report-item" 
+      size="small" 
+      theme="{{item.conners_t == 0 ? 'default' : 'danger'}}" 
+      data-stu="{{item}}" bindtap="handleEvaluationSheets" 
+      data-table="conners_t"
+      >CONNERS/T</t-tag>
+        
+      <t-tag 
+      class="report-item" 
+      size="small" 
+      theme="{{item.snap_iv == 0 ? 'default' : 'danger'}}" 
+      data-stu="{{item}}" bindtap="handleEvaluationSheets" 
+      data-table="snap_iv"
+      >SNAP-IV</t-tag>
+      
+      <t-tag 
+      class="report-item" 
+      size="small" 
+      theme="{{item.sld_prs_t == 0 ? 'default' : 'danger'}}" 
+      data-stu="{{item}}" bindtap="handleEvaluationSheets" 
+      data-table="sld_prs_t"
+      >SLD-PRS-T</t-tag>
+    
     </view>
 
  
