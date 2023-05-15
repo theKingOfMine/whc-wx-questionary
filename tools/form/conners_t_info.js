@@ -1,17 +1,4 @@
-// 建设conners_t数据库表单对象
-
-// table: 数据库表名，
-// database: 数据库名
-// key: 关键字段，用于自动更新等 where key=form[key]
-// form: 表单字段
-// form的属性名为表单字段名，
-//   字段.value: 值, 
-//       .component: 需要用到的输入组件名 列入: input, select, data-pocker等
-//       .name: 字段名，字符串形式
-//       .label: form表单label
-//       .placeholder: form表单placeholder
-//       .type: value的值类型
-//       .disable: 是否可编辑
+import {formattedDateTime} from "../normal"
 
 const questionsBox = [
   "在座位上扭动不停，课堂经常不能安坐在座位上，小动作多；",
@@ -44,12 +31,12 @@ const questionsBox = [
   "在语文的阅读/理解上，或是数学应用题方面存在学习困难；"
 ]
 
-import {formattedDateTime} from "../normal"
+
 const answerBox = [
-  { label: '无', value: 0 },
-  { label: '稍有', value: 1 },
-  { label: '很多', value: 2 },
-  { label: '相当多', value: 3 }
+  { label: '无', value: '0' },
+  { label: '稍有', value: '1' },
+  { label: '很多', value: '2' },
+  { label: '相当多', value: '3' }
 ]
 
 let questions = {}
@@ -69,7 +56,6 @@ for(let i in questionsBox){
     selectList: answerBox
   }
 }
-
 
 export const conners_t_info = {
   title: {
@@ -105,7 +91,7 @@ export const conners_t_info = {
       label: '学生ID',
       placeholder: '请输入学生ID',
       type: 'int',
-      isHide: false,
+      isHide: true,
       isRequired: true,
       disable: false,
       keyboard: 'number',

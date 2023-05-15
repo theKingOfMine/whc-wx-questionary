@@ -1,27 +1,41 @@
-<view class="form-container">
-  <view style="font-size: 17pt; font-weight: 700; padding: 32rpx 32rpx 0;">
-    {{title}}
+<view class="form-box-container">
+  <!-- 表单标题 -->
+  <view wx:if="{{!formInfo.title.isHide}}" class="form-title">
+    <text style="font-size: 17pt; font-weight: 500;"> {{formInfo.title.value}}</text>
+  </view>
+  <!-- 表单提示 -->
+  <view wx:if="{{!formInfo.notes.isHide}}" class="form-notes">
+    <text style="font-size: 12pt; font-weight: 200;">{{formInfo.notes.value}}</text>
   </view>
 
-  <view style="padding: 32rpx 32rpx 0; margin-bottom: 64rpx;">
-    <text style="font-size: 12pt; font-weight: 500;"> 评估提示：</text>
-    <text style="font-size: 12pt; font-weight: 200;">填写此表时请根据儿童过去 6 个月的行为举止认真/客观地填写此表！ 本报告为教育实践评估，最终评价需结合医疗诊断评估报告综合评定。</text>
-  </view>
 
   <form class="form-box" bindsubmit="submit">
     <!-- 调查信息 -->
-    <view class="form-box-report" wx:for="{{SLD_PRS_T}}" wx:for-item='info' wx:for-index='i' wx:key="i">
+    <view class="form-box-report" wx:for="{{formInfo}}" wx:for-item='info' wx:for-index='i' wx:key="i">
       <view style="font-size: 15pt; font-weight: 400;">{{info.title}}</view>
 
-      <view class="form-box-report-item" wx:for="{{info.form}}" wx:for-item='item' wx:for-index='j' wx:key="j">
-        <text style="font-weight: 400;">{{item.label}}</text>
+       <view class="form-component" wx:for="{{info.form}}" wx:key="index" wx:if="{{!info.isHide}}">
 
-        <t-radio-group wx:if="{{item.component == 'checkBox'}}" t-class="theme-card">
-          <t-radio wx:for="{{item.selectList}}" wx:for-item='l' wx:for-index='z' wx:key="z" label="{{l}}" value="{{l}}" />
-        </t-radio-group>
+        <!-- input组件 -->
+        <SmartInput wx:if="{{item.component == 'input'}}" item="{{item}}" bind:return="updateInfo"></SmartInput>
+
+        <!-- 验证码 -->
+        <Security_Phone bind:return="updateInfo" wx:if="{{item.component == 'security_code'}}" item="{{item}}"></Security_Phone>
+
+        <!-- picker -->
+        <Picker bind:return="updateInfo" wx:if="{{item.component == 'picker'}}" item="{{item}}"></Picker>
+
+        <!-- Radio，单选框组件 -->
+        <SmartRadio wx:if="{{item.component == 'radio'}}" item="{{item}}" bind:return="updateInfo"></SmartRadio>
+ 
+        <Radio-lot  wx:if="{{item.component == 'radio-lot'}}" item="{{item}}" bind:return="updateInfo"></Radio-lot>
+        <!-- upload上传照片 -->
+        <Upload wx:if="{{item.component == 'upload' && !item.isHide}}" item="{{item}}" bind:return="updateInfo"></Upload>
+
+        <!-- datetime年月日选择器 -->
+        <DateTime wx:if="{{item.component == 'datetime' && !item.isHide}}" item="{{item}}" bind:return="updateInfo"></DateTime>
 
       </view>
-
 
     </view>
 

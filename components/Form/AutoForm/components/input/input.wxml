@@ -8,6 +8,7 @@
   status="success"
   value="{{info.value}}"
   type="{{info.keyboard}}"
+  disabled="{{info.disabled}}"
   >
 
     <view slot="label">

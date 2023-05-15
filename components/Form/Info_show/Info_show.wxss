@@ -1,0 +1,18 @@
+.stu-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title-box {
+  max-width: 400rpx;
+  /* overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; */
+  margin-bottom: 12px;
+}
+
+
+.report-item {
+  margin-right: 4px;
+}

@@ -1,0 +1,23 @@
+<t-cell style="padding: 16px; height: 200px;" wx:key="index">
+
+  <t-image slot="right-icon" src="http://www.polyphony.com:39000/whc_EvaluationSheet/{{info.head_img}}" mode="aspectFill" width="100" height="100" aria-label="一个放置在墙角的黄色行李箱" />
+
+  <view slot="title" class="title-box">
+    <view>
+      {{info.name}}
+    </view>
+    <view style="color: rgba(0, 0, 0, 0.6); font-weight: 300;">{{info.grade}} {{info.class}} {{info.school}} </view>
+  </view>
+
+  <view class="description" slot="description" bindtap="cellClick">
+    <t-tag class="report-item" size="small" theme="{{info.conners_t != '0' ? 'danger' : 'default'}}" data-stu="{{item}}">CONNERS/T</t-tag>
+      <t-tag class="report-item" size="small" theme="default">SLD-PRS-T</t-tag>
+      <t-tag class="report-item" size="small" theme="{{info.snap_iv != '0' ? 'danger' : 'default'}}">SNAP-IV</t-tag>
+  </view>
+
+
+  <!-- <view class="stu-options" slot="right-icon">
+  <t-icon name="edit" bindtap="handleEdit" data-stu="{{info}}" />
+  <t-icon name="close" style="margin-left: 16px;" bindtap="handleDelete" data-stu="{{info}}" />
+</view> -->
+</t-cell>

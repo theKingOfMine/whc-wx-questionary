@@ -35,7 +35,7 @@ export const formUpload = async (askfor, forminfo) => {
     }
 }
 // 向服务器请求数据
-export const dataRequire = async (table='', conditions={}, orderBy='', limit='') =>{
+export const dataRequire = async (table='', conditions=[], orderBy='', limit='') =>{
   const res = await req({
     askfor: 'dataRequire',
     requireInfo: {

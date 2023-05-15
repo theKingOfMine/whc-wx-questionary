@@ -9,10 +9,10 @@
     <text style="color: rgba(0, 0, 0, 0.6); font-weight: 300;" >{{item.grade}} {{item.class}} {{item.school}} </text></view>
 
 
-    <view class="description" slot="description" bindtap="cellClick">
-      <t-tag bindtap="handleConners_t" class="report-item" size="small" theme="default">CONNERS/T</t-tag>
+    <view class="description" slot="description">
+      <t-tag class="report-item" size="small" theme="{{item.conners_t != '0' ? 'danger' : 'default'}}" data-stu="{{item}}" bindtap="handleConners_t" >CONNERS/T</t-tag>
       <t-tag class="report-item" size="small" theme="default">SLD-PRS-T</t-tag>
-      <t-tag class="report-item" size="small" theme="default">SNAP-IV</t-tag>
+      <t-tag class="report-item" size="small" theme="{{item.snap_iv != '0' ? 'danger' : 'default'}}">SNAP-IV</t-tag>
     </view>
 
  

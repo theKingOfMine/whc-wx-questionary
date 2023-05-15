@@ -1,6 +1,12 @@
 {
   "component": true,
   "usingComponents": {
-    "t-date-time-picker": "tdesign-miniprogram/date-time-picker/date-time-picker"
+    "SmartRadio": "../AutoForm/components/radio/radio",
+    "Picker": "../AutoForm/components/picker/picker",
+    "Upload": "../AutoForm/components/upload/upload",
+    "DateTime": "../AutoForm/components/datetime/datetime",
+    "Security_Phone": "../AutoForm/components/security_phone/security_phone",
+    "SmartInput": "../AutoForm/components/input/input",
+    "Radio-lot": "../AutoForm/components/radio-lot/radio-lot"
   }
 }
