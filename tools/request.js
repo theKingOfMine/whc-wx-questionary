@@ -46,11 +46,10 @@ export const dataRequire = async (table='', conditions={}, orderBy='', limit='')
     }
   })
   if(res.statusCode == 200){
-    console.log('访问成功...', res.data)
+    console.log('访问成功...', res)
     if(res.data.code == 200){
       return res.data.data;
     }
-  
   }
 }
 

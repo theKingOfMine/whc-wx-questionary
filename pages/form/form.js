@@ -11,7 +11,6 @@ Page({
   async submit(e){
     const res = await formUpload('formUpload', e.detail);
       if(res.code == 200){
-        console.log(res.msg)
         wx.switchTab({
           url: '/pages/stu/stu',
         })

@@ -23,7 +23,8 @@
 
         <!-- Radio，单选框组件 -->
         <SmartRadio wx:if="{{item.component == 'radio'}}" item="{{item}}" bind:return="updateInfo"></SmartRadio>
-
+ 
+        <Radio-lot  wx:if="{{item.component == 'radio-lot'}}" item="{{item}}" bind:return="updateInfo"></Radio-lot>
         <!-- upload上传照片 -->
         <Upload wx:if="{{item.component == 'upload' && !item.isHide}}" item="{{item}}" bind:return="updateInfo"></Upload>
 

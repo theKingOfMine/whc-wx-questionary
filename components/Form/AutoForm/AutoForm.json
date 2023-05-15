@@ -6,6 +6,7 @@
     "Upload": "./components/upload/upload",
     "DateTime": "./components/datetime/datetime",
     "Security_Phone": "./components/security_phone/security_phone",
-    "SmartInput": "./components/input/input"
+    "SmartInput": "./components/input/input",
+    "Radio-lot": "./components/radio-lot/radio-lot"
   }
 }

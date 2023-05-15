@@ -4,9 +4,14 @@
   justify-content: space-between;
 }
 
-.description {
+.title-box {
   max-width: 440rpx;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+
+.report-item {
+  margin-right: 4px;
 }

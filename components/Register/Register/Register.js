@@ -24,7 +24,6 @@ Component({
           url: '/pages/stu/stu',
         })
       }
-     
     }
   }
 })

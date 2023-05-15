@@ -1,13 +1,24 @@
+<view wx:if="{{stuList.length < 1}}" style="display: flex; align-items: center; justify-content: center; height: 200rpx;" wx:if="{{stuList.length == 0}}" class="notes">
+  您还未添加任何学生...
+</view>
+
 <view class="stu-list-box">
   <t-cell wx:for="{{stuList}}" wx:key="index" image="http://www.polyphony.com:39000/whc_EvaluationSheet/{{item.head_img}}">
-    <view slot="title" bindtap="cellClick">{{item.name}} <t-tag size="small" theme="success">等待评估</t-tag>
+
+    <view slot="title" class="title-box"> {{item.name}} 
+    <text style="color: rgba(0, 0, 0, 0.6); font-weight: 300;" >{{item.grade}} {{item.class}} {{item.school}} </text></view>
+
+
+    <view class="description" slot="description" bindtap="cellClick">
+      <t-tag bindtap="handleConners_t" class="report-item" size="small" theme="default">CONNERS/T</t-tag>
+      <t-tag class="report-item" size="small" theme="default">SLD-PRS-T</t-tag>
+      <t-tag class="report-item" size="small" theme="default">SNAP-IV</t-tag>
     </view>
 
-    <view bindtap="cellClick"  slot="description" class="description"> {{item.school}} {{item.grade}} {{item.class}}</view>
-
+ 
     <view class="stu-options" slot="right-icon">
-      <t-icon name="edit" bindtap="handleEdit" data-stu="{{item}}"/>
-      <t-icon name="close" style="margin-left: 16px;"/>
+      <t-icon name="edit" bindtap="handleEdit" data-stu="{{item}}" />
+      <t-icon name="close" style="margin-left: 16px;" bindtap="handleDelete" data-stu="{{item}}" />
     </view>
   </t-cell>
 </view>

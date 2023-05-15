@@ -8,7 +8,7 @@ Component({
   observers: {
     'item': function(newVal, oldVal) {
       if(newVal){
-   
+        console.log(newVal)
         this.setData({
           info: newVal
         })

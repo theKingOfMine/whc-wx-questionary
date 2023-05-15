@@ -1,0 +1,11 @@
+<t-cell class="radio-lot-box">
+  <view slot="title">
+      {{info.label}}
+  </view>
+  <view slot="description">
+      <t-radio-group defaultValue="{{info.value}}" slot="description" t-class="radio-box" bind:change="handleChange">
+        <t-radio wx:for="{{info.selectList}}" wx:key="index" label="{{item.label}}" value="{{item.value}}" />
+      </t-radio-group>
+    </view>
+
+</t-cell>
