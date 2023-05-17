@@ -12,7 +12,7 @@
   <view class="description" slot="description" bindtap="cellClick">
     <t-tag class="report-item" size="small" theme="{{info.conners_t != '0' ? 'danger' : 'default'}}" data-stu="{{item}}">CONNERS/T</t-tag>
     <t-tag class="report-item" size="small" theme="{{info.snap_iv != '0' ? 'danger' : 'default'}}">SNAP-IV</t-tag>
-    <t-tag class="report-item" size="small" theme="default">SLD-PRS-T</t-tag>
+    <t-tag class="report-item" size="small" theme="{{info.sld_prs_t != '0' ? 'danger' : 'default'}}">SLD-PRS-T</t-tag>
 
   </view>
 </t-cell>

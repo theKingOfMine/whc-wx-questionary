@@ -9,7 +9,7 @@ Component({
   observers: {
     'info': function (newVal, oldVal) {
       if (newVal) {
-        console.log(newVal)
+     
       }
     }
   },

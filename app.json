@@ -18,7 +18,8 @@
     "t-button": "tdesign-miniprogram/button/button",
     "t-icon": "tdesign-miniprogram/icon/icon",
     "t-badge": "tdesign-miniprogram/badge/badge",
-    "t-input": "tdesign-miniprogram/input/input"
+    "t-input": "tdesign-miniprogram/input/input",
+    "t-message": "tdesign-miniprogram/message/message"
   },
   "tabBar": {
     "selectedColor": "#0052d9",

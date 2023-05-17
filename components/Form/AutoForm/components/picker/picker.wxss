@@ -1,5 +1,5 @@
 .note {
-  max-width: 400rpx;
+  max-width: 360rpx;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;

@@ -1,9 +1,9 @@
 import {formattedDateTime} from "../normal"
 export const SLD_PRS_T = [
   {
-    title: '一．听觉的理解和记忆 Understanding and memory',
+    title: '一. 听觉的理解和记忆 Understanding and memory',
     form: [{
-        label: '1.对词汇意思的理解能力',
+        label: '1. 对词汇意思的理解能力',
         component: 'radio-lot',
         type: 'string',
         selectList: [
@@ -15,7 +15,7 @@ export const SLD_PRS_T = [
         ]
       },
       {
-        label: '2.对指示的服从能力',
+        label: '2. 对指示的服从能力',
         component: 'radio-lot',
         type: 'string',
         selectList: [
@@ -27,7 +27,7 @@ export const SLD_PRS_T = [
         ]
       },
       {
-        label: '3.在班级理解对话的能力',
+        label: '3. 在班级理解对话的能力',
         component: 'radio-lot',
         type: 'string',
         selectList: [
@@ -39,7 +39,7 @@ export const SLD_PRS_T = [
         ]
       },
       {
-        label: '4.对信息的记忆能力',
+        label: '4. 对信息的记忆能力',
         component: 'radio-lot',
         type: 'string',
         selectList: [
@@ -53,9 +53,9 @@ export const SLD_PRS_T = [
     ]
   },
   {
-    title: '二．会话用语 Conversational competence',
+    title: '二. 会话用语 Conversational competence',
     form: [{
-        label: '5.词汇',
+        label: '5. 词汇',
         component: 'radio-lot',
         type: 'string',
         selectList: [
@@ -67,7 +67,7 @@ export const SLD_PRS_T = [
         ]
       },
       {
-        label: '6.语法',
+        label: '6. 语法',
         component: 'radio-lot',
         type: 'string',
         selectList: [
@@ -79,7 +79,7 @@ export const SLD_PRS_T = [
         ]
       },
       {
-        label: '7.回忆语言的能力',
+        label: '7. 回忆语言的能力',
         component: 'radio-lot',
         type: 'string',
         selectList: [
@@ -91,7 +91,7 @@ export const SLD_PRS_T = [
         ]
       },
       {
-        label: '8.叙述经验的能力',
+        label: '8. 叙述经验的能力',
         component: 'radio-lot',
         type: 'string',
         selectList: [
@@ -103,7 +103,7 @@ export const SLD_PRS_T = [
         ]
       },
       {
-        label: '9.表达能力',
+        label: '9. 表达能力',
         component: 'radio-lot',
         type: 'string',
         selectList: [
@@ -117,9 +117,9 @@ export const SLD_PRS_T = [
     ]
   },
   {
-    title: '三．时间空间知觉 Temporal and spatial perception',
+    title: '三. 时间空间知觉 Temporal and spatial perception',
     form: [{
-        label: '10.时间的判断',
+        label: '10. 时间的判断',
         component: 'radio-lot',
         type: 'string',
         selectList: [
@@ -131,7 +131,7 @@ export const SLD_PRS_T = [
         ]
       },
       {
-        label: '11.地面方位感觉',
+        label: '11. 地面方位感觉',
         component: 'radio-lot',
         type: 'string',
         selectList: [
@@ -143,7 +143,7 @@ export const SLD_PRS_T = [
         ]
       },
       {
-        label: '12.关系的判断（大— 小，远—近，重— 轻）',
+        label: '12. 关系的判断（大— 小，远—近，重— 轻）',
         component: 'radio-lot',
         type: 'string',
         selectList: [
@@ -155,7 +155,7 @@ export const SLD_PRS_T = [
         ]
       },
       {
-        label: '13.位置感觉',
+        label: '13. 位置感觉',
         component: 'radio-lot',
         type: 'string',
         selectList: [
@@ -169,9 +169,9 @@ export const SLD_PRS_T = [
     ]
   },
   {
-    title: '四．运动能力 Sports development ability',
+    title: '四. 运动能力 Sports development ability',
     form: [{
-        label: '14.一般的运动（走、 跑、跳、攀登）',
+        label: '14. 一般的运动（走、 跑、跳、攀登）',
         component: 'radio-lot',
         type: 'string',
         selectList: [
@@ -183,7 +183,7 @@ export const SLD_PRS_T = [
         ]
       },
       {
-        label: '15.平衡感觉',
+        label: '15. 平衡感觉',
         component: 'radio-lot',
         type: 'string',
         selectList: [
@@ -195,7 +195,7 @@ export const SLD_PRS_T = [
         ]
       },
       {
-        label: '16.手指的灵巧程度 （使用剪刀、扣纽 扣、书写、握球等）',
+        label: '16. 手指的灵巧程度 （使用剪刀、扣纽 扣、书写、握球等）',
         component: 'radio-lot',
         type: 'string',
         selectList: [
@@ -209,9 +209,9 @@ export const SLD_PRS_T = [
     ]
   },
   {
-    title: '五．社会行为 Social behavior',
+    title: '五. 社会行为 Social behavior',
     form: [{
-        label: '17.协调性',
+        label: '17. 协调性',
         component: 'radio-lot',
         type: 'string',
         selectList: [
@@ -223,7 +223,19 @@ export const SLD_PRS_T = [
         ]
       },
       {
-        label: '18.安排工作程序的 能力',
+        label: '18. 注意力',
+        component: 'radio-lot',
+        type: 'string',
+        selectList: [
+          '1.完全不能集中注意力；',
+          '2.注意力常常转移，几乎不听别人说；',
+          '3.能力与同年级儿童相当，无特殊问题；',
+          '4.能够集中注意力，能力超过同年级儿童；',
+          '5.能够长久持续地集中注意力；'
+        ]
+      },
+      {
+        label: '19. 安排工作程序的 能力',
         component: 'radio-lot',
         type: 'string',
         selectList: [
@@ -235,7 +247,7 @@ export const SLD_PRS_T = [
         ]
       },
       {
-        label: '19.适应新情况的 能力',
+        label: '20. 适应新情况的 能力',
         component: 'radio-lot',
         type: 'string',
         selectList: [
@@ -247,7 +259,7 @@ export const SLD_PRS_T = [
         ]
       },
       {
-        label: '20.社会的接受',
+        label: '21. 社会的接受',
         component: 'radio-lot',
         type: 'string',
         selectList: [
@@ -259,7 +271,7 @@ export const SLD_PRS_T = [
         ]
       },
       {
-        label: '21.责任感',
+        label: '22. 责任感',
         component: 'radio-lot',
         type: 'string',
         selectList: [
@@ -271,7 +283,7 @@ export const SLD_PRS_T = [
         ]
       },
       {
-        label: '22.理解任务并进行处 理的能力（作业、 规定、大家所决定 的事等）',
+        label: '23. 理解任务并进行处 理的能力（作业、 规定、大家所决定 的事等）',
         component: 'radio-lot',
         type: 'string',
         selectList: [
@@ -283,7 +295,7 @@ export const SLD_PRS_T = [
         ]
       },
       {
-        label: '23.关心',
+        label: '24. 关心',
         component: 'radio-lot',
         type: 'string',
         selectList: [
@@ -314,7 +326,7 @@ for(let i in SLD_PRS_T){
       disable: false,
       selectList: j.selectList.map((item, index) => ({
         label: item,
-        value: index + 1
+        value: index + 1 + ''
       }))
     }
   }
@@ -330,7 +342,7 @@ export const sld_prs_t_info = {
   database: 'mck_school',
   key: 'id',
   notes: {
-    value: '评估提示：填写此表时请根据儿童过去 12 个月的行为举止认真/客观地填写此表！ 本报告为教育实践评估，最终评价需结合医疗诊断评估报告综合评定。\n \n 问题1~4，听觉的理解和记忆 Understanding and memory\n \n 问题5~9，会话用语 Conversational competence \n \n 问题10~14，时间空间知觉 Temporal and spatial perception \n \n 问题15~18，运动能力 Sports development ability \n \n 问题19~26，社会行为 Social behavior',
+    value: '评估提示：填写此表时请根据儿童过去 12 个月的行为举止认真/客观地填写此表！ 本报告为教育实践评估，最终评价需结合医疗诊断评估报告综合评定。\n \n 问题1~4，听觉的理解和记忆 Understanding and memory\n \n 问题5~9，会话用语 Conversational competence \n \n 问题10~13，时间空间知觉 Temporal and spatial perception \n \n 问题14~16，运动能力 Sports development ability \n \n 问题17~24，社会行为 Social behavior',
     isHide: false
   },
   submitTitle: '提交报告',

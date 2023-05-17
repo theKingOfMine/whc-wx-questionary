@@ -1,19 +1,19 @@
 import {
   color,
-  stu_info
+  stu_info,
+  dataRequire
 } from "../../tools/tools"
 
 Page({
   data: {
     color: color,
-    isOpenStuList: true
+    isOpenStuList: true,
+    stuList: []
   },
   onShow(options) {
-   this.setData({
-     isOpenStuList: true
-   })
+    this.getStuList()
   },
-  onHide(){
+  onHide() {
     this.setData({
       isOpenStuList: false
     })
@@ -22,6 +22,17 @@ Page({
     stu_info.askfor = 'insert'
     wx.navigateTo({
       url: '/pages/form/form?form=' + JSON.stringify(stu_info),
+    })
+  },
+  async getStuList() {
+    const teacher_id = wx.getStorageSync('teacher_id')
+    const stuList = await dataRequire('stu', {
+      teacher_id: teacher_id
+    }, 'stuList')
+
+    this.setData({
+      stuList: stuList,
+      isOpenStuList: true
     })
   }
 })

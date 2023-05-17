@@ -8,6 +8,7 @@ Component({
   },
   lifetimes: {
     attached() {
+      
       this.setData({
         formInfo: teacher_info
       })
@@ -17,9 +18,10 @@ Component({
     async registerSubmit(e) {
       let info = e.detail;
       info.askfor = 'insert';
-      const res = await formUpload('formUpload', e.detail);
+      const res = await formUpload('register', e.detail);
       if(res.code == 200){
-        console.log(res.msg)
+        wx.setStorageSync('token', res.token);
+        wx.setStorageSync('teacher_id', res.teacher_id);
         wx.switchTab({
           url: '/pages/stu/stu',
         })

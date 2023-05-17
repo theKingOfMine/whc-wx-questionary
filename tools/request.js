@@ -1,10 +1,12 @@
 export const baseUrl = 'http://www.polyphony.com:39000/whc_EvaluationSheet/';
 export const req = async (params) => {
+  const token = wx.getStorageSync('token')
   return new Promise((resolve, reject) => {
     wx.request({
       data: {
         req: JSON.stringify({
           ...params,
+          token: token ? token : '400'
         })
       },
       method: 'POST',
@@ -35,54 +37,31 @@ export const formUpload = async (askfor, forminfo) => {
     }
 }
 // 向服务器请求数据
-export const dataRequire = async (table='', conditions=[], orderBy='', limit='') =>{
+export const dataRequire = async (table='', conditions={}, requirement='', orderBy='', limit='') => {
   const res = await req({
     askfor: 'dataRequire',
     requireInfo: {
       table: table,
       conditions: conditions,
       orderBy: orderBy,
-      limit: limit
+      limit: limit,
+      requirement: requirement
     }
   })
-  if(res.statusCode == 200){
+  if (res.statusCode == 200) {
     console.log('访问成功...', res)
-    if(res.data.code == 200){
+    if (res.data.code == 200) {
       return res.data.data;
     }
   }
 }
 
-
-// export const reqByToken = async (url, params) => {
-//   const tokenLocal = await getStorage('token'); // 检验token是否合法
-//   if (tokenLocal.code == 200) {
-//     wx.showNavigationBarLoading();
-//     return new Promise((resolve, reject) => {
-//       wx.request({
-//         method: 'POST',
-//         header: {
-//           //设置参数内容类型为x-www-form-urlencoded
-//           'content-type': 'application/x-www-form-urlencoded',
-//           'Accept': 'application/json'
-//         },
-//         url: baseUrl + url,
-//         data: {
-//           req: JSON.stringify({
-//             ...params,
-//             token: tokenLocal.msg
-//           })
-//         },
-//         success: (res) => {
-//           resolve(res);
-//         },
-//         fail: (err) => {
-//           reject(err);
-//         },
-//         complete: () => {
-//           wx.hideNavigationBarLoading();
-//         }
-//       })
-//     })
-//   }
-// }
+export const checkToken = async () => {
+    const res = await req({
+      askfor: 'checkToken'
+    })
+    if(res.statusCode == 200){
+      console.log('访问成功...', res.data)
+      return res.data;
+    }
+}

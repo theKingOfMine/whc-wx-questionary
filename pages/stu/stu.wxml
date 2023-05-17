@@ -1,3 +1,2 @@
-
-<StuList wx:if="{{isOpenStuList}}" bind:cellTap="handleAction"></StuList>
+<StuList list="{{stuList}}" wx:if="{{isOpenStuList}}" bind:cellTap="handleAction"></StuList>
 <t-fab icon="add" bind:click="addNewStu" aria-label="增加"></t-fab>

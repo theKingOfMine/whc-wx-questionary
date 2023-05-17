@@ -1,4 +1,6 @@
-import {formUpload} from "../../tools/tools"
+import {formUpload} from "../../tools/tools";
+import Message from 'tdesign-miniprogram/message/index';
+
 Page({
   data: {
     formData: {},
@@ -12,7 +14,7 @@ Page({
       form.form.stu_id.value = stu.id
       form.form.teacher_id.value = 1
     }
-    console.log(form)
+
     this.setData({
       formData: form,
       stu: options.stu ? JSON.parse(options.stu) : null
@@ -21,9 +23,23 @@ Page({
   async submit(e){
     const res = await formUpload('formUpload', e.detail);
       if(res.code == 200){
-        wx.switchTab({
-          url: '/pages/stu/stu',
+        wx.showToast({
+          title: '表单上传成功',
+          icon: 'success'
+        })
+        setTimeout(()=>{
+          this.showMessage()
+        }, 1000)
+      }else{
+        wx.showToast({
+          title: '网络故障-上传失败',
+          icon: 'error'
         })
       }
+  },
+  showMessage(){
+    wx.switchTab({
+      url: '/pages/stu/stu',
+  })
   }
 })

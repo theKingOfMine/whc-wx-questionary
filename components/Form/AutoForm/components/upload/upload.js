@@ -9,7 +9,7 @@ Component({
   },
   observers: {
     'item': function(newVal, oldVal) {
-      if(newVal){
+      if(newVal && newVal.value){
         const info = newVal
         const nameBox = info.value.split('/')
         const name = nameBox[nameBox.length -1]
@@ -25,6 +25,10 @@ Component({
           info: newVal,
           headImg: headImg
         })
+      }else{
+        this.setData({
+          info: newVal
+        })
       }
     }
   },
@@ -34,7 +38,6 @@ Component({
   },
   methods: {
     async handleAdd(e) {
-      console.log(e)
       this.setData({
         headImg: e.detail.files
       })
@@ -46,6 +49,7 @@ Component({
       })
     },
     handleRemove(e) {
+      console.log('到这了，删除图片')
       this.setData({
         headImg: ''
       })

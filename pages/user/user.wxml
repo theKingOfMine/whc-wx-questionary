@@ -2,7 +2,7 @@
   <!-- 头像 -->
   <view class="user-info-box">
     <view class="user-image-box">
-      <view class="head_image" style="background-image: url(../../images/mjc.jpg);background-size: cover;">
+      <view class="head_image" style="background-image: url({{image.logo}});background-size: cover;">
       </view>
       <view class="user-name">
         马吉春-AI Music

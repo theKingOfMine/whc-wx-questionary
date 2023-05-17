@@ -7,17 +7,31 @@
    sld_prs_t_info
  } from "../../../../tools/tools"
  Component({
+  properties: {
+    list: {
+      type: Array,
+      value: []
+    }
+  },
+  observers: {
+    'list': function (newVal, oldVal) {
+      if (newVal) {
+        this.setData({
+          stuList: newVal
+        })
+      }
+    }
+  },
    data: {
      stuList: []
    },
    lifetimes: {
-     async attached() {
-       console.log(sld_prs_t_info)
-       const res = await dataRequire('stuList')
-       this.setData({
-         stuList: res
-       })
-     }
+    //  async attached() {
+    //    const res = await dataRequire('stuList')
+    //    this.setData({
+    //      stuList: res
+    //    })
+    //  }
    },
    methods: {
      cellClick() {
@@ -65,7 +79,7 @@
     
        if(stu[table] != 0){
         const res = await dataRequire(table, {stu_id: stu.id})
-        
+        console.log(res);
         let conners_t = res[0]
         forminfo.askfor = 'update'
         forminfo.submitTitle = '修改报告'
