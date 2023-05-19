@@ -1,4 +1,7 @@
 import {formattedDateTime} from "../normal"
+import { teacher_info } from "./teacher_info"
+const teacher_id = wx.getStorageSync('teacher_id')
+
 export const SLD_PRS_T = [
   {
     title: '一. 听觉的理解和记忆 Understanding and memory',
@@ -374,7 +377,7 @@ export const sld_prs_t_info = {
       length: 9
     },
     teacher_id: {
-      value: null,
+      value: teacher_id,
       component: 'input',
       name: 'teacher_id',
       label: '教师ID',

@@ -3,6 +3,7 @@
     "pages/index/index",
     "pages/stu/stu",
     "pages/form/form",
+    "pages/teacher/teacher",
     "pages/user/user"
   ],
   "entryPagePath": "pages/form/form",

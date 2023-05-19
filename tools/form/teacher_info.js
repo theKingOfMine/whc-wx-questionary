@@ -28,14 +28,14 @@ export const classOptions = classBox.map((item) => ({
 // 教师信息表
 export const teacher_info = {
   title: {
-    value: '教师注册信息',
+    value: '教师信息详情',
     isHide: true
   },
   table: 'teacher',
   database: 'mck_school',
   key: 'id',
   notes: {
-    value: '教师注册页面',
+    value: '信息更新页面',
     isHide: true
   },
   submitTitle: '注册',

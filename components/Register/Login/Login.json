@@ -1,6 +1,6 @@
 {
   "component": true,
   "usingComponents": {
-    "t-link": "tdesign-miniprogram/link/link"
+    "t-toast": "tdesign-miniprogram/toast/toast"
   }
 }

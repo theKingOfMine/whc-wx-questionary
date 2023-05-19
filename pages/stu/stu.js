@@ -28,7 +28,7 @@ Page({
     const teacher_id = wx.getStorageSync('teacher_id')
     const stuList = await dataRequire('stu', {
       teacher_id: teacher_id
-    }, 'stuList')
+    })
 
     this.setData({
       stuList: stuList,

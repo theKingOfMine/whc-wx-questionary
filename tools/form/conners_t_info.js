@@ -1,5 +1,8 @@
 import {formattedDateTime} from "../normal"
 
+const teacher_id = wx.getStorageSync('teacher_id')
+
+
 const questionsBox = [
   "1. 在座位上扭动不停，课堂经常不能安坐在座位上，小动作多；",
   "2. 在不应出声的场合制造噪音，如课堂上、安静的集体活动上；",
@@ -98,7 +101,7 @@ export const conners_t_info = {
       length: 9
     },
     teacher_id: {
-      value: null,
+      value: teacher_id,
       component: 'input',
       name: 'teacher_id',
       label: '教师ID',

@@ -1,4 +1,5 @@
 import {formattedDateTime} from "../normal"
+const teacher_id = wx.getStorageSync('teacher_id')
 
 const questionsBox = [
   "1.在完成作业时或者参与集体活动时，常出现拖拉、磨蹭、马虎大意等情况，致 使经常容易出现错误或完成不及时；", 
@@ -98,7 +99,7 @@ export const snap_iv_info = {
       length: 9
     },
     teacher_id: {
-      value: null,
+      value: teacher_id,
       component: 'input',
       name: 'teacher_id',
       label: '教师ID',

@@ -33,7 +33,7 @@
 
       </view>
       <view class="register-submit-box">
-        <t-button bindtap="submit" style="width:50%;" theme="primary" size="large">{{formInfo.submitTitle}}</t-button>
+        <t-button bindtap="submit" shape='round' style="width:100%;" theme="primary" size="large">{{formInfo.submitTitle}}</t-button>
       </view>
     </form>
   </view>

@@ -2,6 +2,7 @@ const sexBox = ['男生', '女生']
 const ageBox = Array.from({length: 20}, (_, i) => i + 2)
 import {gradeOptions, classOptions, schoolOptions} from "./teacher_info"
 import {formattedDateTime} from "../normal"
+const teacher_id = wx.getStorageSync('teacher_id')
 
 const sexOptions = sexBox.map((item) => ({
   label: item,
@@ -39,7 +40,7 @@ export const stu_info = {
       disable: true
     },
     teacher_id: {
-      value: 1,
+      value: teacher_id,
       label: '教师ID',
       name: 'teacher',
       component: 'input',

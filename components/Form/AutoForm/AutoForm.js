@@ -22,6 +22,7 @@ Component({
   methods: {
     submit(){
       const form = this.data.formInfo.form
+      console.log(form);
       for(let i in form){
         if((form[i].value == null || undefined || '' )&& !form[i].disable){
           Message.error({

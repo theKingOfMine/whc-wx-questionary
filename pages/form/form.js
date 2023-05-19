@@ -1,5 +1,6 @@
-import {formUpload} from "../../tools/tools";
-import Message from 'tdesign-miniprogram/message/index';
+import {
+  formUpload
+} from "../../tools/tools";
 
 Page({
   data: {
@@ -9,7 +10,7 @@ Page({
   onLoad(options) {
     let stu = {}
     let form = JSON.parse(options.form)
-    if(options.stu){
+    if (options.stu) {
       stu = JSON.parse(options.stu)
       form.form.stu_id.value = stu.id
       form.form.teacher_id.value = 1
@@ -20,26 +21,31 @@ Page({
       stu: options.stu ? JSON.parse(options.stu) : null
     })
   },
-  async submit(e){
+  async submit(e) {
+    wx.showNavigationBarLoading()
     const res = await formUpload('formUpload', e.detail);
-      if(res.code == 200){
-        wx.showToast({
-          title: '表单上传成功',
-          icon: 'success'
-        })
-        setTimeout(()=>{
-          this.showMessage()
-        }, 1000)
-      }else{
-        wx.showToast({
-          title: '网络故障-上传失败',
-          icon: 'error'
-        })
-      }
-  },
-  showMessage(){
-    wx.switchTab({
-      url: '/pages/stu/stu',
-  })
+    if (res.code == 200) {
+      wx.showToast({
+        title: '表单上传成功',
+        icon: 'success'
+      })
+      wx.hideNavigationBarLoading()
+      setTimeout(() => {
+        if (e.detail.transferTo) {
+          wx.switchTab({
+            url: e.detail.transferTo,
+          })
+        }else{
+          wx.switchTab({
+            url: '/pages/stu/stu',
+          })
+        }
+      }, 1000)
+    } else {
+      wx.showToast({
+        title: '网络故障-上传失败',
+        icon: 'error'
+      })
+    }
   }
 })

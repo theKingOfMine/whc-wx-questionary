@@ -35,6 +35,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "教师信息页",
+          "pathName": "pages/teacher/teacher",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

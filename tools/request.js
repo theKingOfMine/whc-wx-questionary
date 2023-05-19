@@ -55,13 +55,3 @@ export const dataRequire = async (table='', conditions={}, requirement='', order
     }
   }
 }
-
-export const checkToken = async () => {
-    const res = await req({
-      askfor: 'checkToken'
-    })
-    if(res.statusCode == 200){
-      console.log('访问成功...', res.data)
-      return res.data;
-    }
-}
