@@ -3,7 +3,7 @@ export const uploadImg = (url) => {
   console.log('执行uploadHeadImg函数：进行图片上传')
   return new Promise(async (resolve, reject) => {
     wx.uploadFile({
-      url: 'http://www.polyphony.com:39000/whc_EvaluationSheet/fileUpload.php', // 服务器页面地址
+      url: 'http://127.0.0.1:39001/fileUpload.php', // 服务器页面地址
       filePath: url, // 所携带的图片临时地址
       name: "headImg", // 服务器接受file时的携带参数的名字
       formData: { // 额外携带的post请求

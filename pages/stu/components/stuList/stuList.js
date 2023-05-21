@@ -4,7 +4,8 @@
    formUpload,
    conners_t_info,
    snap_iv_info,
-   sld_prs_t_info
+   sld_prs_t_info,
+   baseUrl
  } from "../../../../tools/tools"
  Component({
    properties: {
@@ -23,7 +24,8 @@
      }
    },
    data: {
-     stuList: []
+     stuList: [],
+     baseUrl: baseUrl
    },
    methods: {
      cellClick() {

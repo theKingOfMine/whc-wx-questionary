@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "DataExhibition": "./components/dataExhibition/dataExhibition"
+    "DataExhibition": "./components/dataExhibition/dataExhibition",
+    "t-image": "tdesign-miniprogram/image/image"
   },
   "navigationBarTitleText": "个人中心"
 }

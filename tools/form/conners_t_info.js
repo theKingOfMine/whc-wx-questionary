@@ -128,7 +128,6 @@ export const conners_t_info = {
     },
     ...questions
   }
-  
 }
 
 

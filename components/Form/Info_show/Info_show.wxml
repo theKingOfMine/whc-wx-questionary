@@ -1,6 +1,6 @@
 <t-cell style="padding: 16px; height: 200px;" wx:key="index">
 
-  <t-image slot="right-icon" src="http://www.polyphony.com:39000/whc_EvaluationSheet/{{info.head_img}}" mode="aspectFill" width="100" height="100" aria-label="一个放置在墙角的黄色行李箱" />
+  <t-image slot="right-icon" src="{{baseUrl + info.head_img}}" mode="aspectFill" width="100" height="100" aria-label="一个放置在墙角的黄色行李箱" />
 
   <view slot="title" class="title-box">
     <view>

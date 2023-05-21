@@ -7,7 +7,7 @@ import {
 Page({
   data: {
     color: color,
-    isOpenStuList: true,
+    isOpenStuList: false,
     stuList: []
   },
   onShow(options) {
@@ -25,14 +25,19 @@ Page({
     })
   },
   async getStuList() {
+    wx.showToast({
+      title: '学生数据加载中...',
+      icon: 'loading',
+      duration: 10000
+    })
     const teacher_id = wx.getStorageSync('teacher_id')
     const stuList = await dataRequire('stu', {
       teacher_id: teacher_id
-    })
-
+    }, 'stuList')
     this.setData({
       stuList: stuList,
       isOpenStuList: true
     })
+    wx.hideToast()
   }
 })

@@ -1,0 +1,3 @@
+<t-cell title="{{info.label}}">
+    <t-switch  bindchange="handleChange" value="{{defaultValue}}" defaultValue="{{false}}" slot="note" />
+</t-cell>

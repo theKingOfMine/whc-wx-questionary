@@ -31,6 +31,9 @@
         <!-- datetime年月日选择器 -->
         <DateTime wx:if="{{item.component == 'datetime' && !item.isHide}}" item="{{item}}" bind:return="updateInfo"></DateTime>
 
+        <!-- 开关组件 -->
+        <SmartSwitch wx:if="{{item.component == 'switch' && !item.isHide}}" item="{{item}}" bind:return="updateInfo"></SmartSwitch>
+
       </view>
       <view class="register-submit-box">
         <t-button bindtap="submit" shape='round' style="width:100%;" theme="primary" size="large">{{formInfo.submitTitle}}</t-button>

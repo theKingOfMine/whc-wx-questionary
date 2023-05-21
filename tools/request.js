@@ -1,4 +1,4 @@
-export const baseUrl = 'http://www.polyphony.com:39000/whc_EvaluationSheet/';
+export const baseUrl = 'http://127.0.0.1:39001/';
 export const req = async (params) => {
   const token = wx.getStorageSync('token')
   return new Promise((resolve, reject) => {
@@ -16,7 +16,24 @@ export const req = async (params) => {
       },
       url: baseUrl + 'whcTerminal.php',
       success: (res) => {
-        resolve(res);
+        if(res.statusCode == 200){
+          if(res.data.code == 440){
+            wx.showToast({
+              title: '您还未登录',
+              icon: 'error' 
+            })
+            wx.navigateTo({
+              url: '/pages/teacher/teacher'
+            })
+          }else{
+            resolve(res);
+          }
+        }else{
+          wx.navigateTo({
+            url: '/pages/teacher/teacher'
+          })
+        }
+        
       },
       fail: (err) => {
         reject(err);

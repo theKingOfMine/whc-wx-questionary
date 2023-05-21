@@ -22,7 +22,6 @@ Component({
   methods: {
     submit(){
       const form = this.data.formInfo.form
-      console.log(form);
       for(let i in form){
         if((form[i].value == null || undefined || '' )&& !form[i].disable){
           Message.error({
@@ -39,7 +38,7 @@ Component({
     // 实时更新表单数据
     updateInfo(e){
       this.data.formInfo.form[e.detail.key].value = e.detail.value
-      // console.log(this.data.formInfo.form[e.detail.key])
+      console.log(this.data.formInfo.form[e.detail.key])
     }
   }
 })

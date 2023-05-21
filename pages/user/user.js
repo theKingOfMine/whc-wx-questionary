@@ -4,15 +4,13 @@ const app = getApp()
 
 Page({
   data: {
-    image: {
-      logo: baseUrl + '/images/logo/whc.png',
-    },
     color: color,
-    teacher: {}
+    teacher: {},
+    baseUrl: baseUrl
   },
   async onShow(){
     const teacher_id = wx.getStorageSync('teacher_id')
-    const res = await dataRequire('teacher', {id: teacher_id}, 'name, position, class, grade, school, id, phone, register_time')
+    const res = await dataRequire('teacher', {id: teacher_id}, 'head_img, name, position, class, grade, school, id, phone, register_time')
     const teacher = res[0]
     this.setData({
       teacher: teacher
@@ -23,6 +21,8 @@ Page({
     let teacher = this.data.teacher;
     teacher_info.title.isHide = false;
     teacher_info.notes.isHide = false;
+    teacher_info.form.head_img.isHide = false;
+    teacher_info.form.head_img.disable = false;
     teacher_info.submitTitle = '信息更新';
     teacher_info.askfor = 'update'
     teacher_info.form.security_code.isHide = true

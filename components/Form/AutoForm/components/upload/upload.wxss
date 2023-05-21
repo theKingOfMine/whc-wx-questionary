@@ -1,5 +1,4 @@
 .image-upload-box{
-  /* border: 1px solid #000000; */
   width: 80px;
   display: flex;
   align-items: center;

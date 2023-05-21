@@ -13,7 +13,7 @@ Page({
     if (options.stu) {
       stu = JSON.parse(options.stu)
       form.form.stu_id.value = stu.id
-      form.form.teacher_id.value = 1
+      form.form.teacher_id.value = stu.teacher_id
     }
 
     this.setData({
@@ -21,7 +21,7 @@ Page({
       stu: options.stu ? JSON.parse(options.stu) : null
     })
   },
-  async submit(e) {
+  async submit(e) { //从autoform接回数据，进行上传
     wx.showNavigationBarLoading()
     const res = await formUpload('formUpload', e.detail);
     if (res.code == 200) {

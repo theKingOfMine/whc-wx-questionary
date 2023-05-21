@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "t-switch": "tdesign-miniprogram/switch/switch"
+  }
+}

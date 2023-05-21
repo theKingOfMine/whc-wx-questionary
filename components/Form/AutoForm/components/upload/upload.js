@@ -12,10 +12,11 @@ Component({
   observers: {
     'item': function(newVal, oldVal) {
       if(newVal && newVal.value){
+        console.log(newVal)
         const info = newVal
         const nameBox = info.value.split('/')
         const name = nameBox[nameBox.length -1]
-        console.log(name)
+
         let headImg = [
           {
             url: baseUrl + info.value,

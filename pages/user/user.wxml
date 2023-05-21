@@ -2,10 +2,11 @@
   <!-- 头像 -->
   <view class="user-info-box">
     <view class="user-image-box">
-      <view bindtap="teacherUpdate" class="head_image" style="background-image: url({{image.logo}});background-size: cover;">
+      <view bindtap="teacherUpdate" class="head_image">
+        <t-image src="{{baseUrl + teacher.head_img}}" mode="aspectFill" shape="circle" width="100" height="100"/>
       </view>
       <view class="user-name">
-        {{teacher.name}}-{{teacher.position}}
+        {{teacher.name}} 职位：{{teacher.position}}
       </view>
     </view>
   </view>
