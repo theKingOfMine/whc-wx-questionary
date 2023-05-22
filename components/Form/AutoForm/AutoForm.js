@@ -33,7 +33,20 @@ Component({
           return
         }
       }
-      this.triggerEvent('return', this.data.formInfo)
+      wx.showModal({
+        title: '请确认',
+        content: `是否提交${this.data.formInfo.title.value}的信息`,
+        complete: (res) => {
+          if (res.cancel) {
+            
+          }
+      
+          if (res.confirm) {
+            this.triggerEvent('return', this.data.formInfo)
+          }
+        }
+      })
+     
     },
     // 实时更新表单数据
     updateInfo(e){

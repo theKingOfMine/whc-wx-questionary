@@ -1,0 +1,16 @@
+<view class="report-box">
+    <t-cell image="{{baseUrl + item.head_img}}" wx:for="{{reportList}}" wx:key="index">
+    <view slot="title" style="font-size: 10pt; color: rgba(0,0,0,0.5);">
+      {{item.register_time}}
+    </view>
+     <view slot="left-icon" style="margin-right: 8px;"> 
+       {{index + 1}}. 
+     </view>
+      <view slot="description" style="color: rgba(0,0,0,0.9);">
+        {{item.stu_name}}  {{item.report_name}}表
+      </view>
+      <view slot="right-icon">
+          <t-icon bindtap="editReport" name="edit" data-report="{{item}}"></t-icon>
+      </view>
+    </t-cell>
+</view>

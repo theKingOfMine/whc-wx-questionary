@@ -6,14 +6,24 @@ Page({
   data: {
     color: color,
     teacher: {},
-    baseUrl: baseUrl
+    baseUrl: baseUrl,
+    isOpenExhibition: false //打开数据展示
   },
   async onShow(){
+    this.teacherInfo()
+  },
+  onHide(){
+    this.setData({
+      isOpenExhibition: false
+    })
+  },
+  async teacherInfo(){
     const teacher_id = wx.getStorageSync('teacher_id')
     const res = await dataRequire('teacher', {id: teacher_id}, 'head_img, name, position, class, grade, school, id, phone, register_time')
     const teacher = res[0]
     this.setData({
-      teacher: teacher
+      teacher: teacher,
+      isOpenExhibition: true
     })
   },
   // 教师信息更新

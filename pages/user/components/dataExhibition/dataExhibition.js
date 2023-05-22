@@ -24,6 +24,7 @@ Component({
       const teacher_id = wx.getStorageSync('teacher_id')
       const res = await dataRequire('teacherList', {id: teacher_id})
       let teacherReport = res[0]
+      console.log(teacherReport)
       teacherReport.totalReport = parseInt(teacherReport.conCount) + parseInt(teacherReport.snaCount) +  parseInt(teacherReport.sldCount)
       this.setData({
         teacherReport: res[0],
@@ -36,6 +37,7 @@ Component({
     // 计算填表进度排名
     async getTeacherRanking(){
       const res = await dataRequire('sortReportByTeacher')
+      console.log(res)
       res.sort(function(a, b){
         if(parseFloat(a.percentage) > parseFloat(b.percentage)){
           return -1

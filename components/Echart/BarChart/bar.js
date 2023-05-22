@@ -13,9 +13,11 @@ function initChart(canvas, width, height, dpr, chartData) {
     xAxis: {
       data: chartData.x // 使用传递的 x 数据
     },
-    yAxis: {},
+    yAxis: {
+      interval: 1
+    },
     series: [{
-      name: '销量',
+      name: '',
       type: 'bar',
       data: chartData.y // 使用传递的 y 数据
     }]

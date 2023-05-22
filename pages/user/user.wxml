@@ -16,7 +16,7 @@
       <view class="layer-1"></view>
       <view class="layer-2"></view>
       <view class="layer-3">
-        <DataExhibition></DataExhibition>
+        <DataExhibition wx:if="{{isOpenExhibition}}"></DataExhibition>
       </view>
     </view>
   </view>
