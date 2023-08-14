@@ -8,6 +8,7 @@ Page({
     stu: null
   },
   onLoad(options) {
+    console.log(options)
     let stu = {}
     let form = JSON.parse(options.form)
     if (options.stu) {
@@ -23,10 +24,10 @@ Page({
   },
   async submit(e) { //从autoform接回数据，进行上传
     wx.showNavigationBarLoading()
-    const res = await formUpload('formUpload', e.detail);
+    const res = await formUpload(e.detail);
     if (res.code == 200) {
       wx.showToast({
-        title: '表单上传成功',
+        title: e.detail.submitTitle + '成功',
         icon: 'success'
       })
       wx.hideNavigationBarLoading()

@@ -21,9 +21,9 @@ Component({
           icon: 'success',
           duration: 2000
         })
+  
         wx.setStorageSync('token', res.token)
         wx.setStorageSync('teacher_id', res.teacher_id)
-        wx.setStorageSync('phone', res.phone)
         wx.switchTab({
           url: '/pages/stu/stu',
         })

@@ -23,15 +23,18 @@ Component({
     submit(){
       const form = this.data.formInfo.form
       for(let i in form){
-        if((form[i].value == null || undefined || '' )&& !form[i].disable){
-          Message.error({
-            context: this,
-            offset: ['20rpx', '32rpx'],
-            duration: 2500,
-            content: form[i].label + ' 未填写',
-          });
-          return
+        if(form[i].isRequired){
+          if((form[i].value == null || undefined || '' ) && !form[i].disable){
+            Message.error({
+              context: this,
+              offset: ['20rpx', '32rpx'],
+              duration: 2500,
+              content: form[i].label + ' 未填写',
+            });
+            return
+          }
         }
+        
       }
       wx.showModal({
         title: '请确认',

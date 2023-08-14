@@ -1,7 +1,6 @@
-import {formattedDateTime} from "../normal"
+import {formattedDateTime} from "./utils"
 
 const teacher_id = wx.getStorageSync('teacher_id')
-
 
 const questionsBox = [
   "1. 在座位上扭动不停，课堂经常不能安坐在座位上，小动作多；",
@@ -36,10 +35,10 @@ const questionsBox = [
 
 
 const answerBox = [
-  { label: '无', value: '0' },
-  { label: '稍有', value: '1' },
-  { label: '很多', value: '2' },
-  { label: '相当多', value: '3' }
+  { label: '无', value: 0 },
+  { label: '稍有', value: 1 },
+  { label: '很多', value: 2 },
+  { label: '相当多', value: 3 }
 ]
 
 let questions = {}

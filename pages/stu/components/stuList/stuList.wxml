@@ -8,11 +8,11 @@
     <view slot="title" class="title-box"> {{item.name}} 
     <text style="color: rgba(0, 0, 0, 0.6); font-weight: 300;" >{{item.grade}} {{item.class}} {{item.school}} </text></view>
 
-    <view class="description" slot="description">
+    <view slot="description">
       <t-tag 
       class="report-item" 
       size="small" 
-      theme="{{item.conners_t == 0 ? 'default' : 'danger'}}" 
+      theme="{{item.conners_t_score ? 'success' : 'default'}}" 
       data-stu="{{item}}" bindtap="handleEvaluationSheets" 
       data-table="conners_t"
       >CONNERS/T</t-tag>
@@ -20,7 +20,7 @@
       <t-tag 
       class="report-item" 
       size="small" 
-      theme="{{item.snap_iv == 0 ? 'default' : 'danger'}}" 
+      theme="{{item.snap_iv_score ? 'success' : 'default'}}" 
       data-stu="{{item}}" bindtap="handleEvaluationSheets" 
       data-table="snap_iv"
       >SNAP-IV</t-tag>
@@ -28,14 +28,12 @@
       <t-tag 
       class="report-item" 
       size="small" 
-      theme="{{item.sld_prs_t == 0 ? 'default' : 'danger'}}" 
+      theme="{{item.sld_prs_t_score ? 'success' : 'default'}}" 
       data-stu="{{item}}" bindtap="handleEvaluationSheets" 
       data-table="sld_prs_t"
       >SLD-PRS-T</t-tag>
     
     </view>
-
- 
     <view class="stu-options" slot="right-icon">
       <t-icon name="edit" bindtap="handleEdit" data-stu="{{item}}" />
       <t-icon name="close" style="margin-left: 16px;" bindtap="handleDelete" data-stu="{{item}}" />

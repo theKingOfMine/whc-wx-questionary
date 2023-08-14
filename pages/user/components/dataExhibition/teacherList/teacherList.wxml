@@ -1,0 +1,19 @@
+<view class="report-box">
+  <view class="search-box">
+    <t-search model:value="{{value}}" placeholder="搜索教师信息" />
+  </view>
+  <t-cell bindtap="switchToStuList" data-teacher="{{item}}" image="{{baseUrl + item.head_img}}" wx:for="{{teacherList}}" wx:key="index">
+    <view slot="title" style="font-size: 10pt; color: rgba(0,0,0,0.5);">
+      {{item.register_time}}
+    </view>
+    <view slot="left-icon" style="margin-right: 8px;">
+      {{index + 1}}.
+    </view>
+    <view slot="description" style="color: rgba(0,0,0,0.9);">
+      {{item.teacher_name}} 学生: {{item.stu_count}}人 报告: {{item.total_report}}份
+    </view>
+    <!-- <view slot="right-icon">
+          <t-icon bindtap="editReport" name="edit" data-report="{{item}}"></t-icon>
+      </view> -->
+  </t-cell>
+</view>

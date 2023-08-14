@@ -1,14 +1,14 @@
 <!-- input组件 -->
-<view class="input-box">
+<view class="input-box" bindtap="handleClick">
   <t-input 
-  placeholder="请输入" 
+  placeholder="{{info.placeholder}}" 
   bind:change="handleInput" 
   data-key="{{info.name}}" 
-  maxcharacter="12"
-  status="success"
+  maxcharacter="24"
   value="{{info.value}}"
   type="{{info.keyboard}}"
-  disabled="{{info.disabled}}"
+  disabled="{{info.isReadonly}}"
+  type="{{info.type}}"
   >
 
     <view slot="label">
@@ -21,9 +21,10 @@
     </view>
 
     <!-- 右侧icon，判断数据是否合法 -->
-    <view slot="suffix-icon" wx:if="{{info.value}}" style="height: 100%; display: flex; align-items: center; justify-content: center; padding: 0 3px 0 0;">
-      <t-icon wx:if="{{info.icon}}" color="green" size="20" name="check-circle-filled" />
+    <view slot="suffix-icon" style="height: 100%; display: flex; align-items: center; justify-content: center; padding: 0 3px 0 0;">
+      <t-icon wx:if="{{!info.isReadonly && isAccess}}" color="green" size="20" name="check-circle-filled" />
+      <t-icon wx:if="{{info.isReadonly}}" size="20" name="lock-on" />
     </view>
-
+    
   </t-input>
 </view>

@@ -1,12 +1,15 @@
  import {
    dataRequire,
-   stu_info,
+   Student,
    formUpload,
    conners_t_info,
    snap_iv_info,
    sld_prs_t_info,
-   baseUrl
+   baseUrl,
+   updateInfo
  } from "../../../../tools/tools"
+
+
  Component({
    properties: {
      list: {
@@ -28,34 +31,47 @@
      baseUrl: baseUrl
    },
    methods: {
-     cellClick() {
-       this.triggerEvent('cellTap')
-     },
      // 编辑学员信息
      handleEdit(e) {
+       const student = new Student('update')
        let info = e.currentTarget.dataset.stu
-       let stu = stu_info
-       for (let i in stu.form) {
-         stu.form[i].value = info[i]
-       }
-       stu.askfor = 'update'
-       stu.submitTitle = '修改'
+       student.info = updateInfo(student.info, info)
        wx.navigateTo({
-         url: '/pages/form/form?form=' + JSON.stringify(stu)
+         url: '/pages/form/form?form=' + JSON.stringify(student.info)
        })
      },
      // 删除学员信息
-     async handleDelete(e) {
+     handleDelete(e) {
        let info = e.currentTarget.dataset.stu
-       let stu = stu_info
-       for (let i in stu.form) {
-         stu.form[i].value = info[i]
-       }
-       stu.askfor = 'delete'
-       const res = await formUpload('formUpload', stu);
-       if (res.code == 200) {
-         this.ready();
-       }
+       wx.showModal({
+         title: '请确定是否删除' + info.name + '的学生数据',
+         content: '注：数据删除后将不可恢复，请慎重选择！',
+         complete: async (res) => {
+           if (res.confirm) {
+             const res = await formUpload({
+               askfor: 'delete',
+               table: 'stu',
+               key: {
+                 name: 'stu_id',
+                 value: info.stu_id,
+                 type: 'int'
+               }
+             });
+             if (res.code == 200) {
+               wx.showToast({
+                 title: '学员删除成功',
+                 icon: 'success'
+               })
+               this.triggerEvent('refresh');
+             } else {
+              wx.showToast({
+                title: '故障，删除失败',
+                icon: 'error'
+              })
+             }
+           }
+         }
+       })
      },
      /**
       * 处理评估表单的函数

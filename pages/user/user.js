@@ -1,6 +1,5 @@
 // index.js
 import {color, baseUrl, dataRequire, teacher_info} from "../../tools/tools"
-const app = getApp()
 
 Page({
   data: {
@@ -11,8 +10,12 @@ Page({
   },
   async onShow(){
     this.teacherInfo()
+    this.setData({
+      isOpenExhibition: true
+    })
   },
   onHide(){
+    console.log('我被关闭了')
     this.setData({
       isOpenExhibition: false
     })
@@ -22,8 +25,7 @@ Page({
     const res = await dataRequire('teacher', {id: teacher_id}, 'head_img, name, position, class, grade, school, id, phone, register_time')
     const teacher = res[0]
     this.setData({
-      teacher: teacher,
-      isOpenExhibition: true
+      teacher: teacher
     })
   },
   // 教师信息更新

@@ -1,8 +1,5 @@
 // components/Form/AutoForm/components/input/input.js
 Component({
-  /**
-   * 组件的属性列表
-   */
   properties: {
     item: {
       type: Object,
@@ -19,7 +16,8 @@ Component({
     }
   },
   data: {
-    info: null
+    info: null,
+    isAccess: false
   },
   methods: {
     // 实时更新input组件数据
@@ -34,5 +32,14 @@ Component({
         value: e.detail.value
       })
     },
+    handleClick(){
+      let info = this.data.info
+      if(info.isReadonly){
+        wx.showToast({
+          title: info.label + '不可更改',
+          icon: 'none'
+        })
+      }
+    }
   }
 })

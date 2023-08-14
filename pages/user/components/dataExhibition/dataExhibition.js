@@ -1,7 +1,8 @@
 import {dataRequire} from "../../../../tools/tools"
-
+const teacher_id = wx.getStorageSync('teacher_id')
 Component({
   data: {
+    teacher_id: teacher_id,
     teacherReport: {},
     cahrtData: {
       x: ['conners_t', 'sld_prs_t', 'snap_iv'],
@@ -10,7 +11,7 @@ Component({
     teacherRankingList: [],
     rank: 0, //排名
     rate: 0,
-    isOpenBarchart: true
+    tabsValue: 0
   },
   lifetimes: {
     async attached(){
@@ -57,20 +58,20 @@ Component({
           break
         }
       }
-   
-      
-      
     },
     onTabsChange(e){
-      if(e.detail.value == 1){
+      if(e.detail.value == 0){
         this.setData({
-          isOpenBarchart: false
+          tabsValue: 0
         })
-      }else {
+      }else if(e.detail.value == 1){
         this.setData({
-          isOpenBarchart: true
+          tabsValue: 1
         })
-      
+      }else if(e.detail.value == 2){
+        this.setData({
+          tabsValue: 2
+        })
       }
     }
   }

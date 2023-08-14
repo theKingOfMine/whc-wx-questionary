@@ -1,17 +1,15 @@
 import {
-  color,
-  stu_info,
-  dataRequire
+  dataRequire,
+  Student
 } from "../../tools/tools"
-
+const student = new Student('insert')
 Page({
   data: {
-    color: color,
     isOpenStuList: false,
     stuList: []
   },
-  onShow(options) {
-    this.getStuList()
+  onShow() {
+    // this.getStuList();
   },
   onHide() {
     this.setData({
@@ -19,25 +17,19 @@ Page({
     })
   },
   addNewStu() {
-    stu_info.askfor = 'insert'
     wx.navigateTo({
-      url: '/pages/form/form?form=' + JSON.stringify(stu_info),
+      url: '/pages/form/form?form=' + JSON.stringify(student.info),
     })
   },
   async getStuList() {
-    wx.showToast({
-      title: '学生数据加载中...',
-      icon: 'loading',
-      duration: 10000
-    })
     const teacher_id = wx.getStorageSync('teacher_id')
-    const stuList = await dataRequire('stu', {
+    const res = await dataRequire('stu', '', {
       teacher_id: teacher_id
-    }, 'stuList')
+    })
+    const stuList = res.code == 200 ? res.data : []
     this.setData({
       stuList: stuList,
       isOpenStuList: true
     })
-    wx.hideToast()
   }
 })

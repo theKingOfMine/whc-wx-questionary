@@ -1,4 +1,4 @@
-import {formattedDateTime} from "../normal"
+import {formattedDateTime} from "./utils"
 const teacher_id = wx.getStorageSync('teacher_id')
 
 export const SLD_PRS_T = [

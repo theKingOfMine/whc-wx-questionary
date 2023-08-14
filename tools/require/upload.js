@@ -3,7 +3,7 @@ export const uploadImg = (url) => {
   console.log('执行uploadHeadImg函数：进行图片上传')
   return new Promise(async (resolve, reject) => {
     wx.uploadFile({
-      url: 'http://127.0.0.1:39001/fileUpload.php', // 服务器页面地址
+      url: 'https://www.rongheeducation.com/mck_school/fileUpload.php', // 服务器页面地址
       filePath: url, // 所携带的图片临时地址
       name: "headImg", // 服务器接受file时的携带参数的名字
       formData: { // 额外携带的post请求
@@ -14,11 +14,9 @@ export const uploadImg = (url) => {
       },
       success: (e) => {
         if (e.statusCode == 200) {
-          console.log('访问服务端成功图片上传页面成功')
           const res = JSON.parse(e.data)
           if (res.code == 200) {
-            console.log(res.msg)
-            const imgUrl = res.head_img
+            const imgUrl = res.response.url;
             resolve(imgUrl)
           } else {
             resolve(res.msg)

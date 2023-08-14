@@ -1,154 +1,270 @@
-import {formattedDateTime} from "../normal"
+import { formattedDateTime, school } from "./utils"
 
-const schoolBox = [  "北京市中山实验学校（小学部）",  "北京市昌平区城关小学",  "北京市昌平区七里渠中心小学",  "北京市昌平区平西府中心小学",  "北京市育荣实验学校（小学部）",  "北京昌平第二实验小学（昌平二小）",  "北京市昌平区霍营中心小学",  "北京市昌平区北七家中心小学",  "北京市昌平区小汤山中心小学",  "北京市城北中心六街小学",  "北京私立汇佳学校（小学部）",  "北京市昌平区城北中心三街小学",  "北京市昌平区昌盛园小学",  "北京市昌平区实验小学",  "北京市昌平区长陵中心小学",  "北京市昌平区天通苑小学",  "北京市昌平区回龙观第二小学（回龙观二小）",  "北京市昌平区南邵中心小学",  "北京市昌平区马池口镇中心小学",  "北京市昌平区回龙观中心小学"]
 
-// 岗位选项
-const positionBox = ['班主任', '教师', '校长', '其它']
-const gradeBox = ['幼儿园', '学前班', '一年级', '二年级', '三年级', '四年级', '五年级',  '六年级' ]
-const classBox = ["一班", "二班", "三班", "四班", "五班", "六班", "七班", "八班", "九班", "十班", "十一班", "十二班", "十三班", "十四班", "十五班", "十六班"]
+// -- form --
+// label: 组件标签名称
+// name: 字段名称
+// type: 数据类型
+// value: 数据值
+// component: 用的组件
+// selectList: 如果组件是select, 要展示的数组数据：school.positionBox.map((item) => ({ label: item, value: item }))
+// placeholder: 提示文字
+// isHide: 是否隐藏当前字段的填写。默认数据依然会上传到数据库
+// disable: 当前字段是否可以插入数据库 -- 是否要上传到数据库
+// isReadonly: 是否为只读，不需更改
+// isRequired: 是否为必填，
+// keyboard: 需要的键盘类型
+// length: 数据最长长度
+// icon: 图标
 
-export const schoolOptions = schoolBox.map((item) => ({
-  label: item,
-  value: item
-}));
 
-const positionOptions = positionBox.map((item) => ({
-  label: item,
-  value: item
-}));
 
-export const gradeOptions = gradeBox.map((item) => ({
-  label: item,
-  value: item
-}));
-
-export const classOptions = classBox.map((item) => ({
-  label: item,
-  value: item
-}));
-
-// 教师信息表
-export const teacher_info = {
-  title: {
-    value: '教师信息详情',
-    isHide: true
-  },
-  table: 'teacher',
-  database: 'mck_school',
-  key: 'id',
-  notes: {
-    value: '信息更新页面',
-    isHide: true
-  },
-  submitTitle: '注册',
-  form: {
-    id: {
+// 根据目的处理数据，askfor == register || insert || update
+const handlerForm = (askfor) => {
+  return {
+    teacher_id: {
+      label: '教师ID',
+      name: 'teacher_id',
+      type: 'int',
       value: null,
       component: 'input',
-      name: 'id',
-      label: '教师ID',
-      placeholder: '',
-      type: 'int',
-      isHide: true,
-      disable: true,
+      placeholder: '教师登记唯一编码',
+      isHide: askfor == 'insert' || askfor == 'register' ? true : false, // 如果是登记或插入则隐藏，如果是更新则显示
+      disable: true, // 教师ID不可修改
+      isReadonly: true,
+      isRequired: false,
+      keyboard: 'text',
+      length: null,
+      icon: 'barcode'
     },
     register_time: {
-      value: (formattedDateTime)(),
-      component: 'date-picker',
-      name: 'register_time',
       label: '注册时间',
-      placeholder: '',
+      name: 'register_time',
       type: 'string',
-      isHide: true
+      value: (formattedDateTime)(),
+      component: 'date-time-picker',
+      placeholder: null,
+      isHide: false, 
+      disable: false,
+      isReadonly: false,
+      isRequired: true,
+      keyboard: 'text',
+      length: null,
+      icon: 'calendar'
     },
     head_img: {
-      value: null,
       label: '个人照片',
       name: 'head_img',
-      component: 'upload',
-      placeholder: '请上传清晰的面部形象照片',
       type: 'string',
-      isHide: true,
-      disable: true
+      value: null,
+      component: 'upload_img',
+      placeholder: '请上传清晰的面部形象照片',
+      isHide: false, 
+      disable: false,
+      isReadonly: false,
+      isRequired: true,
+      keyboard: 'text',
+      length: null,
+      icon: 'browse'
     },
     name: {
-      value: null, // 值
-      component: 'input', //所需组件
-      name: 'name', // 属性名
-      label: '教师姓名',  // label
-      placeholder: '请输入',  // 占位文字
-      type: 'string', // 需要的值类型
-      icon: 'user-circle',  // 图标
-      isHide: false, //是否隐藏
-      isRequired: true, // 必填项
-      disable: false, //是否进入sql语句
-      keyboard: 'text', // 键盘类型
-      length: 12
+      label: '教师姓名',
+      name: 'name',
+      type: 'string',
+      value: null,
+      component: 'input',
+      placeholder: '请输入姓名',
+      isHide: false,
+      disable: false,
+      isReadonly: false,
+      isRequired: true,
+      keyboard: 'text',
+      length: 30,
+      icon: 'user-circle',
     },
     position: {
-      value: null,
-      component: 'picker',
+      label: '当前职位',
       name: 'position',
-      label: '当前岗位',
-      placeholder: '',
+      value: null,
       type: 'string',
-      selectList: positionOptions,
+      component: 'select',
+      placeholder: '',
+      selectList: school.positionBox.map((item) => ({ label: item, value: item })),
+      isHide: false,
+      disable: false,
+      isReadonly: false,
+      isRequired: false,
+      keyboard: 'text',
+      length: null,
       icon: 'flag',
-      isRequired: true
     },
     school: {
-      value: null,
-      component: 'picker',
-      name: 'school',
       label: '所在学校',
-      placeholder: '',
+      name: 'school',
+      value: null,
       type: 'string',
-      selectList: schoolOptions,
+      component: 'select',
+      placeholder: '',
+      selectList: school.nameBox.map((item) => ({ label: item, value: item })),
+      isHide: false,
+      disable: false,
+      isReadonly: false,
+      isRequired: true,
+      keyboard: 'text',
+      length: null,
       icon: 'internet',
-      isRequired: true
     },
     grade: {
-      value: null,
-      component: 'picker',
-      name: 'grade',
       label: '年级',
-      placeholder: '',
+      name: 'grade',
+      value: null,
       type: 'string',
-      selectList: gradeOptions,
+      component: 'select',
+      placeholder: '',
+      selectList: school.gradeBox.map((item) => ({ label: item, value: item })),
+      isHide: false,
+      disable: false,
+      isReadonly: false,
+      isRequired: true,
+      keyboard: 'text',
+      length: null,
       icon: 'layers'
     },
     class: {
-      value: null,
-      component: 'picker',
-      name: 'class',
       label: '所在班级',
-      placeholder: '',
+      name: 'class',
+      value: null,
       type: 'string',
-      selectList: classOptions,
+      component: 'select',
+      placeholder: '',
+      selectList: school.classBox.map((item) => ({ label: item, value: item })),
+      isHide: false,
+      disable: false,
+      isReadonly: false,
+      isRequired: true,
+      keyboard: 'text',
+      length: null,
       icon: 'fork'
     },
     phone: {
-      value: null,
-      component: 'input',
-      name: 'phone',
       label: '手机号码',
-      placeholder: '请输入',
-      type: 'string',
-      icon: 'mobile',
-      isRequired: true,
-      keyboard: "number",
-      length: 12
-    },
-    security_code: {
+      name: 'phone',
       value: null,
-      component: 'security_code',
-      name: 'security_code',
-      label: '验证码',
-      placeholder: '',
       type: 'string',
-      disable: true,
-      icon: 'error-circle',
-      isRequired: true
+      component: 'input',
+      placeholder: '请输入',
+      isHide: false,
+      disable: false,
+      isReadonly: false,
+      isRequired: true,
+      keyboard: 'number',
+      length: 11,
+      icon: 'mobile',
     },
+    wx_openid: {
+      label: '微信唯一ID',
+      name: 'wx_openid',
+      value: wx.getStorageSync('openid'),
+      type: 'string',
+      component: 'input',
+      placeholder: '请输入',
+      isHide: true,
+      disable: false,
+      isReadonly: true,
+      isRequired: false,
+      keyboard: null,
+      length: null,
+      icon: null,
+    },
+    conners_t_count: {
+      label: 'conners',
+      name: 'conners_t_count',
+      value: null,
+      type: 'int',
+      component: 'input',
+      placeholder: '',
+      isHide: askfor == 'register' || askfor == 'insert' ? true : false,
+      disable: true,
+      isReadonly: true,
+      isRequired: false,
+      keyboard: 'number',
+      length: null,
+      icon: '',
+    },
+    sld_prs_t_count: {
+      label: 'sld_prs',
+      name: 'sld_prs_t_count',
+      value: null,
+      type: 'int',
+      component: 'input',
+      placeholder: '',
+      isHide: askfor == 'register' || askfor == 'insert' ? true : false,
+      disable: true,
+      isReadonly: true,
+      isRequired: false,
+      keyboard: 'number',
+      length: null,
+      icon: '',
+    },
+    snap_iv_count: {
+      label: 'snap_iv',
+      name: 'snap_iv_count',
+      value: null,
+      type: 'int',
+      component: 'input',
+      placeholder: '',
+      isHide: askfor == 'register' || askfor == 'insert' ? true : false,
+      disable: true,
+      isReadonly: true,
+      isRequired: false,
+      keyboard: 'number',
+      length: null,
+      icon: '',
+    },
+    stu_count: {
+      label: '学生总数',
+      name: 'stu_count',
+      value: null,
+      type: 'int',
+      component: 'input',
+      placeholder: '',
+      isHide: askfor == 'register' || askfor == 'insert' ? true : false,
+      disable: true,
+      isReadonly: true,
+      isRequired: false,
+      keyboard: 'number',
+      length: null,
+      icon: '',
+    }
+  }
+}
+
+
+// 教师信息表
+export class Teacher {
+  constructor(askfor){
+    this.info = {
+      title: {
+        value: '教师信息详情',
+        isHide: askfor == 'register' || askfor == 'insert' ? true : false
+      },
+      table: 'teacher',
+      database: 'mck_school',
+      key: 'teacher_id',
+      askfor: askfor,
+      notes: {
+        value: '教师信息详情表',
+        isHide: true
+      },
+      search: {
+        isHide: true,
+        table: 'teacher',
+        placeholder: '请输入教师姓名',
+        label: '搜索教师',
+        key: ['register_time', 'name']
+      },
+      submitTitle: askfor == 'insert' || askfor == 'register' ? '登记教师信息' : '更新教师信息',
+      form: (handlerForm(askfor))
+    }
   }
 }

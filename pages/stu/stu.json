@@ -1,7 +1,6 @@
 {
   "usingComponents": {
     "StuList": "./components/stuList/stuList",
-    "AutoForm": "../../components/Form/AutoForm/AutoForm",
     "t-fab": "tdesign-miniprogram/fab/fab"
   },
   "navigationBarTitleText": "学生列表",

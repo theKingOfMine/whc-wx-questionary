@@ -1,33 +1,36 @@
 import {
-  teacher_info,
-  formUpload
+  Teacher,
+  register
 } from "../../../tools/tools"
+
+const teacher = new Teacher('register')
+
 Component({
   data: {
     formInfo: null,
   },
   lifetimes: {
     attached() {
-      
       this.setData({
-        formInfo: teacher_info
+        formInfo: teacher.info
       })
     }
   },
   methods: {
     async registerSubmit(e) {
+      console.log(e)
       wx.showNavigationBarLoading()
       let info = e.detail;
-      info.askfor = 'insert';
-      const res = await formUpload('register', e.detail);
-      if(res.code == 200){
-        wx.setStorageSync('token', res.token);
-        wx.setStorageSync('teacher_id', res.teacher_id);
-        wx.hideNavigationBarLoading()
-        wx.switchTab({
-          url: '/pages/stu/stu',
-        })
-      }
+      const res = await register(info);
+      console.log(res)
+      // if(res.code == 200){
+      //   wx.setStorageSync('token', res.token);
+      //   wx.setStorageSync('teacher_id', res.teacher_id);
+      //   wx.hideNavigationBarLoading()
+      //   wx.switchTab({
+      //     url: '/pages/stu/stu',
+      //   })
+      // }
     }
   }
 })
