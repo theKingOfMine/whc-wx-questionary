@@ -18,19 +18,49 @@ Component({
   },
   methods: {
     async registerSubmit(e) {
-      console.log(e)
-      wx.showNavigationBarLoading()
+      
+      wx.showLoading({
+        title: '正在进行信息登记，请耐心等待..',
+      })
       let info = e.detail;
-      const res = await register(info);
-      console.log(res)
-      // if(res.code == 200){
-      //   wx.setStorageSync('token', res.token);
-      //   wx.setStorageSync('teacher_id', res.teacher_id);
-      //   wx.hideNavigationBarLoading()
-      //   wx.switchTab({
-      //     url: '/pages/stu/stu',
-      //   })
-      // }
+      wx.request({
+        url: 'https://www.rongheeducation.com/mck_school/register.php',
+        data: {
+          formData: JSON.stringify(info)
+        },
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'Accept': 'application/json'
+        },
+        success(result){
+          console.log(res)
+          wx.hideLoading()
+          const res = result.data;
+          if(res.code == 200){
+            wx.setStorageSync('token', res.token);
+            wx.setStorageSync('info', res.info);
+
+            wx.showToast({
+              title: '注册成功，' + res.info.name + '老师，欢迎您',
+              icon: 'none'
+            })
+
+           setTimeout(function(){
+            wx.switchTab({
+              url: '/pages/stu/stu',
+            })
+           }, 2000)
+          }else{
+            wx.showToast({
+              title: '网络故障，请稍后重试..',
+              icon: 'none'
+            })
+          }
+        }
+
+      })
+  
     }
   }
 })

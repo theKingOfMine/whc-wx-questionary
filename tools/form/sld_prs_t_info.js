@@ -1,5 +1,4 @@
 import {formattedDateTime} from "./utils"
-const teacher_id = wx.getStorageSync('teacher_id')
 
 export const SLD_PRS_T = [
   {
@@ -317,91 +316,105 @@ for(let i in SLD_PRS_T){
   for(let j of SLD_PRS_T[i].form){
     count = count + 1
     questions['question' + count ] = {
+      label: j.label,
+      name: 'question' + count,
+      type: 'int',
       value: null,
       component: 'radio-lot',
-      name: 'question' + count,
-      label: j.label,
       placeholder: '请选择',
-      type: 'int',
-      isHide: false,
-      isRequired: true,
+      selectList: j.selectList.map((item, index) => ({ label: item, value: index + 1 + '' })),
+      isHide: false, 
       disable: false,
-      selectList: j.selectList.map((item, index) => ({
-        label: item,
-        value: index + 1 + ''
-      }))
+      isReadonly: false,
+      isRequired: true,
+      keyboard: null,
+      length: null,
     }
   }
 }
 
 
-export const sld_prs_t_info = {
-  title: {
-    value: '[DSM-5/SLD/PRS/T]学龄儿童学习能力持续性发展特质 教育实践综合评估量表（教师问卷版）',
-    isHide: false
-  },
-  table: 'sld_prs_t',
-  database: 'mck_school',
-  key: 'id',
-  notes: {
-    value: '评估提示：填写此表时请根据儿童过去 12 个月的行为举止认真/客观地填写此表！ 本报告为教育实践评估，最终评价需结合医疗诊断评估报告综合评定。\n \n 问题1~4，听觉的理解和记忆 Understanding and memory\n \n 问题5~9，会话用语 Conversational competence \n \n 问题10~13，时间空间知觉 Temporal and spatial perception \n \n 问题14~16，运动能力 Sports development ability \n \n 问题17~24，社会行为 Social behavior',
-    isHide: false
-  },
-  submitTitle: '提交报告',
-  form: {
-    id: {
-      value: null,
-      component: 'input',
-      name: 'id',
-      label: 'ID',
-      placeholder: '请输入ID',
-      type: 'int',
-      isHide: true,
-      isRequired: true,
-      disable: true,
-      keyboard: 'number',
-      length: 9
+const sld_prs_t_info = (askfor) => {
+  const teacher_id = JSON.parse(wx.getStorageSync('info')).teacher_id;
+  return  {
+    title: {
+      value: '[DSM-5/SLD/PRS/T]学龄儿童学习能力持续性发展特质 教育实践综合评估量表（教师问卷版）',
+      isHide: false
     },
-    stu_id: {
-      value: null,
-      component: 'input',
-      name: 'stu_id',
-      label: '学生ID',
-      placeholder: '请输入学生ID',
-      type: 'int',
-      isHide: true,
-      isRequired: true,
-      disable: false,
-      keyboard: 'number',
-      length: 9
+    table: 'sld_prs_t',
+    database: 'mck_school',
+    key: 'sld_prs_t_id',
+    askfor: askfor,
+    notes: {
+      value: '评估提示：填写此表时请根据儿童过去 12 个月的行为举止认真/客观地填写此表！ 本报告为教育实践评估，最终评价需结合医疗诊断评估报告综合评定。\n \n 问题1~4，听觉的理解和记忆 Understanding and memory\n \n 问题5~9，会话用语 Conversational competence \n \n 问题10~13，时间空间知觉 Temporal and spatial perception \n \n 问题14~16，运动能力 Sports development ability \n \n 问题17~24，社会行为 Social behavior',
+      isHide: false
     },
-    teacher_id: {
-      value: teacher_id,
-      component: 'input',
-      name: 'teacher_id',
-      label: '教师ID',
-      placeholder: '请输入教师ID',
-      type: 'int',
-      isHide: true,
-      isRequired: true,
-      disable: false,
-      keyboard: 'number',
-      length: 9
-    },
-    register_time: {
-      value: (formattedDateTime)(),
-      component: 'datetime',
-      name: 'register_time',
-      label: '注册时间',
-      placeholder: '请输入注册时间',
-      type: 'string',
-      isHide: true,
-      isRequired: true,
-      disable: false,
-      keyboard: 'text',
-      length: 20
-    },
-    ...questions
+    submitTitle: askfor == 'insert' ? '提交SLD_PRS_T报告' : '更改SLD_PRS_T报告',
+    form: {
+      sld_prs_t_id:  {
+        label: '报告ID',
+        name: 'sld_prs_t_id',
+        type: 'int',
+        value: null,
+        component: 'input',
+        placeholder: '请输入ID',
+        isHide: askfor == 'insert' ? true : false, // 如果是登记则隐藏，如果是更新则显示
+        disable: true,
+        isReadonly: true,
+        isRequired: false,
+        keyboard: 'text',
+        length: null,
+      },
+      stu_id: {
+        label: '学生ID',
+        name: 'stu_id',
+        type: 'int',
+        value: null,
+        component: 'input',
+        placeholder: '',
+        isHide: false,
+        disable: false,
+        isReadonly: true,
+        isRequired: true,
+        keyboard: 'text',
+        length: null,
+      },
+      teacher_id: {
+        label: '教师ID',
+        name: 'teacher_id',
+        type: 'int',
+        value: teacher_id,
+        component: 'input',
+        placeholder: '教师登记唯一编码',
+        isHide: false, 
+        disable: false, 
+        isReadonly: true,
+        isRequired: true,
+        keyboard: 'text',
+        length: null,
+      },
+      register_time: {
+        label: '注册时间',
+        name: 'register_time',
+        type: 'string',
+        value: (formattedDateTime)(),
+        component: 'datetime',
+        placeholder: null,
+        isHide: false, 
+        disable: false,
+        isReadonly: false,
+        isRequired: true,
+        keyboard: 'text',
+        length: null,
+      },
+      ...questions
+    }
+  
   }
+}
 
+export class sld_prs {
+  constructor(askfor){
+    this.info = (sld_prs_t_info(askfor))
+  }
 }

@@ -3,16 +3,16 @@
   <t-image slot="right-icon" src="{{baseUrl + info.head_img}}" mode="aspectFill" width="100" height="100" aria-label="一个放置在墙角的黄色行李箱" />
 
   <view slot="title" class="title-box">
-    <view>
+    <view style="font-size: large;">
       {{info.name}}
     </view>
     <view style="color: rgba(0, 0, 0, 0.6); font-weight: 300;">{{info.grade}} {{info.class}} {{info.school}} </view>
   </view>
 
-  <view class="description" slot="description" bindtap="cellClick">
-    <t-tag class="report-item" size="small" theme="{{info.conners_t != '0' ? 'danger' : 'default'}}" data-stu="{{item}}">CONNERS/T</t-tag>
-    <t-tag class="report-item" size="small" theme="{{info.snap_iv != '0' ? 'danger' : 'default'}}">SNAP-IV</t-tag>
-    <t-tag class="report-item" size="small" theme="{{info.sld_prs_t != '0' ? 'danger' : 'default'}}">SLD-PRS-T</t-tag>
+  <view class="description" slot="description">
+    <t-tag class="report-item" size="small" theme="{{info.conners_t_score ? 'success' : 'default'}}" data-stu="{{item}}">CONNERS/T</t-tag>
+    <t-tag class="report-item" size="small" theme="{{info.snap_iv_score ? 'success' : 'default'}}">SNAP-IV</t-tag>
+    <t-tag class="report-item" size="small" theme="{{info.sld_prs_t_score ? 'success' : 'default'}}">SLD-PRS-T</t-tag>
 
   </view>
 </t-cell>

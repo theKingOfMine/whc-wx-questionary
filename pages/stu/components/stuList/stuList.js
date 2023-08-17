@@ -1,12 +1,12 @@
  import {
    dataRequire,
    Student,
-   formUpload,
-   conners_t_info,
-   snap_iv_info,
-   sld_prs_t_info,
+   conners,
+   snap_iv,
+   sld_prs,
    baseUrl,
-   updateInfo
+   updateInfo,
+   deleteStu
  } from "../../../../tools/tools"
 
 
@@ -41,69 +41,40 @@
        })
      },
      // 删除学员信息
-     handleDelete(e) {
+     async handleDelete(e) {
        let info = e.currentTarget.dataset.stu
-       wx.showModal({
-         title: '请确定是否删除' + info.name + '的学生数据',
-         content: '注：数据删除后将不可恢复，请慎重选择！',
-         complete: async (res) => {
-           if (res.confirm) {
-             const res = await formUpload({
-               askfor: 'delete',
-               table: 'stu',
-               key: {
-                 name: 'stu_id',
-                 value: info.stu_id,
-                 type: 'int'
-               }
-             });
-             if (res.code == 200) {
-               wx.showToast({
-                 title: '学员删除成功',
-                 icon: 'success'
-               })
-               this.triggerEvent('refresh');
-             } else {
-              wx.showToast({
-                title: '故障，删除失败',
-                icon: 'error'
-              })
-             }
-           }
-         }
-       })
-     },
-     /**
-      * 处理评估表单的函数
-      * @param {Object} e - 事件对象
-      */
-     async handleEvaluationSheets(e) {
-       let table = e.currentTarget.dataset.table; // 获取数据表名
-       let forminfo = {}; // 表单信息对象
-
-       // 根据数据表名选择对应的表单信息
-       if (table == 'conners_t') {
-         forminfo = conners_t_info;
-       } else if (table == 'snap_iv') {
-         forminfo = snap_iv_info;
-       } else if (table == 'sld_prs_t') {
-         forminfo = sld_prs_t_info;
+       const res = await deleteStu(info)
+       if(res.code == 200){
+        this.triggerEvent('refresh');
        }
+       
+     },
+     // 调查报告填写函数
+     async handleEvaluationSheets(e) {
+      // 接收传过来的值，1，报告表名也就是数据表名。2，学员详细信息
+       const table = e.currentTarget.dataset.table; // 获取数据表名
+       const stu = e.currentTarget.dataset.stu;
+       
+       // 根据数据表名选择对应的表单信息
+       if (stu[table + '_score']) { // 如果报告已经填写
+        let forminfo = {}; // 表单信息对象
+         console.log('报告已填写')
+         if (table == 'conners_t') {
+           forminfo = new conners('update').info;
+         } else if (table == 'snap_iv') {
+           forminfo = new snap_iv('update').info;
+         } else if (table == 'sld_prs_t') {
+           forminfo = new sld_prs('update').info;
+         }
 
-       let stu = e.currentTarget.dataset.stu; // 获取学生信息
-       forminfo.form.stu_id.value = stu.id; // 设置表单的学生 ID
-
-       if (stu[table] != 0) {
          // 学生已有表单数据
-         const res = await dataRequire(table, {
-           stu_id: stu.id
+         const res = await dataRequire(table, '', {
+           stu_id: stu.stu_id
          }); // 请求表单数据
-         console.log(res);
-         let info = res[0]; // 获取第一条数据（假设只有一条）
-         forminfo.askfor = 'update'; // 设置表单操作类型为更新
-         forminfo.submitTitle = '修改报告'; // 设置提交按钮文本
 
-         // 填充表单数据
+         let info = res.data[0]; // 获取第一条数据（假设只有一条）
+
+         //  填充表单数据
          for (let i in info) {
            if (forminfo.form[i]) {
              forminfo.form[i].value = info[i];
@@ -113,18 +84,23 @@
          wx.navigateTo({
            url: '/pages/form/form?form=' + JSON.stringify(forminfo) + '&stu=' + JSON.stringify(stu),
          });
-       } else {
-         // 学生没有表单数据
-         forminfo.askfor = 'insert'; // 设置表单操作类型为插入
-         forminfo.submitTitle = '提交报告'; // 设置提交按钮文本
+      
+       } else { // 如果报告未填写
 
-         // 清空表单数据
-         for (let i in forminfo.form) {
-           if (forminfo.form[i].name.indexOf('question') !== -1) {
-             forminfo.form[i].value = null;
-           }
+        let forminfo = {}; // 表单信息对象
+         console.log('报告未填写')
+         if (table == 'conners_t') {
+           forminfo = new conners('insert').info;
+         } else if (table == 'snap_iv') {
+           forminfo = new snap_iv('insert').info;
+         } else if (table == 'sld_prs_t') {
+           forminfo = new sld_prs('insert').info;
          }
+         // 加入教师信息和学生信息
+         forminfo.form.stu_id.value = stu.stu_id
+         forminfo.form.teacher_id.value = stu.teacher_id
 
+         // 跳转到表单页面
          wx.navigateTo({
            url: '/pages/form/form?form=' + JSON.stringify(forminfo) + '&stu=' + JSON.stringify(stu),
          });

@@ -1,6 +1,6 @@
 <t-cell title="{{item.label}}"  external-classes="{{['t-class-note']}}" description="{{item.placeholder}}">
   <view slot="note" class="image-upload-box">
-    <t-upload mediaType="{{['image']}}" max="{{1}}" files="{{headImg}}" bind:add="handleAdd" bind:remove="handleRemove">
+    <t-upload mediaType="{{['image']}}" max="{{1}}" files="{{headImg}}" bind:add='handleAdd' bind:remove="handleRemove" bindtap="handleClick">
     </t-upload>
   </view>
 </t-cell>

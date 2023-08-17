@@ -1,3 +1,5 @@
+import {formUpload} from "../tools"
+
 export const school = {
   nameBox: [
     '【天通苑学区】天通苑学校',
@@ -129,10 +131,51 @@ export const addNewInfo = (info) => {
 // 更新信息的是后预处理表单对象
 export const updateInfo = (info, newInfo)=> {
   info.askfor = 'update'
-  info.submitTitle = '更新'
   for (let key in info.form) {
       info.form[key].value = newInfo[key] || null;
   }
   return info
 }
+// 删除报告
+export const deleteReport = (info)=>{
+  return new Promise((resolve, reject) => {
+    wx.showModal({
+      title: '请确认是否删除学生' + info.name + '的' + info.source_table + '报告数据',
+      content: '注：数据删除后将不可恢复，请慎重选择！',
+      complete: async (res) => {
+        if (res.confirm) {
+          const res = await formUpload({
+            askfor: 'delete',
+            table: info.source_table,
+            key: {
+              name: info.source_table + '_id',
+              value: info.id,
+              type: 'int'
+            }
+          });
 
+          console.log(res)
+
+          if (res.code == 200) {
+            wx.showToast({
+              title: '报告已删除',
+              icon: 'success'
+            })
+            
+          } else {
+            wx.showToast({
+              title: '故障，删除失败',
+              icon: 'error'
+            })
+          }
+          resolve({code: res.code})
+        }else{
+          resolve({code: 400}) 
+        }
+      }
+    })
+
+
+
+  })
+}

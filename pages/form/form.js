@@ -8,15 +8,10 @@ Page({
     stu: null
   },
   onLoad(options) {
-    console.log(options)
-    let stu = {}
-    let form = JSON.parse(options.form)
-    if (options.stu) {
-      stu = JSON.parse(options.stu)
-      form.form.stu_id.value = stu.id
-      form.form.teacher_id.value = stu.teacher_id
-    }
+    // 授权
+    // this.handleLimit();
 
+    let form = JSON.parse(options.form)
     this.setData({
       formData: form,
       stu: options.stu ? JSON.parse(options.stu) : null
@@ -48,5 +43,49 @@ Page({
         icon: 'error'
       })
     }
+  },
+  handleLimit(){
+    console.log('到这里啦')
+    const that = this
+    wx.getSetting({
+      success: res => {
+        console.log('这是啥 ', res)
+        if (res.authSetting['scope.camera']) {
+          // 用户已经授权
+          console.log('摄像头可用')
+          wx.chooseMedia({
+            count: 9,
+            mediaType: ['image','video'],
+            sourceType: ['album', 'camera'],
+            maxDuration: 30,
+            camera: 'back',
+            success(res) {
+              console.log(res.tempFiles.tempFilePath)
+              console.log(res.tempFiles.size)
+            }
+          })
+        } else {
+          // 用户还没有授权，向用户发起授权请求
+          wx.authorize({
+            scope: 'scope.camera',
+            success(e) { // 用户同意授权
+              
+            },
+            fail() { // 用户不同意授权
+              wx.openSetting({
+                success(e){
+                  console.log(e)
+                }
+              })
+            }
+          })
+        }
+      },
+      fail: res => {
+        console.log('获取用户授权信息失败')
+      }
+    })
+
+
   }
 })

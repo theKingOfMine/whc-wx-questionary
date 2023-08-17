@@ -1,5 +1,0 @@
-<view style="display: flex; align-items: center; justify-content: space-between;">
-  <t-button bindgetphonenumber="phoneLogin" open-type="getPhoneNumber" size="small" theme="primary" content="本机号码一键登陆" ghost variant="text" icon="mobile"/>
-  <t-button bindtap="accountLogin" size="small" theme="primary" content="账号密码登陆" ghost variant="text" icon="mobile-vibrate" />
-</view>
-<t-toast id="t-toast" />

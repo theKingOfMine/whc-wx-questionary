@@ -1,49 +1,47 @@
-
 <view class="data-center-box">
-  <!-- 个人操作 -->
-  <t-cell title="进度排名" bordered="{{false}}">
-    <!-- <view slot="description">
-        进度已超过{{overtake}}%的老师
-    </view> -->
-    <t-rate value="{{rate}}" bind:change="onChange" slot="note"/>
+  <!-- 个人重点信息展示 -->
+  <t-cell title=" {{teacher.school}}" bordered="{{false}}">
+    <view slot="description">
+      {{teacher.grade}} {{teacher.class}}
+    </view>
   </t-cell>
   <!-- 重要信息数字展示 -->
-  <view class="information-box">
-    <view class="data-show">
-      <view class="data">
-        {{teacherReport.stuCount ? teacherReport.stuCount : 0}}
+  <t-grid class="num-container">
+    <t-grid-item image="slot">
+      <view slot='text' class="num-text">学生</view>
+      <view slot="image" class="numberBox">
+        {{calculateReport.stuCount}}
       </view>
-      <view class="describe">
-        已登记学生总数
+    </t-grid-item>
+    <t-grid-item image="slot">
+      <view slot='text' class="num-text">CON</view>
+      <view slot="image" class="numberBox">
+        {{calculateReport.conCount}}
       </view>
-    </view>
-    <view class="data-show">
-      <view class="data">
-        {{teacherReport.stuCount ? teacherReport.stuCount * 3 : 0}}
+    </t-grid-item>
+    <t-grid-item image="slot">
+      <view slot='text' class="num-text">SLD</view>
+      <view slot="image" class="numberBox">
+        {{calculateReport.sldCount}}
       </view>
-      <view class="describe">
-        应填报告总量
+    </t-grid-item>
+    <t-grid-item image="slot">
+      <view slot='text' class="num-text">SNAP</view>
+      <view slot="image" class="numberBox">
+        {{calculateReport.snaCount}}
       </view>
-    </view>
-    <view class="data-show">
-      <view class="data">
-        {{teacherReport.totalReport ? teacherReport.totalReport : 0}}
-      </view>
-      <view class="describe">
-        已完成报告
-      </view>
-    </view>
-  </view>
+    </t-grid-item>
+  </t-grid>
   <!-- 数据表 -->
-  <t-tabs  bind:change="onTabsChange" style="width: 100%; margin-top: 32rpx;" defaultValue="{{0}}" t-class="custom-tabs">
-    <t-tab-panel label="分类统计" value="0" class="panel">
-      <BarChart wx:if="{{tabsValue == 0}}" data="{{cahrtData}}"></BarChart>
+  <t-tabs bind:change="onTabsChange" style="width: 100%; margin-top: 12px; height: 600px;" defaultValue="{{0}}" t-class="custom-tabs">
+    <t-tab-panel label="工作日志" value="0" class="panel">
+      <ReportLogs wx:if="{{tabsValue == 0}}"></ReportLogs>
     </t-tab-panel>
-    <t-tab-panel label="工作日志" value="1" class="panel">
-        <ReportLogs wx:if="{{tabsValue == 1}}"></ReportLogs>
+    <t-tab-panel label="联系官方" value="1" class="panel">
+      <t-cell title="博信融合官方客服" leftIcon="service" hover arrow />
+      <t-cell title="官方网站" description="马吉春" leftIcon="internet" hover arrow />
+      <t-cell title="调查" leftIcon="lock-on" hover arrow />
     </t-tab-panel>
-    <t-tab-panel wx:if="{{teacher_id == 31}}" label="教师列表" value="2" class="panel">
-        <TeacherList wx:if="{{tabsValue == 2}}"></TeacherList>
-    </t-tab-panel>
+
   </t-tabs>
 </view>

@@ -1,4 +1,4 @@
-<view class="form-box-container">
+<view wx:if="{{formInfo}}" class="form-box-container">
   <!-- 表单标题 -->
   <view wx:if="{{!formInfo.title.isHide}}" class="form-title">
     <text style="font-size: 17pt; font-weight: 500;"> {{formInfo.title.value}}</text>
@@ -36,7 +36,7 @@
 
       </view>
       <view class="register-submit-box">
-        <t-button bindtap="submit" shape='round' style="width:100%;" theme="primary" size="large">{{formInfo.submitTitle}}</t-button>
+        <t-button wx:if="{{formInfo.submitTitle}}" bindtap="submit" shape='round' style="width:100%;" theme="primary" size="large">{{formInfo.submitTitle}}</t-button>
       </view>
     </form>
   </view>

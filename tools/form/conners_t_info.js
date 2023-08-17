@@ -1,6 +1,8 @@
-import {formattedDateTime} from "./utils"
+import {
+  formattedDateTime
+} from "./utils"
 
-const teacher_id = wx.getStorageSync('teacher_id')
+// const info = JSON.parse(wx.getStorageSync('info'))
 
 const questionsBox = [
   "1. 在座位上扭动不停，课堂经常不能安坐在座位上，小动作多；",
@@ -24,109 +26,135 @@ const questionsBox = [
   "19. 阅读量少，生活常识和基本的竞赛知识储备很少；",
   "20. 逻辑性差、卫生不良、缺乏对同学或事件的领导和组织能力；",
   "21. 做事有始无终，不能坚持，尤其是需要精力高度投入的事情；",
-  "22. 稚气和不成熟，语言和语境显得比较幼稚，与实际年龄不符；",  
-  "23. 犯错收到批评时往往借口很多，抵赖错误或归罪他人；",  
-  "24. 不能与其他儿童相处；",  
-  "25. 集体活动中往往与同学在合作时容易产生矛盾；",  
-  "26. 在努力中容易泄气、放弃，且非常无所谓；",  
-  "27. 与教师不合作",  
+  "22. 稚气和不成熟，语言和语境显得比较幼稚，与实际年龄不符；",
+  "23. 犯错收到批评时往往借口很多，抵赖错误或归罪他人；",
+  "24. 不能与其他儿童相处；",
+  "25. 集体活动中往往与同学在合作时容易产生矛盾；",
+  "26. 在努力中容易泄气、放弃，且非常无所谓；",
+  "27. 与教师不合作",
   "28. 在语文的阅读/理解上，或是数学应用题方面存在学习困难；"
 ]
 
-
-const answerBox = [
-  { label: '无', value: 0 },
-  { label: '稍有', value: 1 },
-  { label: '很多', value: 2 },
-  { label: '相当多', value: 3 }
+const answerBox = [{
+    label: '无',
+    value: '0'
+  },
+  {
+    label: '稍有',
+    value: '1'
+  },
+  {
+    label: '很多',
+    value: '2'
+  },
+  {
+    label: '相当多',
+    value: '3'
+  }
 ]
 
 let questions = {}
 let count = 0
-for(let i in questionsBox){
+for (let i in questionsBox) {
   count = count + 1
-  questions['question' + count ] = {
+  questions['question' + count] = {
+    label: questionsBox[i],
+    name: 'question' + count,
+    type: 'int',
     value: null,
     component: 'radio-lot',
-    name: 'question' + count,
-    label: questionsBox[i],
     placeholder: '请选择',
-    type: 'int',
-    isHide: false,
-    isRequired: true,
+    selectList: answerBox,
+    isHide: false, // 如果是登记则隐藏，如果是更新则显示
     disable: false,
-    selectList: answerBox
+    isReadonly: false,
+    isRequired: true,
+    keyboard: null,
+    length: null,
   }
 }
 
-export const conners_t_info = {
-  title: {
-    value: '[DSM-5/SLD/PRS/T]学龄儿童学习能力持续性发展特质 教育实践综合评估量表（教师问卷版）',
-    isHide: false
-  },
-  table: 'conners_t',
-  database: 'mck_school',
-  key: 'id',
-  notes: {
-    value: '评估提示：填写此表时请根据儿童过去 6 个月的行为举止认真/客观地填写此表！ 本报告为教育实践评估，最终评价需结合医疗诊断评估报告综合评定。',
-    isHide: false
-  },
-  submitTitle: '提交报告',
-  form: {
-    id: {
-      value: null,
-      component: 'input',
-      name: 'id',
-      label: 'ID',
-      placeholder: '请输入ID',
-      type: 'int',
-      isHide: true,
-      isRequired: true,
-      disable: true,
-      keyboard: 'number',
-      length: 9
+const conners_t_info = (askfor) => {
+  const teacher_id = JSON.parse(wx.getStorageSync('info')).teacher_id;
+  return {
+    title: {
+      value: '[DSM-5/SLD/PRS/T]学龄儿童学习能力持续性发展特质 教育实践综合评估量表（教师问卷版）',
+      isHide: false
     },
-    stu_id: {
-      value: null,
-      component: 'input',
-      name: 'stu_id',
-      label: '学生ID',
-      placeholder: '请输入学生ID',
-      type: 'int',
-      isHide: true,
-      isRequired: true,
-      disable: false,
-      keyboard: 'number',
-      length: 9
+    notes: {
+      value: '评估提示：填写此表时请根据儿童过去 6 个月的行为举止认真/客观地填写此表！ 本报告为教育实践评估，最终评价需结合医疗诊断评估报告综合评定。',
+      isHide: false
     },
-    teacher_id: {
-      value: teacher_id,
-      component: 'input',
-      name: 'teacher_id',
-      label: '教师ID',
-      placeholder: '请输入教师ID',
-      type: 'int',
-      isHide: true,
-      isRequired: true,
-      disable: false,
-      keyboard: 'number',
-      length: 9
-    },
-    register_time: {
-      value: (formattedDateTime)(),
-      component: 'datetime',
-      name: 'register_time',
-      label: '注册时间',
-      placeholder: '请输入注册时间',
-      type: 'string',
-      isHide: true,
-      isRequired: true,
-      disable: false,
-      keyboard: 'text',
-      length: 20
-    },
-    ...questions
+    table: 'conners_t',
+    database: 'mck_school',
+    key: 'conners_t_id',
+    askfor: askfor,
+    submitTitle: askfor == 'insert' ? '登记CONNERS_T报告' : '更新CONNERS_T报告',
+    form: {
+      conners_t_id: {
+        label: '报告ID',
+        name: 'conners_t_id',
+        type: 'int',
+        value: null,
+        component: 'input',
+        placeholder: 'conners_t报告唯一编码',
+        isHide: askfor == 'insert' ? true : false, // 如果是登记则隐藏，如果是更新则显示
+        disable: true,
+        isReadonly: true,
+        isRequired: false,
+        keyboard: 'text',
+        length: null,
+      },
+      stu_id: {
+        label: '学生ID',
+        name: 'stu_id',
+        type: 'int',
+        value: null,
+        component: 'input',
+        placeholder: '',
+        isHide: false,
+        disable: false,
+        isReadonly: true,
+        isRequired: true,
+        keyboard: 'text',
+        length: null,
+      },
+      teacher_id: {
+        label: '教师ID',
+        name: 'teacher_id',
+        type: 'int',
+        value: teacher_id,
+        component: 'input',
+        placeholder: '教师登记唯一编码',
+        isHide: false, 
+        disable: false, 
+        isReadonly: true,
+        isRequired: true,
+        keyboard: 'text',
+        length: null,
+      },
+      register_time: {
+        label: '登记时间',
+        name: 'register_time',
+        type: 'string',
+        value: (formattedDateTime)(),
+        component: 'datetime',
+        placeholder: null,
+        isHide: false, 
+        disable: false,
+        isReadonly: false,
+        isRequired: true,
+        keyboard: 'text',
+        length: null,
+      },
+      ...questions
+    }
   }
 }
 
 
+export class conners {
+  constructor(askfor) {
+    this.info = conners_t_info(askfor)
+  }
+}

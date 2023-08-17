@@ -1,6 +1,7 @@
 <!-- input组件 -->
-<view class="input-box" bindtap="handleClick">
+<view wx:if="{{info}}" class="input-box" bindtap="handleClick">
   <t-input 
+  align='right'
   placeholder="{{info.placeholder}}" 
   bind:change="handleInput" 
   data-key="{{info.name}}" 

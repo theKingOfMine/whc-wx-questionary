@@ -23,9 +23,15 @@ export const wx_login = () => {
               wx.setStorageSync('info', JSON.stringify(info))
               wx.setStorageSync('token', token)
               wx.showToast({
-                title: info.name + '老师，欢迎回来',
+                title: '登陆成功！' + info.name + '老师，欢迎回来',
                 icon: 'none'
               })
+            // 跳转到学生页面
+             setTimeout(function(){
+              wx.switchTab({
+                url: '/pages/stu/stu'
+              })
+             }, 1500)
 
             }else if(res.data.code == 402){ // 未注册，保存返回的openid，加入用户信息中，等待注册成新用户，提示用户填写关键信息
               wx.showToast({

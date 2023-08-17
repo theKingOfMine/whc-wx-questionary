@@ -1,22 +1,26 @@
 import {dataRequire} from "../../../../tools/tools"
-const teacher_id = wx.getStorageSync('teacher_id')
+
 Component({
+  properties: {
+    teacher: {
+      type: Object,
+      value: null
+    }
+  },
   data: {
-    teacher_id: teacher_id,
     teacherReport: {},
     cahrtData: {
       x: ['conners_t', 'sld_prs_t', 'snap_iv'],
       y: [10, 20, 30]
     },
     teacherRankingList: [],
-    rank: 0, //排名
     rate: 0,
-    tabsValue: 0
+    tabsValue: 0,
+    calculateReport: {}
   },
   lifetimes: {
     async attached(){
-        this.getTeacherList()
-        this.getTeacherRanking()
+        this.calculateTeacherMetrics()
     }
   },
   methods: {
@@ -24,6 +28,7 @@ Component({
     async getTeacherList(){
       const teacher_id = wx.getStorageSync('teacher_id')
       const res = await dataRequire('teacherList', {id: teacher_id})
+
       let teacherReport = res[0]
       console.log(teacherReport)
       teacherReport.totalReport = parseInt(teacherReport.conCount) + parseInt(teacherReport.snaCount) +  parseInt(teacherReport.sldCount)
@@ -35,29 +40,15 @@ Component({
         }
       })
     },
-    // 计算填表进度排名
-    async getTeacherRanking(){
-      const res = await dataRequire('sortReportByTeacher')
-      console.log(res)
-      res.sort(function(a, b){
-        if(parseFloat(a.percentage) > parseFloat(b.percentage)){
-          return -1
-        }else{
-          return 1
-        }
-      })
-    
-      const teacher_id = wx.getStorageSync('teacher_id')
-      for(let i=0; i < res.length; i ++){
-        if(res[i].teacher_id == teacher_id){
+    // 填写的表的数量
+    async calculateTeacherMetrics(){
+        const res = await dataRequire('calculateTeacherMetrics', '', {teacher_id: this.properties.teacher.teacher_id});
+        console.log(res)
+        if(res.code == 200){
           this.setData({
-            teacherRankingList: res,
-            rank: i + 1,
-            rate:( 5 * (parseFloat(res[i].percentage) / 100)).toFixed(0)
+            calculateReport: res.data[0]
           })
-          break
         }
-      }
     },
     onTabsChange(e){
       if(e.detail.value == 0){

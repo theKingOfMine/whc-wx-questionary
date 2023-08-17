@@ -16,7 +16,7 @@
   visible="{{dateVisible}}"
   mode="date"
   defaultValue="{{date}}"
-  format="YYYY-MM-DD"
+  format="YYYY-MM-DD HH:mm:ss"
   bindchange="onConfirm"
   bindpick="onColumnChange"
   bindcancel="hidePicker"

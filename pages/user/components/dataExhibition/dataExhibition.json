@@ -7,6 +7,7 @@
     "t-tab-panel": "tdesign-miniprogram/tab-panel/tab-panel",
     "t-rate": "tdesign-miniprogram/rate/rate",
     "ReportLogs": "./report_log/report_log",
-    "TeacherList": "./teacherList/teacherList"
+    "t-grid": "tdesign-miniprogram/grid/grid",
+    "t-grid-item": "tdesign-miniprogram/grid-item/grid-item"
   }
 }

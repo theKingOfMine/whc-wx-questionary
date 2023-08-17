@@ -93,7 +93,6 @@ export const formUpload = async (forminfo) => {
 // 向服务器请求数据
 export const dataRequire = async (table = '', requirement = '*', conditions = {}, groupBy = '', orderBy = '', limit = '') => {
   const token = wx.getStorageSync('token');
-  console.log(token);
 
   if (!token) {
     wx.showToast({

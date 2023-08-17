@@ -3,13 +3,19 @@
 </view>
 
 <view class="stu-list-box">
-  <t-cell wx:for="{{stuList}}" wx:key="index" image="{{baseUrl + item.head_img}}">
+  <t-cell align='bottom' class='su-info' wx:for="{{stuList}}" wx:key="index">
+
+    <view slot='left-icon'>
+      <t-image src='{{baseUrl + item.head_img}}' shape="round" mode="aspectFill" width="64" height="64" ></t-image>
+    </view>
 
     <view slot="title" class="title-box"> {{item.name}} 
     <text style="color: rgba(0, 0, 0, 0.6); font-weight: 300;" >{{item.grade}} {{item.class}} {{item.school}} </text></view>
 
     <view slot="description">
-      <t-tag 
+      <view style="color: #00000060;">{{item.register_time}}</view>
+   <view>   
+   <t-tag 
       class="report-item" 
       size="small" 
       theme="{{item.conners_t_score ? 'success' : 'default'}}" 
@@ -32,7 +38,8 @@
       data-stu="{{item}}" bindtap="handleEvaluationSheets" 
       data-table="sld_prs_t"
       >SLD-PRS-T</t-tag>
-    
+      </view>
+  
     </view>
     <view class="stu-options" slot="right-icon">
       <t-icon name="edit" bindtap="handleEdit" data-stu="{{item}}" />

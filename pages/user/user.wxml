@@ -1,4 +1,4 @@
-<view class="user-container">
+<view wx:if="{{teacher}}" class="user-container">
   <!-- 头像 -->
   <view class="user-info-box">
     <view class="user-image-box">
@@ -16,7 +16,7 @@
       <view class="layer-1"></view>
       <view class="layer-2"></view>
       <view class="layer-3">
-        <DataExhibition wx:if="{{isOpenExhibition}}"></DataExhibition>
+        <DataExhibition wx:if="{{teacher}}" teacher="{{teacher}}"></DataExhibition>
       </view>
     </view>
   </view>

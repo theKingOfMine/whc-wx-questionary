@@ -1,282 +1,342 @@
 import {
   school,
-  formattedDateTime
-} from "./utils"
+  formattedDateTime,
+  formUpload
+} from "../tools.js"
 
-const teacher_id = wx.getStorageSync('teacher_id')
-export class Student {
-  constructor(askfor) {
-    this.info = {
-      title: {
+const stuInfo = (askfor) => {
+
+  const teacher_id = JSON.parse(wx.getStorageSync('info')).teacher_id;
+  return {
+    title: {
+      isHide: false,
+      value: '学生信息表'
+    },
+    table: 'stu',
+    database: 'whc_server',
+    key: 'stu_id',
+    askfor: askfor ? askfor : 'insert',
+    notes: {
+      isHide: false,
+      value: '注：为保证调查报告的准确性，请按照学生的真实信息详细填写。'
+    },
+    submitTitle: askfor == 'insert' ? '登记学生信息' : '更新学生信息',
+    form: {
+      stu_id: {
+        label: '学生ID',
+        name: 'stu_id',
+        type: 'int',
+        value: null,
+        component: 'input',
+        placeholder: '',
+        isHide: askfor == 'insert' ? true : false,
+        disable: askfor == 'insert' ? true : false,
+        isReadonly: true,
+        isRequired: true,
+        keyboard: 'text',
+        length: null,
+        icon: '',
+      },
+      teacher_id: {
+        label: '教师ID',
+        name: 'teacher_id',
+        type: 'int',
+        value: askfor == 'insert' ? teacher_id : null,
+        component: 'input',
+        placeholder: '教师登记唯一编码',
+        isHide: askfor == 'insert' ? true : false,
+        disable: false, // 教师ID不可修改
+        isReadonly: true,
+        isRequired: true,
+        keyboard: 'text',
+        length: null,
+        icon: ''
+      },
+      register_time: {
+        label: '注册时间',
+        name: 'register_time',
+        type: 'string',
+        value: (formattedDateTime)(),
+        component: 'datetime',
+        placeholder: '',
         isHide: false,
-        value: '学生信息表'
+        disable: false,
+        isReadonly: false,
+        isRequired: true,
+        keyboard: 'text',
+        length: null,
+        icon: '',
       },
-      table: 'stu',
-      database: 'whc_server',
-      key: 'stu_id',
-      askfor: askfor ? askfor : 'insert',
-      search: {
+      head_img: {
+        label: '个人照片',
+        name: 'head_img',
+        type: 'string',
+        value: null,
+        component: 'upload_img',
+        placeholder: '请上传清晰的面部形象照片',
         isHide: false,
-        table: 'teacher',
-        placeholder: '请输入老师姓名',
-        label: '搜索老师',
-        key: ['register_time', 'name']
+        disable: false,
+        isReadonly: false,
+        isRequired: true,
+        keyboard: 'text',
+        length: null,
+        icon: '',
       },
-      notes: {
-        isHide: true,
-        value: '注：学生信息资料'
+      name: {
+        label: '姓名',
+        name: 'name',
+        type: 'string',
+        value: null,
+        component: 'input',
+        placeholder: '请输入',
+        isHide: false,
+        disable: false,
+        isReadonly: false,
+        isRequired: true,
+        keyboard: 'text',
+        length: 12,
+        icon: '',
       },
-      submitTitle:  askfor == 'insert' ? '登记学生数据' : '更新学生数据',
-      form: {
-        stu_id: {
-          value: null,
-          label: '学生ID',
-          name: 'stu_id',
-          component: 'input',
-          placeholder: '',
-          type: 'int',
-          icon: '',
-          isHide: askfor == 'insert' ? true : false,
-          disable: askfor == 'insert' ? true : false,
-          isReadonly: true,
-          isRequired: false
-        },
-        teacher_id: {
-          value: teacher_id,
-          label: '教师ID',
-          name: 'teacher_id',
-          component: 'input',
-          placeholder: '',
-          type: 'int',
-          icon: '',
-          isHide: false,
-          isRequired: false,
-          disable: false,
-          isReadonly: true
-        },
-        register_time: {
-          value: (formattedDateTime)(),
-          label: '注册时间',
-          name: 'register_time',
-          component: 'date-time-picker',
-          placeholder: '',
-          type: 'string',
-          icon: '',
-          isHide: false,
-          isRequired: true,
-          disable: false,
-        },
-        head_img: {
-          value: null,
-          label: '个人照片',
-          name: 'head_img',
-          component: 'upload_img',
-          placeholder: '请上传清晰的面部形象照片',
-          type: 'string'
-        },
-        name: {
-          value: null,
-          label: '学生姓名',
-          name: 'name',
-          component: 'input',
-          placeholder: '请输入',
-          type: 'string',
-          isHide: false,
-          isRequired: true,
-          disable: false,
-          keyboard: 'text',
-          length: 12
-        },
-        sex: {
-          value: null,
-          label: '性别',
-          name: 'sex',
-          component: 'select',
-          selectList: school.sexBox.map((item) => ({ label: item, value: item })),
-          placeholder: '',
-          type: 'string',
-          icon: '',
-          isHide: false,
-          isRequired: true,
-          disable: false,
-          keyboard: 'text',
-          length: 6,
-        },
-        age: {
-          value: null,
-          label: '年龄',
-          name: 'age',
-          component: 'select',
-          placeholder: '',
-          selectList: school.ageBox.map((item) => ({ label: item, value: item })),
-          type: 'int',
-          icon: '',
-          isHide: false,
-          isRequired: true,
-          disable: false,
-          keyboard: 'number',
-          length: null
-        },
-        born: {
-          value: (formattedDateTime)(-10),
-          label: '出生日期',
-          name: 'born',
-          component: 'date-picker',
-          placeholder: '',
-          type: 'string',
-          icon: '',
-          isHide: false,
-          isRequired: true,
-          disable: false
-        },
-        grade: {
-          value: null,
-          label: '年级',
-          name: 'grade',
-          component: 'select',
-          selectList: school.gradeBox.map((item) => ({ label: item, value: item })),
-          placeholder: '',
-          type: 'string',
-          icon: '',
-          isHide: false,
-          isRequired: true,
-          disable: false,
-        },
-        class: {
-          value: null,
-          label: '班级',
+      sex: {
+        label: '性别',
+        name: 'sex',
+        type: 'string',
+        value: null,
+        component: 'select',
+        placeholder: '',
+        selectList: school.sexBox.map((item) => ({
+          label: item,
+          value: item
+        })),
+        isHide: false,
+        disable: false,
+        isReadonly: false,
+        isRequired: true,
+        keyboard: 'text',
+        length: 6,
+        icon: '',
+      },
+      age: {
+        label: '年龄',
+        name: 'age',
+        type: 'int',
+        value: null,
+        component: 'select',
+        placeholder: '',
+        selectList: school.ageBox.map((item) => ({
+          label: item,
+          value: item
+        })),
+        isHide: false,
+        disable: false,
+        isReadonly: false,
+        isRequired: true,
+        keyboard: 'number',
+        length: null,
+        icon: '',
+      },
+      born: {
+        label: '出生日期',
+        name: 'born',
+        type: 'string',
+        value: (formattedDateTime)(-10),
+        component: 'date-picker',
+        placeholder: '',
+        isHide: false,
+        disable: false,
+        isReadonly: false,
+        isRequired: true,
+        keyboard: 'text',
+        length: null,
+        icon: '',
+      },
+      grade: {
+        label: '年级',
+        name: 'grade',
+        type: 'string',
+        value: null,
+        component: 'select',
+        placeholder: '',
+        selectList: school.gradeBox.map((item) => ({
+          label: item,
+          value: item
+        })),
+        isHide: false,
+        disable: false,
+        isReadonly: false,
+        isRequired: true,
+        keyboard: 'text',
+        length: null,
+        icon: '',
+      },
+      class: {
+        label: '班级',
           name: 'class',
-          component: 'select',
-          selectList: school.classBox.map((item) => ({ label: item, value: item })),
-          placeholder: '',
           type: 'string',
-          icon: '',
-          isHide: false,
-          isRequired: true,
-          disable: false
-        },
-        school: {
           value: null,
-          label: '学校',
-          name: 'school',
-          component: 'select',
-          selectList: school.nameBox.map((item) => ({ label: item, value: item })),
-          placeholder: '',
-          type: 'string',
-          icon: '',
-          isHide: false,
-          isRequired: true,
-          disable: false
-        },
-        identity_card: {
-          value: null,
-          label: '身份证号',
-          name: 'identity_card',
-          component: 'input',
-          placeholder: '',
-          type: 'string',
-          icon: '',
-          isHide: false,
-          isRequired: true,
-          disable: false,
-          keyboard: 'text',
-          length: null
-        },
-        notes: {
-          value: null,
-          label: '备注',
-          name: 'notes',
-          component: 'input',
-          placeholder: '',
-          type: 'string',
-          icon: '',
-          isHide: false,
-          isRequired: false,
-          disable: false,
-          keyboard: 'text',
-          length: null
-        },
-        status: {
-          value: null,
-          label: '状态',
-          name: 'status',
           component: 'select',
           placeholder: '',
-          type: 'string',
-          icon: '',
+          selectList: school.classBox.map((item) => ({
+            label: item,
+            value: item
+          })),
           isHide: false,
-          isRequired: false,
           disable: false,
+          isReadonly: false,
+          isRequired: true,
           keyboard: 'text',
           length: null,
-          selectList: school.stuStatusBox.map((item) => ({ label: item, value: item }))
-        },
-        conners_t_score: {
-          value: null,
-          label: 'conners_t',
-          name: 'conners_t_score',
-          component: 'input',
-          placeholder: '',
-          type: 'int',
           icon: '',
-          isHide: askfor == 'insert' ? true : false,
-          isRequired: false,
-          disable: true,
-          isReadonly: true
-        },
-        sld_prs_t_score: {
-          value: null,
-          label: 'sld_prs_t',
-          name: 'sld_prs_t_score',
-          component: 'input',
-          placeholder: '',
-          type: 'int',
-          icon: '',
-          isHide: askfor == 'insert' ? true : false,
-          isRequired: false,
-          disable: true,
-          isReadonly: true
-        },
-        sld_prs_t_langrage_score: {
-          value: null,
-          label: 'sld语言',
-          name: 'sld_prs_t_langrage_score',
-          component: 'input',
-          placeholder: '',
-          type: 'int',
-          icon: '',
-          isHide: askfor == 'insert' ? true : false,
-          isRequired: false,
-          disable: true,
-          isReadonly: true
-        },
-        sld_prs_t_nonlangrage_score: {
-          value: null,
-          label: 'sld非语言',
-          name: 'sld_prs_t_nonlangrage_score',
-          component: 'input',
-          placeholder: '',
-          type: 'int',
-          icon: '',
-          isHide: askfor == 'insert' ? true : false,
-          isRequired: false,
-          disable: true,
-          isReadonly: true
-        },
-        snap_iv_score: {
-          value: null,
-          label: 'snap_iv',
-          name: 'snap_iv_score',
-          component: 'input',
-          placeholder: '',
-          type: 'float',
-          icon: '',
-          isHide: askfor == 'insert' ? true : false,
-          isRequired: false,
-          disable: true,
-          isReadonly: true
-        }
+      },
+      school: {
+        label: '学校',
+        name: 'school',
+        type: 'string',
+        value: null,
+        component: 'select',
+        placeholder: '',
+        selectList: school.nameBox.map((item) => ({
+          label: item,
+          value: item
+        })),
+        isHide: false,
+        disable: false,
+        isReadonly: false,
+        isRequired: true,
+        keyboard: 'text',
+        length: null,
+        icon: '',
+      },
+      identity_card: {
+        label: '身份证号',
+        name: 'identity_card',
+        type: 'string',
+        value: null,
+        component: 'input',
+        placeholder: '',
+        isHide: false,
+        disable: false,
+        isReadonly: false,
+        isRequired: true,
+        keyboard: 'text',
+        length: 23,
+        icon: '',
+      },
+      notes: {
+        label: '备注',
+        name: 'notes',
+        type: 'string',
+        value: null,
+        component: 'input',
+        placeholder: '',
+        isHide: false,
+        disable: false,
+        isReadonly: false,
+        isRequired: false,
+        keyboard: 'text',
+        length: null,
+        icon: '',
+      },
+      status: {
+        label: '状态',
+        name: 'status',
+        type: 'string',
+        value: null,
+        component: 'select',
+        placeholder: '',
+        selectList: school.stuStatusBox.map((item) => ({
+          label: item,
+          value: item
+        })),
+        isHide: false,
+        disable: false,
+        isReadonly: false,
+        isRequired: false,
+        keyboard: 'text',
+        length: null,
+        icon: '',
       }
     }
   }
 }
+
+export class Student {
+  constructor(askfor) {
+    this.info = stuInfo(askfor)
+  }
+}
+// 删除学生数据，参数为学生信息
+export const deleteStu = (info)=>{
+  return new Promise((resolve, reject) => {
+    wx.showModal({
+      title: '请确认是否删除学生' + info.name + '的相关数据',
+      content: '注：数据删除后将不可恢复，请慎重选择！',
+      complete: async (res) => {
+        if (res.confirm) {
+          const res = await formUpload({
+            askfor: 'delete',
+            table: 'stu',
+            key: {
+              name: 'stu_id',
+              value: info.stu_id,
+              type: 'int'
+            }
+          });
+          if (res.code == 200) {
+            wx.showToast({
+              title: '学生信息已删除',
+              icon: 'success'
+            })
+            
+          } else {
+            wx.showToast({
+              title: '故障，删除失败',
+              icon: 'error'
+            })
+          }
+          resolve({code: res.code})
+        }else{
+          resolve({code: 400}) 
+        }
+      }
+    })
+
+
+
+  })
+}
+
+
+
+// export const _deleteStu = (info) => {
+//   wx.showModal({
+//     title: '请确认是否删除学生' + info.name + '的相关数据',
+//     content: '注：数据删除后将不可恢复，请慎重选择！',
+//     complete: async (res) => {
+//       if (res.confirm) {
+//         const res = await formUpload({
+//           askfor: 'delete',
+//           table: 'stu',
+//           key: {
+//             name: 'stu_id',
+//             value: info.stu_id,
+//             type: 'int'
+//           }
+//         });
+//         if (res.code == 200) {
+//           wx.showToast({
+//             title: '学生' +  info.name + '的信息已删除成功',
+//             icon: 'success'
+//           })
+//           return {code: 200}
+//         } else {
+//           wx.showToast({
+//             title: '故障，删除失败',
+//             icon: 'error'
+//           })
+//           return {code : 400}
+//         }
+//       }
+//     }
+//   })
+// }

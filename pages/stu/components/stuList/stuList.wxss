@@ -13,3 +13,6 @@
 .report-item {
   margin-right: 4px;
 }
+.stu-info{
+  --td-cell-image-height: 100rpx;
+}

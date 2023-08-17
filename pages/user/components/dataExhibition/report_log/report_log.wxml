@@ -1,16 +1,17 @@
-<view class="report-box">
+<view wx:if="{{reportList}}" class="report-box">
     <t-cell image="{{baseUrl + item.head_img}}" wx:for="{{reportList}}" wx:key="index">
-    <view slot="title" style="font-size: 10pt; color: rgba(0,0,0,0.5);">
-      {{item.register_time}}
+    <view slot="title" >
+      {{item.name}} {{item.source_table}} 报告
     </view>
      <view slot="left-icon" style="margin-right: 8px;"> 
        {{index + 1}}. 
      </view>
-      <view slot="description" style="color: rgba(0,0,0,0.9);">
-        {{item.stu_name}}  {{item.report_name}}表
+      <view slot="description" style="color: rgba(0,0,0,0.6);">
+        {{item.register_time}}  
       </view>
-      <view slot="right-icon">
+      <view style="display: flex; align-items: center; justify-content: space-between;" slot="right-icon">
           <t-icon bindtap="editReport" name="edit" data-report="{{item}}"></t-icon>
+          <t-icon  bindtap="deleteReport" name="close" style="margin-left: 16px;" data-report="{{item}}" />
       </view>
     </t-cell>
 </view>
