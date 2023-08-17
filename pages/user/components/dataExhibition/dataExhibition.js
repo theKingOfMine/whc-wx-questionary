@@ -9,37 +9,18 @@ Component({
   },
   data: {
     teacherReport: {},
-    cahrtData: {
-      x: ['conners_t', 'sld_prs_t', 'snap_iv'],
-      y: [10, 20, 30]
-    },
-    teacherRankingList: [],
-    rate: 0,
     tabsValue: 0,
     calculateReport: {}
   },
   lifetimes: {
     async attached(){
+        wx.showLoading({
+          title: '报告加载中..',
+        })
         this.calculateTeacherMetrics()
     }
   },
   methods: {
-    // 老师数据
-    async getTeacherList(){
-      const teacher_id = wx.getStorageSync('teacher_id')
-      const res = await dataRequire('teacherList', {id: teacher_id})
-
-      let teacherReport = res[0]
-      console.log(teacherReport)
-      teacherReport.totalReport = parseInt(teacherReport.conCount) + parseInt(teacherReport.snaCount) +  parseInt(teacherReport.sldCount)
-      this.setData({
-        teacherReport: res[0],
-        cahrtData: {
-          x: ['conners_t', 'sld_prs_t', 'snap_iv'],
-          y: [parseInt(teacherReport.conCount), parseInt(teacherReport.sldCount), parseInt(teacherReport.snaCount)]
-        }
-      })
-    },
     // 填写的表的数量
     async calculateTeacherMetrics(){
         const res = await dataRequire('calculateTeacherMetrics', '', {teacher_id: this.properties.teacher.teacher_id});
@@ -49,9 +30,14 @@ Component({
             calculateReport: res.data[0]
           })
         }
+        wx.hideLoading()
     },
     onTabsChange(e){
       if(e.detail.value == 0){
+        wx.showLoading({
+          title: '报告加载中..',
+        })
+        this.calculateTeacherMetrics()
         this.setData({
           tabsValue: 0
         })
@@ -59,11 +45,15 @@ Component({
         this.setData({
           tabsValue: 1
         })
-      }else if(e.detail.value == 2){
-        this.setData({
-          tabsValue: 2
-        })
       }
+    },
+    makePhoneCall(){
+      wx.makePhoneCall({
+        phoneNumber: '15810628593',
+        success: (res) => {},
+        fail: (res) => {},
+        complete: (res) => {},
+      })
     }
   }
 })
