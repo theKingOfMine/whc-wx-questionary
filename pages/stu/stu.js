@@ -9,9 +9,6 @@ Page({
     stuList: []
   },
   onShow() {
-    wx.showLoading({
-      title: '学生数据加载中...',
-    })
     this.getStuList();
   },
   onHide() {
@@ -26,20 +23,47 @@ Page({
     })
   },
   async getStuList() {
-   
-    const localInfo = await wx.getStorageSync('info');
-    const info = JSON.parse(localInfo)
-    
-    const res = await dataRequire('stu', '', {
-      teacher_id: info.teacher_id
+    wx.showLoading({
+      title: '学生数据加载中...',
     })
-    
-    const stuList = res.code == 200 ? res.data : []
 
-    this.setData({
-      stuList: stuList,
-      isOpenStuList: true
-    })
-    wx.hideLoading()
+    const teacher_id = getApp().globalData.info.teacher_id || null; // 如果公共信息没有
+    if(teacher_id){
+      const res = await dataRequire('stuListWithReportAffirm', '', {
+        teacher_id: teacher_id
+      })
+  
+      wx.hideLoading()
+      if (res.code == 200) {
+        this.setData({
+          stuList: res.data,
+          isOpenStuList: true
+        })
+      } else if (res.code > 400) {
+        wx.showToast({
+          title: '您的登陆已过期..',
+        })
+  
+        wx.navigateTo({
+          url: '/pages/index/index',
+        })
+      }
+
+    }else{ // 未登录守卫
+      wx.showToast({
+        title: '您的登陆已过期..',
+        icon: 'error'
+      })
+
+      setTimeout(function(){
+        wx.navigateTo({
+          url: '/pages/index/index',
+        })
+      }, 1500)
+    }
+    
+
+
+    
   }
 })

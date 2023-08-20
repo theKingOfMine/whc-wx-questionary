@@ -4,5 +4,5 @@
     "AutoForm": "../../components/Form/AutoForm/AutoForm",
     "Info_show": "../../components/Form/Info_show/Info_show"
   },
-  "navigationBarTitleText": "评估表填写"
+  "navigationBarTitleText": "表单登记"
 }

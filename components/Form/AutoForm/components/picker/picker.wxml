@@ -6,6 +6,6 @@
   <t-icon wx:if="{{info.icon}}" slot="left-icon" name="{{info.icon}}"></t-icon>
 </t-cell>
 <t-picker visible="{{visible}}" value="{{info.value}}" data-key="{{info.name}}" title="{{info.label}}" cancelBtn="取消" confirmBtn="确认" bindchange="onPickerChange" bindcancel="onPickerCancel">
-  <t-picker-item options="{{info.selectList}}" />
+  <t-picker-item options="{{info.selectList ? info.selectList : []}}" />
 </t-picker>
 </view>

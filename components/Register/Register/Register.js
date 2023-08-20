@@ -1,6 +1,5 @@
 import {
-  Teacher,
-  register
+  Teacher
 } from "../../../tools/tools"
 
 const teacher = new Teacher('register')
@@ -18,7 +17,6 @@ Component({
   },
   methods: {
     async registerSubmit(e) {
-      
       wx.showLoading({
         title: '正在进行信息登记，请耐心等待..',
       })
@@ -34,13 +32,11 @@ Component({
           'Accept': 'application/json'
         },
         success(result){
-          console.log(res)
           wx.hideLoading()
           const res = result.data;
           if(res.code == 200){
             wx.setStorageSync('token', res.token);
-            wx.setStorageSync('info', res.info);
-
+            getApp().globalData.info = res.info;
             wx.showToast({
               title: '注册成功，' + res.info.name + '老师，欢迎您',
               icon: 'none'

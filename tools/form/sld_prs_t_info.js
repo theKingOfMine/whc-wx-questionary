@@ -335,7 +335,7 @@ for(let i in SLD_PRS_T){
 
 
 const sld_prs_t_info = (askfor) => {
-  const teacher_id = JSON.parse(wx.getStorageSync('info')).teacher_id;
+  const teacher_id = getApp().globalData.info.teacher_id;
   return  {
     title: {
       value: '[DSM-5/SLD/PRS/T]学龄儿童学习能力持续性发展特质 教育实践综合评估量表（教师问卷版）',
@@ -346,7 +346,7 @@ const sld_prs_t_info = (askfor) => {
     key: 'sld_prs_t_id',
     askfor: askfor,
     notes: {
-      value: '评估提示：填写此表时请根据儿童过去 12 个月的行为举止认真/客观地填写此表！ 本报告为教育实践评估，最终评价需结合医疗诊断评估报告综合评定。\n \n 问题1~4，听觉的理解和记忆 Understanding and memory\n \n 问题5~9，会话用语 Conversational competence \n \n 问题10~13，时间空间知觉 Temporal and spatial perception \n \n 问题14~16，运动能力 Sports development ability \n \n 问题17~24，社会行为 Social behavior',
+      value: '评估提示：填写此表时请根据儿童过去 6 个月的行为举止认真/客观地填写此表！ 本报告为教育实践评估，最终评价需结合医疗诊断评估报告综合评定。\n \n 问题1~4，听觉的理解和记忆 Understanding and memory\n \n 问题5~9，会话用语 Conversational competence \n \n 问题10~13，时间空间知觉 Temporal and spatial perception \n \n 问题14~16，运动能力 Sports development ability \n \n 问题17~24，社会行为 Social behavior',
       isHide: false
     },
     submitTitle: askfor == 'insert' ? '提交SLD_PRS_T报告' : '更改SLD_PRS_T报告',
@@ -394,13 +394,13 @@ const sld_prs_t_info = (askfor) => {
         length: null,
       },
       register_time: {
-        label: '注册时间',
+        label: '登记时间',
         name: 'register_time',
         type: 'string',
         value: (formattedDateTime)(),
         component: 'datetime',
         placeholder: null,
-        isHide: false, 
+        isHide: askfor == 'insert' ? true : false, 
         disable: false,
         isReadonly: false,
         isRequired: true,

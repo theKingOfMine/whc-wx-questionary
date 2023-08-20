@@ -44,10 +44,10 @@
      async handleDelete(e) {
        let info = e.currentTarget.dataset.stu
        const res = await deleteStu(info)
+       console.log(res)
        if(res.code == 200){
         this.triggerEvent('refresh');
        }
-       
      },
      // 调查报告填写函数
      async handleEvaluationSheets(e) {
@@ -56,7 +56,7 @@
        const stu = e.currentTarget.dataset.stu;
        
        // 根据数据表名选择对应的表单信息
-       if (stu[table + '_score']) { // 如果报告已经填写
+       if (stu[table] > 0 ) { // 如果报告已经填写
         let forminfo = {}; // 表单信息对象
          console.log('报告已填写')
          if (table == 'conners_t') {

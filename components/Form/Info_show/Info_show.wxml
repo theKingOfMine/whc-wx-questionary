@@ -1,6 +1,6 @@
-<t-cell style="padding: 16px; height: 200px;" wx:key="index">
+<t-cell wx:key="index">
 
-  <t-image slot="right-icon" src="{{baseUrl + info.head_img}}" mode="aspectFill" width="100" height="100" aria-label="一个放置在墙角的黄色行李箱" />
+  <t-image slot="right-icon" src="{{baseUrl + info.head_img}}" mode="aspectFill" width="100" height="100" shape="round" aria-label="一个放置在墙角的黄色行李箱" />
 
   <view slot="title" class="title-box">
     <view style="font-size: large;">
@@ -10,9 +10,9 @@
   </view>
 
   <view class="description" slot="description">
-    <t-tag class="report-item" size="small" theme="{{info.conners_t_score ? 'success' : 'default'}}" data-stu="{{item}}">CONNERS/T</t-tag>
-    <t-tag class="report-item" size="small" theme="{{info.snap_iv_score ? 'success' : 'default'}}">SNAP-IV</t-tag>
-    <t-tag class="report-item" size="small" theme="{{info.sld_prs_t_score ? 'success' : 'default'}}">SLD-PRS-T</t-tag>
+    <t-tag class="report-item" size="small" theme="{{info.conners_t > 0 ? 'success' : 'default'}}" data-stu="{{item}}">CONNERS/T</t-tag>
+    <t-tag class="report-item" size="small" theme="{{info.snap_iv > 0 ? 'success' : 'default'}}">SNAP-IV</t-tag>
+    <t-tag class="report-item" size="small" theme="{{info.sld_prs_t > 0 ? 'success' : 'default'}}">SLD-PRS-T</t-tag>
 
   </view>
 </t-cell>

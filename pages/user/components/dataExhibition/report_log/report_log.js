@@ -12,7 +12,7 @@ Component({
   },
   methods: {
     async getReportList(){
-      const info = JSON.parse(wx.getStorageSync('info'))
+      const info = getApp().globalData.info
       const res = await dataRequire('reportLogsByteacher', '', {teacher_id: info.teacher_id})
       this.setData({
         reportList: res.code == 200 ? res.data : []
@@ -21,10 +21,10 @@ Component({
     async editReport(e){
       const report = e.currentTarget.dataset.report
       const res = await dataRequire(report.source_table, '', {[report.source_table + '_id']: report.id})
-      const student = await dataRequire('stu', '', {stu_id: report.stu_id})
-      const form = res.code == 200 ? res.data[0]: null
+      const student = await dataRequire('stuWithReportAffirm', '', {stu_id: report.stu_id})
+      const form = res.code == 200 ? res.data[0]: null;
       const stu = student.code == 200 ? student.data[0]: null
-      console.log(stu)
+      console.log(student)
       if(!form){
         thiswx.showToast({
           title: '网络故障..',

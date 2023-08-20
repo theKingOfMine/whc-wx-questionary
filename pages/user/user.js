@@ -18,7 +18,7 @@ Page({
     })
   },
   teacherInfo(){
-    const info = JSON.parse(wx.getStorageSync('info'))
+    const info = getApp().globalData.info;
     this.setData({
       teacher: info,
       isOpenExhibition: true

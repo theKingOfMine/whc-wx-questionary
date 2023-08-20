@@ -1,5 +1,7 @@
 export const baseUrl = 'https://www.rongheeducation.com/';
-
+import {
+  wx_login
+} from "../tools"
 // 服务器基础数据请求函数
 export const req = (params) => {
   return new Promise((resolve, reject) => {
@@ -33,38 +35,35 @@ export const req = (params) => {
 }
 // 向服务器上传表单数据
 export const formUpload = async (forminfo) => {
-  wx.showNavigationBarLoading(); // loading
+  const token = wx.getStorageSync('token') || null; // 必须携带token
 
-  const token = wx.getStorageSync('token'); // 必须携带token
-
-  // 如果token不存在，则自动跳转到登陆页面
-  if (!token) {
-    wx.showToast({
-      title: '您还未登陆',
-      icon: 'error'
-    });
-
-    setTimeout(() => {
-      wx.navigateTo({
-        url: '/pages/index/index'
+  if (token) {
+    try {
+      const res = await req({
+        askfor: 'formUpload',
+        forminfo,
+        token
       });
-    }, 2000);
 
-    wx.hideNavigationBarLoading();
-    return;
-  }
+      if (res.statusCode === 200) { // 服务器访问成功
+        if (res.data.code == 200) { // token已经过期
+          return res.data; // 表单上传访问成功返回的数据
+        }else{
+          wx.showToast({
+            title: '您的登陆已过期',
+            icon: 'error'
+          });
 
-  try {
-    const res = await req({
-      askfor: 'formUpload',
-      forminfo,
-      token
-    });
-
-    if (res.statusCode === 200) { // 服务器访问成功
-      if (res.data.code === 404) {  // token已经过期
+          setTimeout(() => {
+            wx.navigateTo({
+              url: '/pages/index/index'
+            });
+          }, 1500);
+          return;
+        }
+      } else {
         wx.showToast({
-          title: '您还未登陆',
+          title: '网络故障，请重新登陆..',
           icon: 'error'
         });
 
@@ -72,35 +71,46 @@ export const formUpload = async (forminfo) => {
           wx.navigateTo({
             url: '/pages/index/index'
           });
-        }, 2000);
+        }, 1500);
 
-        return;
+        return res;
       }
-      return res.data; // 表单上传访问成功返回的数据
-    } else {
-      wx.showToast({
-        title: '网络故障，请重新登陆..',
-        icon: 'loading'
-      });
-      return res;
+    } catch (err) {
+      throw err;
+    } finally {
+      wx.hideNavigationBarLoading();
     }
-  } catch (err) {
-    throw err;
-  } finally {
-    wx.hideNavigationBarLoading();
+  } else { // 如果token不存在，则自动跳转到登陆页面
+    wx.showToast({
+      title: '网络故障，请稍后重试..',
+      icon: 'error'
+    });
+
+    setTimeout(() => {
+      wx.navigateTo({
+        url: '/pages/index/index'
+      });
+    }, 1500);
+    return;
   }
 };
 // 向服务器请求数据
 export const dataRequire = async (table = '', requirement = '*', conditions = {}, groupBy = '', orderBy = '', limit = '') => {
-  const token = wx.getStorageSync('token');
+  const token = wx.getStorageSync('token') || null;
 
   if (!token) {
     wx.showToast({
-      title: '您还未登陆',
+      title: '您还未登录..',
       icon: 'error'
     });
-    return;
+
+    setTimeout(() => {
+      wx.navigateTo({
+        url: '/pages/index/index'
+      });
+    }, 1500);
   }
+
   try {
     const res = await req({
       token: token,
@@ -125,10 +135,9 @@ export const dataRequire = async (table = '', requirement = '*', conditions = {}
           wx.navigateTo({
             url: '/pages/index/index'
           });
-        }, 2000);
+        }, 1500);
         return;
       }
-
       return res.data;
     } else {
       wx.showToast({
@@ -141,3 +150,17 @@ export const dataRequire = async (table = '', requirement = '*', conditions = {}
     throw err;
   }
 };
+
+export const getSetting = () => {
+  return new Promise((resolve, reject) => {
+    wx.request({
+      url: 'https://www.rongheeducation.com/mck_school/setting.php?boxinteshujiaoyu=boxinteshujiaoyu',
+      success(res) {
+        resolve(res.data);
+      },
+      fail: (err) => {
+        reject(err);
+      }
+    })
+  })
+}

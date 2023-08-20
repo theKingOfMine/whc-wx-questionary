@@ -4,9 +4,10 @@ import {
   formUpload
 } from "../tools.js"
 
-const stuInfo = (askfor) => {
 
-  const teacher_id = JSON.parse(wx.getStorageSync('info')).teacher_id;
+const stuInfo = (askfor) => {
+  const teacher_id = getApp().globalData.info.teacher_id
+
   return {
     title: {
       isHide: false,
@@ -53,13 +54,13 @@ const stuInfo = (askfor) => {
         icon: ''
       },
       register_time: {
-        label: '注册时间',
+        label: '登记时间',
         name: 'register_time',
         type: 'string',
         value: (formattedDateTime)(),
         component: 'datetime',
         placeholder: '',
-        isHide: false,
+        isHide: askfor == 'insert' ? true : false, 
         disable: false,
         isReadonly: false,
         isRequired: true,
@@ -219,8 +220,23 @@ const stuInfo = (askfor) => {
         isReadonly: false,
         isRequired: true,
         keyboard: 'text',
-        length: 23,
+        length: 18,
         icon: '',
+      },
+      phone: {
+        label: '手机号码',
+        name: 'phone',
+        value: null,
+        type: 'string',
+        component: 'input',
+        placeholder: '请输入',
+        isHide: false,
+        disable: false,
+        isReadonly: false,
+        isRequired: true,
+        keyboard: 'number',
+        length: 11,
+        icon: 'mobile',
       },
       notes: {
         label: '备注',

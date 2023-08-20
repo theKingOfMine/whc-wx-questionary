@@ -2,8 +2,6 @@ import {
   formattedDateTime
 } from "./utils"
 
-// const info = JSON.parse(wx.getStorageSync('info'))
-
 const questionsBox = [
   "1. 在座位上扭动不停，课堂经常不能安坐在座位上，小动作多；",
   "2. 在不应出声的场合制造噪音，如课堂上、安静的集体活动上；",
@@ -75,14 +73,14 @@ for (let i in questionsBox) {
 }
 
 const conners_t_info = (askfor) => {
-  const teacher_id = JSON.parse(wx.getStorageSync('info')).teacher_id;
+  const teacher_id = getApp().globalData.info.teacher_id;
   return {
     title: {
-      value: '[DSM-5/SLD/PRS/T]学龄儿童学习能力持续性发展特质 教育实践综合评估量表（教师问卷版）',
+      value: '[DSM-5/CONNERS/T]学龄儿童在校行为发展及学习/生活表现 教育实践综合评估量表（教师问卷版）',
       isHide: false
     },
     notes: {
-      value: '评估提示：填写此表时请根据儿童过去 6 个月的行为举止认真/客观地填写此表！ 本报告为教育实践评估，最终评价需结合医疗诊断评估报告综合评定。',
+      value: '评估提示：填写此表时请根据儿童过去 1-2 个月的行为举止认真/客观地填写此表！ 本报告为教育实践评估，最终评价需结合医疗诊断评估报告综合评定。',
       isHide: false
     },
     table: 'conners_t',
@@ -140,7 +138,7 @@ const conners_t_info = (askfor) => {
         value: (formattedDateTime)(),
         component: 'datetime',
         placeholder: null,
-        isHide: false, 
+        isHide: askfor == 'insert' ? true : false, 
         disable: false,
         isReadonly: false,
         isRequired: true,

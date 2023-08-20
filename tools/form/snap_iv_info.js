@@ -62,7 +62,7 @@ for(let i in questionsBox){
 }
 
 const snap_iv_info = (askfor) => {
-  const teacher_id = JSON.parse(wx.getStorageSync('info')).teacher_id;
+  const teacher_id = getApp().globalData.info.teacher_id;
   return {
     title: {
       value: '[DSM-5/SNAP-IV]学龄儿童主动性注意能力教育实践 综合评估量表',
@@ -121,13 +121,13 @@ const snap_iv_info = (askfor) => {
         length: null,
       },
       register_time: {
-        label: '注册时间',
+        label: '登记时间',
         name: 'register_time',
         type: 'string',
         value: (formattedDateTime)(),
         component: 'datetime',
         placeholder: null,
-        isHide: false, 
+        isHide: askfor == 'insert' ? true : false, 
         disable: false,
         isReadonly: false,
         isRequired: true,

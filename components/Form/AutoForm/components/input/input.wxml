@@ -5,15 +5,14 @@
   placeholder="{{info.placeholder}}" 
   bind:change="handleInput" 
   data-key="{{info.name}}" 
-  maxcharacter="24"
-  value="{{info.value}}"
+  maxcharacter="{{info.length}}"
+  value="{{info.value ? info.value : ''}}"
   type="{{info.keyboard}}"
   disabled="{{info.isReadonly}}"
-  type="{{info.type}}"
   >
 
     <view slot="label">
-      {{info.label}}
+      {{info.label ? info.label : ''}}
     </view>
 
     <!-- 左侧icon -->
@@ -25,6 +24,7 @@
     <view slot="suffix-icon" style="height: 100%; display: flex; align-items: center; justify-content: center; padding: 0 3px 0 0;">
       <t-icon wx:if="{{!info.isReadonly && isAccess}}" color="green" size="20" name="check-circle-filled" />
       <t-icon wx:if="{{info.isReadonly}}" size="20" name="lock-on" />
+      <t-icon wx:else name="edit" size="small"></t-icon>
     </view>
     
   </t-input>

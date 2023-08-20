@@ -17,7 +17,8 @@ Component({
   },
   data: {
     info: null,
-    isAccess: false
+    isAccess: false,
+    status: 'error'
   },
   methods: {
     // 实时更新input组件数据

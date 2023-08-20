@@ -5,7 +5,7 @@
     "pages/form/form",
     "pages/user/user"
   ],
-  "entryPagePath": "pages/form/form",
+  "entryPagePath": "pages/index/index",
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",

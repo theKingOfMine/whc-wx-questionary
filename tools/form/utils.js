@@ -179,3 +179,19 @@ export const deleteReport = (info)=>{
 
   })
 }
+
+// 手机号校验
+export const checkPhoneNumber = (phoneNumber) => {
+  if (phoneNumber.length !== 11) {
+      return false;
+  }
+  var check = /^1\d{10}$/;
+  return check.test(phoneNumber);
+}
+
+// 身份证号正则表达式（支持15位和18位）
+export const checkIdCard = (idCard)=> {
+  const idCardRegex = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+  return idCardRegex.test(idCard);
+}
+

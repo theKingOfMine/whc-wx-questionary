@@ -6,6 +6,5 @@
 
   <view class="register-box">
       <Register></Register>
-      <!-- <Login></Login> -->
   </view>
 </view>
