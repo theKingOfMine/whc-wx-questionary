@@ -4,9 +4,9 @@
     "pages/stu/stu",
     "pages/form/form",
     "pages/user/user",
-    "pages/invitation/invitation"
+    "pages/teacher/teacher"
   ],
-  "entryPagePath": "pages/invitation/invitation",
+  "entryPagePath": "pages/index/index",
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",

@@ -46,6 +46,7 @@
        const res = await deleteStu(info)
        console.log(res)
        if(res.code == 200){
+         console.log('到refresh了')
         this.triggerEvent('refresh');
        }
      },

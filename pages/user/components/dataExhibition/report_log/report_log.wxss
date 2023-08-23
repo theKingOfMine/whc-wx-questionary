@@ -1,1 +1,7 @@
-/* pages/user/components/dataExhibition/report_log/report_log.wxss */
+.report-title{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 150px;
+}
+

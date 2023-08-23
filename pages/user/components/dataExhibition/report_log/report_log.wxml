@@ -4,8 +4,8 @@
 
 <view wx:if="{{reportList}}" class="report-box">
   <t-cell image="{{baseUrl + item.head_img}}" wx:for="{{reportList}}" wx:key="index">
-    <view slot="title">
-      {{item.name}} {{item.source_table}} 报告
+    <view slot="title" class="report-title">
+      {{item.name ? item.name + '的' : '“学生信息已删除-”'}} {{item.source_table}} 报告
     </view>
     <view slot="left-icon" style="margin-right: 8px;">
       {{index + 1}}.

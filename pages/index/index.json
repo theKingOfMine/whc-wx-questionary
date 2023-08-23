@@ -1,6 +1,7 @@
 {
-  "usingComponents": {
-    "Register": "../../components/Register/Register/Register"
-  },
-  "navigationBarTitleText": "教师信息登记"
+  "usingComponents": {},
+  "navigationBarTitleText": "博信融合欢迎您",
+  "navigationBarBackgroundColor": "#204D8E",
+  "backgroundColor": "#204D8E",
+  "navigationBarTextStyle": "white"
 }

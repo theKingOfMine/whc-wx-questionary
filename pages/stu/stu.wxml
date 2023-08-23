@@ -1,4 +1,4 @@
-<view wx:if="{{stuList.length == 0}}" style="display: flex; align-items: center; justify-content: center; height: 200rpx; padding: 32px;" wx:if="{{stuList.length == 0}}" class="notes">
+<view wx:if="{{!stuList && stuList.length < 1}}" style="display: flex; align-items: center; justify-content: center; height: 200rpx; padding: 32px;" wx:if="{{stuList.length == 0}}" class="notes">
   请点击右下角添加按钮，登记您的学生信息，并为每个学生填写相关调查报告...
 </view>
 

@@ -47,6 +47,10 @@ Page({
         wx.navigateTo({
           url: '/pages/index/index',
         })
+      }else{
+        this.setData({
+          stuList: []
+        })
       }
 
     }else{ // 未登录守卫

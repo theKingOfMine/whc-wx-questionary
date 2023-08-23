@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "Register": "../../components/Register/Register/Register"
+  },
+  "navigationBarTitleText": "教师信息登记"
+}
