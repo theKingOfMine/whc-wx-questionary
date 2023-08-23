@@ -6,6 +6,6 @@
   background-color: rgb(240, 240, 240);
 } 
 page {
-  --theme-color: #0052d9;
+  --theme-color: #204D8E;
   --background-color: rgb(240, 240, 240);
 }

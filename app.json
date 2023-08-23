@@ -3,9 +3,10 @@
     "pages/index/index",
     "pages/stu/stu",
     "pages/form/form",
-    "pages/user/user"
+    "pages/user/user",
+    "pages/invitation/invitation"
   ],
-  "entryPagePath": "pages/index/index",
+  "entryPagePath": "pages/invitation/invitation",
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",

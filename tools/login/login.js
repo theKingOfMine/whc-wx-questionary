@@ -1,9 +1,8 @@
+import Message from 'tdesign-miniprogram/message/index';
 // 用微信openid登陆，
 export const wx_login = () => {
   // 登陆提示..
-  wx.showLoading({
-    title: '微信登陆中...',
-  })
+  wx.showNavigationBarLoading();
 
   wx.login({ // 取得临时code
     success: (res) => { // code取得成功
@@ -12,7 +11,7 @@ export const wx_login = () => {
         url: 'https://www.rongheeducation.com/mck_school/login.php?code=' + code,
         success(res) {
           if (res.statusCode == 200) { // 网络正常
-            wx.hideLoading();
+            wx.hideNavigationBarLoading();
             if (res.data.code == 200) { // 已注册自动登录，返回token
               const wxInfo = res.data.wxInfo;
               const info = res.data.info;
@@ -21,6 +20,7 @@ export const wx_login = () => {
               wx.setStorageSync('session_key', wxInfo.session_key)
               wx.setStorageSync('token', token)
               getApp().globalData.info = info;
+              
               wx.showToast({
                 title: '登陆成功！' + info.name + '老师，欢迎回来',
                 icon: 'none'
@@ -33,12 +33,7 @@ export const wx_login = () => {
               }, 1500)
 
             } else if (res.data.code == 402) { // 未注册，保存返回的openid，加入用户信息中，等待注册成新用户，提示用户填写关键信息
-              wx.showToast({
-                title: '您还未注册，请登记您的教职信息',
-                icon: 'none'
-              })
               const wxInfo = res.data.wxInfo;
-              console.log(wxInfo)
               if (wxInfo && wxInfo.openid) {
                 wx.setStorageSync('openid', wxInfo.openid)
                 wx.setStorageSync('session_key', wxInfo.session_key)
@@ -52,7 +47,8 @@ export const wx_login = () => {
           } else {
             wx.showToast({
               title: '网络故障，请删除小程序后重新登入..',
-              icon: 'none'
+              icon: 'none',
+              duration: 5000
             })
           }
         }

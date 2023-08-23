@@ -31,7 +31,7 @@ Component({
       for (let i in form) {
         if (form[i].isRequired) {
           if (form[i].name == 'phone') {
-            if (!checkPhoneNumber(form[i].value)) {
+            if (form[i].value && !checkPhoneNumber(form[i].value)) {
               Message.error({
                 context: this,
                 offset: ['20rpx', '32rpx'],
@@ -43,7 +43,7 @@ Component({
           }
 
           if (form[i].name == 'identity_card') {
-            if (!checkIdCard(form[i].value)) {
+            if (form[i].value && !checkIdCard(form[i].value)) {
               Message.error({
                 context: this,
                 offset: ['20rpx', '32rpx'],
@@ -83,8 +83,7 @@ Component({
     },
     // 实时更新表单数据
     updateInfo(e) {
-      this.data.formInfo.form[e.detail.key].value = e.detail.value
-      console.log(this.data.formInfo.form[e.detail.key])
+      this.data.formInfo.form[e.detail.key].value = e.detail.value;
     }
   }
 })

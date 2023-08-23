@@ -223,21 +223,6 @@ const stuInfo = (askfor) => {
         length: 18,
         icon: '',
       },
-      phone: {
-        label: '手机号码',
-        name: 'phone',
-        value: null,
-        type: 'string',
-        component: 'input',
-        placeholder: '请输入',
-        isHide: false,
-        disable: false,
-        isReadonly: false,
-        isRequired: true,
-        keyboard: 'number',
-        length: 11,
-        icon: 'mobile',
-      },
       notes: {
         label: '备注',
         name: 'notes',
@@ -267,7 +252,7 @@ const stuInfo = (askfor) => {
         isHide: false,
         disable: false,
         isReadonly: false,
-        isRequired: false,
+        isRequired: true,
         keyboard: 'text',
         length: null,
         icon: '',
@@ -321,38 +306,3 @@ export const deleteStu = (info)=>{
 
   })
 }
-
-
-
-// export const _deleteStu = (info) => {
-//   wx.showModal({
-//     title: '请确认是否删除学生' + info.name + '的相关数据',
-//     content: '注：数据删除后将不可恢复，请慎重选择！',
-//     complete: async (res) => {
-//       if (res.confirm) {
-//         const res = await formUpload({
-//           askfor: 'delete',
-//           table: 'stu',
-//           key: {
-//             name: 'stu_id',
-//             value: info.stu_id,
-//             type: 'int'
-//           }
-//         });
-//         if (res.code == 200) {
-//           wx.showToast({
-//             title: '学生' +  info.name + '的信息已删除成功',
-//             icon: 'success'
-//           })
-//           return {code: 200}
-//         } else {
-//           wx.showToast({
-//             title: '故障，删除失败',
-//             icon: 'error'
-//           })
-//           return {code : 400}
-//         }
-//       }
-//     }
-//   })
-// }

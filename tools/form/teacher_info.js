@@ -175,7 +175,22 @@ const handlerForm = (askfor) => {
       keyboard: null,
       length: null,
       icon: null,
-    }
+    },
+    inviter_code: {
+      label: '邀请码',
+      name: 'inviter_code',
+      value: '',
+      type: 'string',
+      component: 'input',
+      placeholder: '请输入',
+      isHide: true,
+      disable: false,
+      isReadonly: true,
+      isRequired: false,
+      keyboard: null,
+      length: null,
+      icon: null,
+    },
   }
 }
 

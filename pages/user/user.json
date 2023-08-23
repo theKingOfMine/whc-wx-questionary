@@ -3,5 +3,8 @@
     "DataExhibition": "./components/dataExhibition/dataExhibition",
     "t-image": "tdesign-miniprogram/image/image"
   },
-  "navigationBarTitleText": "个人中心"
+  "navigationBarTitleText": "个人中心",
+  "navigationBarBackgroundColor": "#204D8E",
+  "navigationBarTextStyle": "white",
+  "backgroundColorTop": "#204D8E"
 }
