@@ -18,8 +18,10 @@ Page({
     })
   },
   async submit(e) { //从autoform接回数据，进行上传
+    console.log(e.detail)
     wx.showNavigationBarLoading()
     const res = await formUpload(e.detail);
+    console.log(res);
     if (res.code == 200) {
       wx.showToast({
         title: e.detail.submitTitle + '成功',

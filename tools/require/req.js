@@ -44,7 +44,7 @@ export const formUpload = async (forminfo) => {
         forminfo,
         token
       });
-
+      console.log('请求数据的返回：', res)
       if (res.statusCode === 200) { // 服务器访问成功
         if (res.data.code == 200) { // token已经过期
           return res.data; // 表单上传访问成功返回的数据
